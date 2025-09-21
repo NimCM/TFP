@@ -1,0 +1,125 @@
+@use "sass:math";
+
+@import "variables";
+@import "mixins";
+
+html{ 
+    display: block; margin: 0; 
+} 
+
+/* TEXTOS */
+h1{
+    font-size: $fluidH1;
+    font-family: $tipoH1;
+}
+
+h2{
+    font-size: $fluidH2;
+    font-family: $tipoH2;
+}
+
+h3{
+    font-size: $fluidH3;
+    font-family: $tipoH3;
+    font-weight: $tipoH3weight;
+}
+
+p{
+    font-size: $fluidP;
+    font-family: $tipoP;
+}
+
+/* HEADER */
+
+header{ 
+    height: 90px; 
+    max-width:100%; /* Max-width para que no haga scroll horizontal*/ 
+    display: flex; 
+    flex-direction: row; 
+    padding: 10px 25px; 
+    
+    img{ 
+        height: 100%; 
+        flex: 0 0 90px; 
+    }
+        
+    #menu-navegacion{ 
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        padding: 0; flex: 1; 
+    } 
+    
+    nav{ 
+        display: flex; 
+    } 
+    
+    a{ 
+        text-decoration: none; 
+    } 
+    
+    .idioma{ 
+        padding:0; 
+        height: 60%; 
+        flex: 0 0 50px; 
+    } 
+}
+
+li{ 
+    list-style-type: none; 
+    font-size: $fluidP;
+    font-family: $tipoP;
+} 
+
+#titol-web{
+    font-size: clamp(50px, 4vw, 80px);
+    font-family:('Cantarell', Helvetica, Arial, sans-serif);
+}
+
+.titol-web-change{
+    font-size: clamp(80px, 4vw, 110px);
+    font-family:('Fjalla One','Gill Sans', Calibri, sans-serif);
+}
+
+#subtitol-web{
+    font-size: clamp(18px, 4vw, 28px);
+    font-family:('Cantarell', Helvetica, Arial, sans-serif);
+}
+
+/* BOTONES */
+
+.btn-primary{
+    @include btn-primary;
+}
+
+.btn-secondary{
+    @include btn-secondary;
+}
+
+.btn-next{
+    @include btn-next;
+}
+
+.btn-ant{
+    @include btn-ant;
+}
+
+.btn-light{
+    @include btn-light;
+}
+
+.btn-dark{
+    @include btn-dark;
+}
+
+.btn-light-border{
+    @include btn-light-border;
+}
+
+.btn-dark-border{
+    @include btn-dark-border;
+}
+
+.btn-share{
+    @include btn-share;
+}

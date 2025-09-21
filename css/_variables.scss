@@ -1,0 +1,52 @@
+@use "sass:math";
+@import 'mixins';
+
+/* COLOR PALETTE */
+$basicWhite: #FAD9D6;
+$lightPurple: #DEC7EB;
+$middlePurple: #693c82;
+$darkPurple: #260936;
+$highlighGreen: #C8E28B;
+
+/* BORDER RADIUS */
+$borderRadiusM: 28px;
+$borderRadiusS: 16px;
+
+/* PADDING */
+$paddingM: 16px;
+
+
+/* GAP */
+$gapM:12px;
+$gapL:18px;
+$gapXXL:50px;
+
+/* TEXTO: TAMAÑO y TIPOGRAFÍA */
+$fluidH1: clamp(32px, 4vw, 48px);
+$fluidH2: clamp(24px, 3vw, 32px);
+$fluidH3: clamp(20px, 2.5vw, 22px);
+$fluidP: clamp(18px, 1.5vw, 18px);
+$fluidMini: clamp(16px, 1vw, 16px);
+
+$tipoH1:('Fjalla One','Gill Sans', Calibri, sans-serif);
+$tipoH2:('Fjalla One','Gill Sans', Calibri, sans-serif);
+$tipoH3:('Cantarell', Helvetica, Arial, sans-serif);
+$tipoP:('Cantarell', Helvetica, Arial, sans-serif);
+$tipoMini:('Cantarell', Helvetica, Arial, sans-serif);
+
+$tipoH3weight: bold;
+
+/* BOTONES */
+$btn-padding: 5px 16px;
+$btn-radius:28px;
+$btn-font: ('Cantarell', Helvetica, Arial, sans-serif);
+
+$btn-noborder:none;
+$btn-border: 1px solid;
+$btn-border-light: 1px solid $middlePurple;
+$btn-border-dark: 1px solid $lightPurple ;
+
+$btn-font-size-primary: #{clamp(28px, 1vw, 32px)};
+$btn-font-size-secondary:#{clamp(20px, 1vw, 24px)};
+$btn-font-size-next:#{clamp(16px, 1vw, 20px)};
+$btn-font-size-ant:#{clamp(14px, 1vw, 18px)};

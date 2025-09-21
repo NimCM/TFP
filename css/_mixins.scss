@@ -1,0 +1,77 @@
+@use "sass:math";
+
+
+@mixin btn-basic{
+    font-family: $btn-font;
+    padding: $btn-padding;
+    border-radius: $btn-radius;
+    margin: 10px;
+}
+
+@mixin btn-primary{
+    @include btn-basic;
+    font-size: $btn-font-size-primary;
+    font-weight: bold;
+    border: $btn-noborder;
+}
+
+@mixin btn-secondary{
+    @include btn-basic;
+    font-size: $btn-font-size-secondary;
+    font-weight: bold;
+    border: $btn-noborder ;
+}
+
+@mixin btn-next{
+    @include btn-basic;
+    font-size: $btn-font-size-next;
+    font-weight: bold;
+    border: $btn-noborder ;
+}
+
+@mixin btn-ant{
+    @include btn-basic;
+    font-size: $btn-font-size-ant;
+    font-weight: normal;
+    border: $btn-border;
+    background-color: transparent;
+}
+
+@mixin btn-next{
+    @include btn-basic;
+    font-size: $btn-font-size-ant;
+    font-weight: normal;
+    border: $btn-border;
+    background-color: transparent;
+}
+
+@mixin btn-share{
+    padding: 16px;
+    border-radius: $btn-radius;
+    margin: 10px;
+    border: $btn-noborder;
+}
+
+@mixin btn-light{
+    background-color: $middlePurple;
+    color: $lightPurple;
+    box-shadow: 2px 2px 4px $lightPurple;
+}
+
+@mixin btn-dark{
+    background-color: $lightPurple;
+    color: $middlePurple;
+    box-shadow: 2px 2px 4px $middlePurple;
+}
+
+@mixin btn-light-border{
+    color: $middlePurple;
+    box-shadow: 2px 2px 4px $middlePurple;
+    border: 1px solid $middlePurple;
+}
+
+@mixin btn-dark-border{
+    color: $lightPurple;
+    box-shadow: 2px 2px 4px $lightPurple;
+    border: 1px solid $lightPurple;
+}

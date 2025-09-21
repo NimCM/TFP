@@ -1,0 +1,159 @@
+@charset "UTF-8";
+/* COLOR PALETTE */
+/* BORDER RADIUS */
+/* PADDING */
+/* GAP */
+/* TEXTO: TAMAÑO y TIPOGRAFÍA */
+/* BOTONES */
+html {
+  display: block;
+  margin: 0;
+}
+
+/* TEXTOS */
+h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
+}
+
+h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
+}
+
+h3 {
+  font-size: clamp(20px, 2.5vw, 22px);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+p {
+  font-size: clamp(18px, 1.5vw, 18px);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+}
+
+/* HEADER */
+header {
+  height: 90px;
+  max-width: 100%; /* Max-width para que no haga scroll horizontal*/
+  display: flex;
+  flex-direction: row;
+  padding: 10px 25px;
+}
+header img {
+  height: 100%;
+  flex: 0 0 90px;
+}
+header #menu-navegacion {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  flex: 1;
+}
+header nav {
+  display: flex;
+}
+header a {
+  text-decoration: none;
+}
+header .idioma {
+  padding: 0;
+  height: 60%;
+  flex: 0 0 50px;
+}
+
+li {
+  list-style-type: none;
+  font-size: clamp(18px, 1.5vw, 18px);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+}
+
+#titol-web {
+  font-size: clamp(50px, 4vw, 80px);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+}
+
+.titol-web-change {
+  font-size: clamp(80px, 4vw, 110px);
+  font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
+}
+
+#subtitol-web {
+  font-size: clamp(18px, 4vw, 28px);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+}
+
+/* BOTONES */
+.btn-primary {
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  padding: 5px 16px;
+  border-radius: 28px;
+  margin: 10px;
+  font-size: clamp(28px, 1vw, 32px);
+  font-weight: bold;
+  border: none;
+}
+
+.btn-secondary {
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  padding: 5px 16px;
+  border-radius: 28px;
+  margin: 10px;
+  font-size: clamp(20px, 1vw, 24px);
+  font-weight: bold;
+  border: none;
+}
+
+.btn-next {
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  padding: 5px 16px;
+  border-radius: 28px;
+  margin: 10px;
+  font-size: clamp(14px, 1vw, 18px);
+  font-weight: normal;
+  border: 1px solid;
+  background-color: transparent;
+}
+
+.btn-ant {
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  padding: 5px 16px;
+  border-radius: 28px;
+  margin: 10px;
+  font-size: clamp(14px, 1vw, 18px);
+  font-weight: normal;
+  border: 1px solid;
+  background-color: transparent;
+}
+
+.btn-light {
+  background-color: #693c82;
+  color: #DEC7EB;
+  box-shadow: 2px 2px 4px #DEC7EB;
+}
+
+.btn-dark {
+  background-color: #DEC7EB;
+  color: #693c82;
+  box-shadow: 2px 2px 4px #693c82;
+}
+
+.btn-light-border {
+  color: #693c82;
+  box-shadow: 2px 2px 4px #693c82;
+  border: 1px solid #693c82;
+}
+
+.btn-dark-border {
+  color: #DEC7EB;
+  box-shadow: 2px 2px 4px #DEC7EB;
+  border: 1px solid #DEC7EB;
+}
+
+.btn-share {
+  padding: 16px;
+  border-radius: 28px;
+  margin: 10px;
+  border: none;
+}/*# sourceMappingURL=styles.css.map */
