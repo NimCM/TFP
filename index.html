@@ -33,9 +33,9 @@
         
         <ul class="idioma">
             <li class="idioma"><a href="#"><img src="css/icons/idioma/cat_dark.webp"   alt="Icona idioma català"></a></li> <!--Enlaces de cambio de idioma con icono-->
-            <!--<li class="idioma"s><a href="#"><img src="css/icons/idioma/esp_dark.webp" alt="Icona idioma castellà"></a></li>-->
-            <!--<li class="idioma"s><a href="#"><img src="css/icons/idioma/eng_dark.webp" alt="Icona idioma anglès"></a></li>-->
-            <!--<li class="idioma"s><a href="#"><img src="css/icons/idioma/fr_dark.webp" alt="Icona idioma francès"></a></li>-->
+            <li class="idioma oculto"s><a href="#"><img src="css/icons/idioma/esp_dark.webp" alt="Icona idioma castellà"></a></li>
+            <li class="idioma oculto"s><a href="#"><img src="css/icons/idioma/eng_dark.webp" alt="Icona idioma anglès"></a></li>
+            <li class="idioma oculto"s><a href="#"><img src="css/icons/idioma/fr_dark.webp" alt="Icona idioma francès"></a></li>
         </ul>
 
     </header>
@@ -44,28 +44,30 @@
         <div class="inicio">
             <h1 id="titol-web">Descobreix <span class="titol-web-change">Lloret</span> en <span class="titol-web-change">femení</span></h1>
             <h2 id="subtitol-web">Les dones que han teixit el nostre poble</h2>
-            <button class="btn-primary btn-dark"> Inicia la ruta!</button>
-            <button class="btn-secondary btn-light">Llocs destacats</button>
-            <button class="btn-next btn-light-border">Next</button>
-            <button class="btn-ant btn-dark-border">Anterior</button>
+            <a href="#" class="btn btn-primary btn-dark">Inicia la ruta! <img src="css/icons/btn/ruta-light.webp" class="btn-icon-primary" alt="Enllaç per iniciar la ruta amb una icona de una dona caminant"></a>
+            <a href="#" class="btn btn-secondary btn-light">Llocs destacats <img src="css/icons/btn/ubi-dark.webp" class="btn-icon-secondary" alt="Enllaç per visitar la llista de llocs destacats amb una icona de ubicació"></a>
         </div>
 
         <div class="com-funciona">
-            <section class="text-comofunciona">
-                <h2>Com funciona?</h2>
-                <ul>
-                    <li>Explora la ruta</li>
-                    <li>Segueix el mapa</li>
-                    <li>Descobreix la història</li>
-                </ul>
+            <section class="text-comfunciona">
+                <article>
+                    <h2>Com funciona?</h2>
+                    <ul>
+                        <li class="li-comfunciona">Explora la ruta</li>
+                        <li class="li-comfunciona">Segueix el mapa</li>
+                        <li class="li-comfunciona">Descobreix la història</li>
+                    </ul>
+                </article>
+                <article class="butons-comfunciona">
+                    <a href="#" class="btn btn-primary btn-light">Inicia la ruta! <img src="css/icons/btn/ruta-dark.webp" class="btn-icon-primary" alt="Enllaç per iniciar la ruta amb una icona de una dona caminant"></a>
+                    <button class="btn btn-share btn-light"><img src="css/icons/btn/share-green.png" class="btn-icon-share" alt="Botó per a compartir la pàgina amb una icona de avió de paper"></button>
+                </article>
             </section>
-            <section class="imagen-boton-funciona">
-               <!-- <img src="files/img/mapa.png" alt="Silueta de la ruta, amb punts en els llocs d'interès">-->
-                <button class="btn-primary btn-light">Inicia la ruta!</button>
-                <button class="btn-share btn-light"></button>
+            <section class="imagen-funciona">
+                <img src="files/img/mapa.png" class="imagen-mapa" alt="Silueta de la ruta, amb punts en els llocs d'interès">
             </section>
         </div>
-        <div class="Accessibilitat">
+        <div class="accessibilitat">
             <section class="carroussel-interes">
                 <img src="" alt="">
             </section>
@@ -88,8 +90,8 @@
                 </article>
         </div>
     </main>
-    <footer>
-        <!--<img src="css/logos/logo_ajunt_lloret.png" alt="Logotip de l'Ajuntament de Lloret de Mar">-->
+    <footer class="footer-light">
+        <img src="css/logos/logo_ajunt_lloret.png" class="logo-ajunt-lloret" alt="Logotip de l'Ajuntament de Lloret de Mar">
         <p class="credits-designer">Designed by: Nim Carbonell Mas</p>
     </footer> 
         

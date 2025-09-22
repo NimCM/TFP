@@ -4,8 +4,13 @@
 @import "mixins";
 
 html{ 
-    display: block; margin: 0; 
+    display: block; 
+    margin: 0; 
 } 
+
+*{
+    box-sizing: border-box;
+}
 
 /* TEXTOS */
 h1{
@@ -33,42 +38,47 @@ p{
 
 header{ 
     height: 90px; 
-    max-width:100%; /* Max-width para que no haga scroll horizontal*/ 
-    display: flex; 
-    flex-direction: row; 
-    padding: 10px 25px; 
+    max-width:100%; /* Max-width para que no haga scroll horizontal*/
+    @include flex (row,space-between,center);
+    padding: 10px 25px;
+    margin: 0 50px;
     
     img{ 
-        height: 100%; 
-        flex: 0 0 90px; 
+        height: 100%;
+
+        /*flex: 0 0 80px; */
     }
         
     #menu-navegacion{ 
-        display: flex; 
-        flex-direction: row; 
-        justify-content: space-between; 
-        padding: 0; flex: 1; 
+        @include flex(row, space-between, center);
+        padding: 0; 
+        flex: 1; 
     } 
     
     nav{ 
-        display: flex; 
+        @include flex(row, space-around, center);
+        width: 50%;
     } 
     
     a{ 
-        text-decoration: none; 
+        color: $lightPurple;
     } 
     
     .idioma{ 
         padding:0; 
-        height: 60%; 
+        height: 90%; 
         flex: 0 0 50px; 
     } 
+}
+
+a{
+    text-decoration: none;
 }
 
 li{ 
     list-style-type: none; 
     font-size: $fluidP;
-    font-family: $tipoP;
+    font-family: $tipoH2;
 } 
 
 #titol-web{
@@ -122,4 +132,89 @@ li{
 
 .btn-share{
     @include btn-share;
+}
+
+a.btn:hover, .btn:hover{
+    transform: scale(1.05); /* Tranformación para que augmente el tamaño del boton al hacer hover */
+}
+
+.btn-icon-primary{ /* Iconos que hay en los botones */
+    width: $btn-icon-size-primary;
+    height: auto;
+    max-width: 100%;
+    align-items: center;
+}
+
+.btn-icon-secondary{ /* Iconos que hay en los botones */
+    width: $btn-icon-size-secondary;
+    height: auto;
+    max-width: 100%;
+    align-items: center;
+}
+
+.btn-icon-next, .btn-icon-ant{ /* Iconos que hay en los botones */
+    width: $btn-icon-size-next;
+    height: auto;
+    max-width: 100%;
+    align-items: center;
+}
+
+.btn-icon-share{
+    width: $btn-icon-size-primary;
+    height: auto;
+
+}
+
+/* INICI MAIN */
+
+.li-comfunciona{
+    font-family: $tipoP;
+    font-size: $fluidP;
+    line-height: 250%; /* Ampliación del alto de linea para separar los pasos de la lista */
+    list-style-type: decimal; /* Definiendo el número de cada item de la lista */
+}
+
+.com-funciona, .accessibilitat{
+    background-color: $lightPurple;
+    margin:0 -10px;
+    display:block;
+    padding: $paddingM;
+}
+
+.com-funciona{
+    @include flex(row, space-around, center);
+
+    .butons-comfunciona{
+        display: inline-flex;
+    }
+    
+    .text-comfunciona{
+         @include flex(column, space-around,center);
+    }
+    
+    .imagen-funciona{
+        width: 70%;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    .imagen-mapa{
+        width: 70%;
+    }
+}
+
+footer{
+    color: white;
+    height: 90px;
+    @include flex(row, space-around, flex-end);
+}
+
+.footer-light{
+    background-color: $lightPurple;
+    margin: -10px -10px;
+}
+
+.logo-ajunt-lloret{
+    height: 70px;
+    padding: 5px;
 }

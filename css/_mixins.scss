@@ -6,6 +6,11 @@
     padding: $btn-padding;
     border-radius: $btn-radius;
     margin: 10px;
+    transition: transform 0.1s ease-in-out;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 }
 
 @mixin btn-primary{
@@ -19,7 +24,7 @@
     @include btn-basic;
     font-size: $btn-font-size-secondary;
     font-weight: bold;
-    border: $btn-noborder ;
+    border: $btn-noborder;
 }
 
 @mixin btn-next{
@@ -46,10 +51,11 @@
 }
 
 @mixin btn-share{
-    padding: 16px;
-    border-radius: $btn-radius;
+    padding: 10px;
+    border-radius: 50%;
     margin: 10px;
     border: $btn-noborder;
+    display: inline-flex;
 }
 
 @mixin btn-light{
@@ -74,4 +80,11 @@
     color: $lightPurple;
     box-shadow: 2px 2px 4px $lightPurple;
     border: 1px solid $lightPurple;
+}
+
+@mixin flex ($direction,$justify,$align){ /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+    display:flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-content: $align;
 }

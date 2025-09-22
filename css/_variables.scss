@@ -47,6 +47,11 @@ $btn-border-light: 1px solid $middlePurple;
 $btn-border-dark: 1px solid $lightPurple ;
 
 $btn-font-size-primary: #{clamp(28px, 1vw, 32px)};
-$btn-font-size-secondary:#{clamp(20px, 1vw, 24px)};
+$btn-font-size-secondary:#{clamp(20psx, 1vw, 24px)};
 $btn-font-size-next:#{clamp(16px, 1vw, 20px)};
 $btn-font-size-ant:#{clamp(14px, 1vw, 18px)};
+
+$btn-icon-size-primary: #{clamp(28px, 2vw, 32px)};
+$btn-icon-size-secondary:#{clamp(20px, 2vw, 24px)};
+$btn-icon-size-next:#{clamp(16px, 2vw, 20px)};
+$btn-icon-size-ant:#{clamp(14px, 2vw, 18px)};

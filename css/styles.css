@@ -10,6 +10,10 @@ html {
   margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* TEXTOS */
 h1 {
   font-size: clamp(32px, 4vw, 48px);
@@ -36,37 +40,52 @@ p {
 header {
   height: 90px;
   max-width: 100%; /* Max-width para que no haga scroll horizontal*/
-  display: flex;
-  flex-direction: row;
-  padding: 10px 25px;
-}
-header img {
-  height: 100%;
-  flex: 0 0 90px;
-}
-header #menu-navegacion {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-content: center;
+  padding: 10px 25px;
+  margin: 0 50px;
+}
+header img {
+  height: 100%;
+  /*flex: 0 0 80px; */
+}
+header #menu-navegacion {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
   padding: 0;
   flex: 1;
 }
 header nav {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  width: 50%;
 }
 header a {
-  text-decoration: none;
+  color: #DEC7EB;
 }
 header .idioma {
   padding: 0;
-  height: 60%;
+  height: 90%;
   flex: 0 0 50px;
+}
+
+a {
+  text-decoration: none;
 }
 
 li {
   list-style-type: none;
   font-size: clamp(18px, 1.5vw, 18px);
-  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
 }
 
 #titol-web {
@@ -90,6 +109,11 @@ li {
   padding: 5px 16px;
   border-radius: 28px;
   margin: 10px;
+  transition: transform 0.1s ease-in-out;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   font-size: clamp(28px, 1vw, 32px);
   font-weight: bold;
   border: none;
@@ -100,7 +124,12 @@ li {
   padding: 5px 16px;
   border-radius: 28px;
   margin: 10px;
-  font-size: clamp(20px, 1vw, 24px);
+  transition: transform 0.1s ease-in-out;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  font-size: clamp(20psx, 1vw, 24px);
   font-weight: bold;
   border: none;
 }
@@ -110,6 +139,11 @@ li {
   padding: 5px 16px;
   border-radius: 28px;
   margin: 10px;
+  transition: transform 0.1s ease-in-out;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   font-size: clamp(14px, 1vw, 18px);
   font-weight: normal;
   border: 1px solid;
@@ -121,6 +155,11 @@ li {
   padding: 5px 16px;
   border-radius: 28px;
   margin: 10px;
+  transition: transform 0.1s ease-in-out;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   font-size: clamp(14px, 1vw, 18px);
   font-weight: normal;
   border: 1px solid;
@@ -152,8 +191,100 @@ li {
 }
 
 .btn-share {
-  padding: 16px;
-  border-radius: 28px;
+  padding: 10px;
+  border-radius: 50%;
   margin: 10px;
   border: none;
+  display: inline-flex;
+}
+
+a.btn:hover, .btn:hover {
+  transform: scale(1.05); /* Tranformación para que augmente el tamaño del boton al hacer hover */
+}
+
+.btn-icon-primary { /* Iconos que hay en los botones */
+  width: clamp(28px, 2vw, 32px);
+  height: auto;
+  max-width: 100%;
+  align-items: center;
+}
+
+.btn-icon-secondary { /* Iconos que hay en los botones */
+  width: clamp(20px, 2vw, 24px);
+  height: auto;
+  max-width: 100%;
+  align-items: center;
+}
+
+.btn-icon-next, .btn-icon-ant { /* Iconos que hay en los botones */
+  width: clamp(16px, 2vw, 20px);
+  height: auto;
+  max-width: 100%;
+  align-items: center;
+}
+
+.btn-icon-share {
+  width: clamp(28px, 2vw, 32px);
+  height: auto;
+}
+
+/* INICI MAIN */
+.li-comfunciona {
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-size: clamp(18px, 1.5vw, 18px);
+  line-height: 250%; /* Ampliación del alto de linea para separar los pasos de la lista */
+  list-style-type: decimal; /* Definiendo el número de cada item de la lista */
+}
+
+.com-funciona, .accessibilitat {
+  background-color: #DEC7EB;
+  margin: 0 -10px;
+  display: block;
+  padding: 16px;
+}
+
+.com-funciona {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+.com-funciona .butons-comfunciona {
+  display: inline-flex;
+}
+.com-funciona .text-comfunciona {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+.com-funciona .imagen-funciona {
+  width: 70%;
+  display: inline-flex;
+  justify-content: center;
+}
+.com-funciona .imagen-mapa {
+  width: 70%;
+}
+
+footer {
+  color: white;
+  height: 90px;
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-end;
+}
+
+.footer-light {
+  background-color: #DEC7EB;
+  margin: -10px -10px;
+}
+
+.logo-ajunt-lloret {
+  height: 70px;
+  padding: 5px;
 }/*# sourceMappingURL=styles.css.map */
