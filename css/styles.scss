@@ -201,10 +201,24 @@ a.btn:hover, .btn:hover{
 
 .inicio{ /* MIRAR BÉ AMB DUES PANTALLES*/
     @include flex(column, center, center);
-    max-width: 600px;
+    width: 100%;
     padding: 30px 50px 50px 50px;
+    align-items: center;
 
-    .titol-web{
+   .text-inicio{
+        @include flex(column, center, center);  
+        text-align: center;
+        max-width: 550px;
+    }
+
+    #greenline-inicio{
+        max-width: 200px;
+        align-self: end;
+        margin-top: -50px;
+        margin-right: 80px;
+    }
+
+    .buttons-inicio{
         @include flex(column, center, center);
     }
 }
@@ -244,6 +258,35 @@ a.btn:hover, .btn:hover{
         width: 70%;
     }
 }
+
+.bloc-accessibilitat{
+    @include flex(column, end, center);
+    justify-self: end;
+    gap:20px;
+    width: 500px;
+    padding-bottom: 70px;
+
+    h2{
+        margin: 0;
+    }
+}
+
+.icona-accessibilitat{
+    width: $icon-access;
+    height: auto;
+}
+
+.access-info{
+    @include flex(row, start, center);
+    align-items: center;
+    gap: 15px;
+}
+
+.access-text{
+    line-height: 20%;
+}
+
+/* FOOTER */
 
 footer{
     color: white;

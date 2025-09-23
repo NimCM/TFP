@@ -5,6 +5,7 @@
 /* GAP */
 /* TEXTO: TAMAÑO y TIPOGRAFÍA */
 /* BOTONES */
+/* ICONOS */
 html {
   display: block;
   margin: 0;
@@ -132,6 +133,7 @@ li {
   margin: 10px;
   transition: transform 0.1s ease-in-out;
   display: inline-flex;
+  width: auto;
   flex-direction: row;
   align-items: center;
   gap: 5px;
@@ -147,6 +149,7 @@ li {
   margin: 10px;
   transition: transform 0.1s ease-in-out;
   display: inline-flex;
+  width: auto;
   flex-direction: row;
   align-items: center;
   gap: 5px;
@@ -162,6 +165,7 @@ li {
   margin: 10px;
   transition: transform 0.1s ease-in-out;
   display: inline-flex;
+  width: auto;
   flex-direction: row;
   align-items: center;
   gap: 5px;
@@ -178,6 +182,7 @@ li {
   margin: 10px;
   transition: transform 0.1s ease-in-out;
   display: inline-flex;
+  width: auto;
   flex-direction: row;
   align-items: center;
   gap: 5px;
@@ -266,10 +271,26 @@ a.btn:hover, .btn:hover {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  max-width: 600px;
+  width: 100%;
   padding: 30px 50px 50px 50px;
+  align-items: center;
 }
-.inicio .titol-web {
+.inicio .text-inicio {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  max-width: 550px;
+}
+.inicio #greenline-inicio {
+  max-width: 200px;
+  align-self: end;
+  margin-top: -50px;
+  margin-right: 80px;
+}
+.inicio .buttons-inicio {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: column;
@@ -317,6 +338,41 @@ a.btn:hover, .btn:hover {
   width: 70%;
 }
 
+.bloc-accessibilitat {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-content: center;
+  justify-self: end;
+  gap: 20px;
+  width: 500px;
+  padding-bottom: 70px;
+}
+.bloc-accessibilitat h2 {
+  margin: 0;
+}
+
+.icona-accessibilitat {
+  width: clamp(30px, 3vw, 34px);
+  height: auto;
+}
+
+.access-info {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.access-text {
+  line-height: 20%;
+}
+
+/* FOOTER */
 footer {
   color: white;
   height: 90px;
