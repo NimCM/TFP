@@ -34,14 +34,32 @@ p{
     font-family: $tipoP;
 }
 
+.text-light{
+    color: $middlePurple;
+}
+
+.text-dark{
+    color:$lightPurple;
+}
+
+.text-ultralight{
+    color:$darkPurple;
+}
+
 /* HEADER */
 
 header{ 
+    /* Definimos posición fija para el header, al hacer scroll este se mantiene en la parte superior */
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    
     height: 90px; 
     max-width:100%; /* Max-width para que no haga scroll horizontal*/
     @include flex (row,space-between,center);
+    align-items: center;
     padding: 10px 25px;
-    margin: 0 50px;
+    transition: background-color 0.3s ease; /* Transición para el cambio de color del header */
     
     img{ 
         height: 100%;
@@ -62,13 +80,17 @@ header{
     
     a{ 
         color: $lightPurple;
-    } 
+    }
     
     .idioma{ 
         padding:0; 
         height: 90%; 
         flex: 0 0 50px; 
     } 
+}
+
+header.scrolled{ /* Definición de las propiedades CSS de la class scrolled que se activa con Java Script */
+    background-color:$middlePurple; /* fcolor de fondo al hacer scroll */
 }
 
 a{
@@ -162,10 +184,30 @@ a.btn:hover, .btn:hover{
 .btn-icon-share{
     width: $btn-icon-size-primary;
     height: auto;
-
 }
 
 /* INICI MAIN */
+
+.hero-bg-inici{ /* Imagen de fondo de la seccion inicial */
+    background:  linear-gradient(rgba($middlePurple, 0.7), rgba($middlePurple, 0.7)),
+    url("../files/img/dona_marinera_tochange.jpg") ;
+    /* Imagen de fondo con filtro de color por encima */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Situar la imagen en el fondo */
+}
+
+.inicio{ /* MIRAR BÉ AMB DUES PANTALLES*/
+    @include flex(column, center, center);
+    max-width: 600px;
+    padding: 30px 50px 50px 50px;
+
+    .titol-web{
+        @include flex(column, center, center);
+    }
+}
 
 .li-comfunciona{
     font-family: $tipoP;
