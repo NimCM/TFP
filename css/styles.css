@@ -6,9 +6,12 @@
 /* TEXTO: TAMAÑO y TIPOGRAFÍA */
 /* BOTONES */
 /* ICONOS */
-html {
+html, body {
   display: block;
   margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #DEC7EB;
 }
 
 * {
@@ -65,6 +68,7 @@ header {
   align-items: center;
   padding: 10px 25px;
   transition: background-color 0.3s ease; /* Transición para el cambio de color del header */
+  z-index: 1000; /* queda encima de todo el contenido */
 }
 header img {
   height: 100%;
@@ -97,7 +101,7 @@ header .idioma {
 }
 
 header.scrolled { /* Definición de las propiedades CSS de la class scrolled que se activa con Java Script */
-  background-color: #693c82; /* fcolor de fondo al hacer scroll */
+  background: #693c82; /* color de fondo al hacer scroll */
 }
 
 a {
@@ -258,21 +262,26 @@ a.btn:hover, .btn:hover {
 .hero-bg-inici { /* Imagen de fondo de la seccion inicial */
   background: linear-gradient(rgba(105, 60, 130, 0.7), rgba(105, 60, 130, 0.7)), url("../files/img/dona_marinera_tochange.jpg");
   /* Imagen de fondo con filtro de color por encima */
+  background-size: cover; /* Define que cubra todo el espacio del fondo sin adaptar-se */
+  background-position: top left; /* Coge de referencia la esuqina sueprior izquierda, al hacer pequeña la pantalla la imagen se mantiene estática en esa posición, interesa por como es el contenido de la imagen */
+  background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
   top: 0;
   left: 0;
-  width: 100%;
   height: 100vh;
+  max-height: 900px;
+  margin: -10px -10px;
+  overflow-x: hidden; /* evita el scroll horizontal o los margenes blancos */
   z-index: -1; /* Situar la imagen en el fondo */
 }
 
-.inicio { /* MIRAR BÉ AMB DUES PANTALLES*/
+.inicio {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   width: 100%;
-  padding: 30px 50px 50px 50px;
+  padding: 100px;
   align-items: center;
 }
 .inicio .text-inicio {
@@ -298,6 +307,12 @@ a.btn:hover, .btn:hover {
   align-content: center;
 }
 
+.inicio-fade {
+  height: 50px;
+  background-color: linear-gradient(rgba(105, 60, 130, 0.7), rgba(222, 199, 235, 0.7));
+  z-index: -1;
+}
+
 .li-comfunciona {
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
   font-size: clamp(18px, 1.5vw, 18px);
@@ -310,6 +325,7 @@ a.btn:hover, .btn:hover {
   margin: 0 -10px;
   display: block;
   padding: 16px;
+  padding-top: 20px;
 }
 
 .com-funciona {
@@ -320,22 +336,38 @@ a.btn:hover, .btn:hover {
   align-content: center;
 }
 .com-funciona .butons-comfunciona {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
 }
 .com-funciona .text-comfunciona {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-content: center;
+  max-width: 35%;
+  padding: 20px;
 }
 .com-funciona .imagen-funciona {
-  width: 70%;
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-end;
+  max-width: 50%;
 }
 .com-funciona .imagen-mapa {
-  width: 70%;
+  display: flex;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: auto;
+  max-width: 100%;
+}
+
+.accessibilitat {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  padding: 40px;
 }
 
 .bloc-accessibilitat {
@@ -346,8 +378,7 @@ a.btn:hover, .btn:hover {
   align-content: center;
   justify-self: end;
   gap: 20px;
-  width: 500px;
-  padding-bottom: 70px;
+  max-width: 500px;
 }
 .bloc-accessibilitat h2 {
   margin: 0;
@@ -364,18 +395,27 @@ a.btn:hover, .btn:hover {
   flex-direction: row;
   justify-content: start;
   align-content: center;
-  align-items: center;
   gap: 15px;
 }
 
 .access-text {
-  line-height: 20%;
+  line-height: 10%;
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: start;
+  align-items: flex-start;
+}
+.access-text p {
+  line-height: 150%;
+  margin: 0;
 }
 
 /* FOOTER */
 footer {
   color: white;
-  height: 90px;
+  min-height: 90px;
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: row;
