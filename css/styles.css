@@ -63,9 +63,8 @@ p {
 /* HEADER */
 header {
   /* Definimos posición fija para el header, al hacer scroll este se mantiene en la parte superior */
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: fixed;
+  width: 100%;
   height: 90px;
   max-width: 100%; /* Max-width para que no haga scroll horizontal*/
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
@@ -74,7 +73,7 @@ header {
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  padding: 10px 25px;
+  padding: 20px 10px 5px 20px;
   transition: background-color 0.3s ease; /* Transición para el cambio de color del header */
   z-index: 1000; /* queda encima de todo el contenido */
 }
@@ -102,14 +101,10 @@ header nav {
 header a {
   color: #DEC7EB;
 }
-header .idioma {
-  padding: 0;
-  height: 90%;
-  flex: 0 0 50px;
-}
 
 header.scrolled { /* Definición de las propiedades CSS de la class scrolled que se activa con Java Script */
   background: #693c82; /* color de fondo al hacer scroll */
+  padding: 20px 10px 5px 20px;
 }
 
 a {
@@ -135,6 +130,26 @@ li {
 #subtitol-web {
   font-size: clamp(18px, 4vw, 28px);
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
+}
+
+/* FOOTER */
+footer {
+  color: white;
+  min-height: 90px;
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-end;
+}
+
+.footer-light {
+  background-color: #DEC7EB;
+}
+
+.logo-ajunt-lloret {
+  height: 70px;
+  padding: 5px;
 }
 
 /* BOTONES */
@@ -266,20 +281,50 @@ a.btn:hover, .btn:hover {
   height: auto;
 }
 
+/* DESPLEGABLE IDIOMA */
+.menu-idioma-desplegable {
+  padding: 0;
+  height: 90%;
+  flex: 0 0 50px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  display: flex;
+}
+
+#menu-idioma {
+  padding: 0;
+  height: 100%;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+}
+
+#menu-idioma[hidden] {
+  display: none;
+}
+
+.idioma {
+  padding: 0;
+  height: 100%;
+}
+
+#idioma-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 /* INICI MAIN */
 .hero-bg-inici { /* Imagen de fondo de la seccion inicial */
   background: linear-gradient(rgba(105, 60, 130, 0.7), rgba(105, 60, 130, 0.7)), url("../files/img/dona_marinera_tochange.jpg");
   /* Imagen de fondo con filtro de color por encima */
-  background-size: cover; /* Define que cubra todo el espacio del fondo sin adaptar-se */
   background-position: top left; /* Coge de referencia la esuqina sueprior izquierda, al hacer pequeña la pantalla la imagen se mantiene estática en esa posición, interesa por como es el contenido de la imagen */
   background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
   top: 0;
   left: 0;
-  height: 100vh;
-  max-height: 900px;
-  margin: -10px -10px;
-  overflow-x: hidden; /* evita el scroll horizontal o los margenes blancos */
-  z-index: -1; /* Situar la imagen en el fondo */
+  min-height: 50vh;
 }
 
 .inicio {
@@ -330,7 +375,6 @@ a.btn:hover, .btn:hover {
 
 .com-funciona, .accessibilitat {
   background-color: #DEC7EB;
-  margin: 0 -10px;
   display: block;
   padding: 16px;
   padding-top: 20px;
@@ -353,13 +397,8 @@ a.btn:hover, .btn:hover {
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
-  max-width: 35%;
+  width: 450px;
   padding: 20px;
-}
-.com-funciona .imagen-funciona {
-  display: inline-flex;
-  justify-content: flex-end;
-  max-width: 50%;
 }
 .com-funciona .imagen-mapa {
   display: flex;
@@ -367,6 +406,12 @@ a.btn:hover, .btn:hover {
      object-fit: contain;
   height: auto;
   max-width: 100%;
+}
+
+.imagen-funciona {
+  display: inline-flex;
+  justify-content: flex-end;
+  max-width: 60%;
 }
 
 .accessibilitat {
@@ -446,23 +491,16 @@ a.btn:hover, .btn:hover {
   margin: 0;
 }
 
-/* FOOTER */
-footer {
-  color: white;
-  min-height: 90px;
-  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-content: flex-end;
-}
-
-.footer-light {
-  background-color: #DEC7EB;
-  margin: -10px -10px;
-}
-
-.logo-ajunt-lloret {
-  height: 70px;
-  padding: 5px;
+@media (max-width: 769px) {
+  .com-funciona, .accessibilitat {
+    /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  .carroussel-interes, .imagen-funciona {
+    max-width: 90%;
+  }
 }/*# sourceMappingURL=styles.css.map */

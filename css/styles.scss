@@ -62,15 +62,14 @@ p{
 
 header{ 
     /* Definimos posición fija para el header, al hacer scroll este se mantiene en la parte superior */
-    position: sticky; 
-    top: 0;
-    z-index: 10;
-    
+    position: fixed; 
+    //top: 0;
+    width: 100%;
     height: 90px; 
     max-width:100%; /* Max-width para que no haga scroll horizontal*/
     @include flex (row,space-between,center);
     align-items: center;
-    padding: 10px 25px;
+    padding: 20px 10px 5px 20px;
     transition: background-color 0.3s ease; /* Transición para el cambio de color del header */
     z-index: 1000; /* queda encima de todo el contenido */
     
@@ -94,16 +93,11 @@ header{
     a{ 
         color: $lightPurple;
     }
-    
-    .idioma{ 
-        padding:0; 
-        height: 90%; 
-        flex: 0 0 50px; 
-    } 
 }
 
 header.scrolled{ /* Definición de las propiedades CSS de la class scrolled que se activa con Java Script */
     background:$middlePurple; /* color de fondo al hacer scroll */
+    padding: 20px 10px 5px 20px;
 }
 
 a{
@@ -129,6 +123,23 @@ li{
 #subtitol-web{
     font-size: clamp(18px, 4vw, 28px);
     font-family:('Cantarell', Helvetica, Arial, sans-serif);
+}
+
+/* FOOTER */
+
+footer{
+    color: white;
+    min-height: 90px;
+    @include flex(row, space-around, flex-end);
+}
+
+.footer-light{
+    background-color: $lightPurple;
+}
+
+.logo-ajunt-lloret{
+    height: 70px;
+    padding: 5px;
 }
 
 /* BOTONES */
@@ -199,22 +210,56 @@ a.btn:hover, .btn:hover{
     height: auto;
 }
 
+/* DESPLEGABLE IDIOMA */
+
+.menu-idioma-desplegable{ 
+    padding:0; 
+    height: 90%; 
+    flex: 0 0 50px; 
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    display: flex;
+}
+
+#menu-idioma{ 
+    padding:0; 
+    height: 100%; 
+    margin:0;
+
+    position: absolute;
+    top: 100%;
+} 
+
+#menu-idioma[hidden]{
+    display: none;
+}
+
+.idioma{ 
+    padding:0; 
+    height: 100%; 
+}
+
+#idioma-btn{
+    background-color: transparent;
+    border: none;
+
+    cursor:pointer;
+    padding: 0;
+}
+
 /* INICI MAIN */
 
 .hero-bg-inici{ /* Imagen de fondo de la seccion inicial */
     background:  linear-gradient(rgba($middlePurple, 0.7), rgba($middlePurple, 0.7)),
     url("../files/img/dona_marinera_tochange.jpg") ;
     /* Imagen de fondo con filtro de color por encima */
-    background-size: cover; /* Define que cubra todo el espacio del fondo sin adaptar-se */
     background-position: top left; /* Coge de referencia la esuqina sueprior izquierda, al hacer pequeña la pantalla la imagen se mantiene estática en esa posición, interesa por como es el contenido de la imagen */
     background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
     top: 0;
     left: 0;
-    height: 100vh;
-    max-height: 900px;
-    margin:-10px -10px;
-    overflow-x: hidden;  /* evita el scroll horizontal o los margenes blancos */
-    z-index: -1; /* Situar la imagen en el fondo */
+    min-height: 50vh;
 }
 
 
@@ -257,7 +302,6 @@ a.btn:hover, .btn:hover{
 
 .com-funciona, .accessibilitat{
     background-color: $lightPurple;
-    margin:0 -10px;
     display:block;
     padding: $paddingM;
     padding-top: 20px;
@@ -273,14 +317,8 @@ a.btn:hover, .btn:hover{
     
     .text-comfunciona{
         @include flex(column, flex-start,center);
-        max-width: 35%;
+        width: 450px;
         padding: 20px;
-    }
-    
-    .imagen-funciona{
-        display: inline-flex;
-        justify-content: flex-end;
-        max-width: 50%;
     }
 
     .imagen-mapa{
@@ -290,6 +328,12 @@ a.btn:hover, .btn:hover{
         max-width: 100%;
     }
 }
+
+.imagen-funciona{
+    display: inline-flex;
+    justify-content: flex-end;
+    max-width: 60%;
+ }
 
 .accessibilitat{
     @include flex(row, space-around, center);
@@ -357,23 +401,16 @@ a.btn:hover, .btn:hover{
         line-height: 150%;
         margin: 0;
     }
-    
 }
 
-/* FOOTER */
+@media (max-width: 769px) {
+    .com-funciona, .accessibilitat{
+        @include flex(column, center, center);
+        align-items: center;
+    }
 
-footer{
-    color: white;
-    min-height: 90px;
-    @include flex(row, space-around, flex-end);
-}
+    .carroussel-interes, .imagen-funciona{
+        max-width: 90%;
+    }
 
-.footer-light{
-    background-color: $lightPurple;
-    margin: -10px -10px;
-}
-
-.logo-ajunt-lloret{
-    height: 70px;
-    padding: 5px;
 }
