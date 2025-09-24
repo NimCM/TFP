@@ -15,6 +15,15 @@ html, body{
     box-sizing: border-box;
 }
 
+:root {
+
+    /* Edición de los colores de los bullets del Swiper*/
+  --swiper-pagination-color: #{$lightPurple};
+  --swiper-pagination-bullet-inactive-color: #{$middlePurple};
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-opacity: 1;
+}
+
 /* TEXTOS */
 h1{
     font-size: $fluidH1;
@@ -285,9 +294,31 @@ a.btn:hover, .btn:hover{
 .accessibilitat{
     @include flex(row, space-around, center);
     padding: 40px;
+    gap: 25px;
+    align-items: center;
 }
 
-//.swiper-container{
+.carroussel-interes{
+    max-width: 60%;
+}
+
+.swiper{
+    max-width: 100%;
+    aspect-ratio: 16 / 9; /* Mantiene el ratio de ancho/altura */
+    overflow: hidden;
+    border-radius:8px;
+    box-shadow: 1px 1px 4px $middlePurple;
+
+   .swiper-button-prev, .swiper-button-next{
+        color:$lightPurple;
+    }
+
+    .carroussel-interes-inicio{
+        width: 100%;
+        height: auto;
+        position: top center;
+    }
+}
 
 .bloc-accessibilitat{
     @include flex(column, end, center);
@@ -316,6 +347,11 @@ a.btn:hover, .btn:hover{
     line-height: 10%;
     @include flex(column, start, start);
     align-items: flex-start;
+
+    h3{
+        line-height: 150%;
+        margin: 0;
+    }
 
     p{
         line-height: 150%;

@@ -8,3 +8,25 @@ window.addEventListener("scroll", function() { //el navegador esta pendiente de 
       header.classList.remove("scrolled"); //si no ha bajado más de los pixeles, elimina la clase. Al volver a la parte superior el fondo desaparece
     }
   });
+
+
+//Swiper para carroussel
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+  autoplay: {
+  delay: 5000,     // tiempo entre slides: 5s
+  disableOnInteraction: false, // si el usuario hace clic, el autoplay continua
+  },
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});
