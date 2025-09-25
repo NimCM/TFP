@@ -23,9 +23,10 @@
 
     <div class="hero-bg-inici"> 
         <header>
-            <img src="css/logos/logo_darkmode.webp" class="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona">
+            <img src="css/logos/logo_darkmode.webp" id="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona">
         
-            <nav>
+            <nav class="menu-nav-desplegable">
+               <button class="navegacion" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
                 <ul id="menu-navegacion">
                     <li><a href="#" class="text-dark">Com funciona?</a></li>
                     <li><a href="#" class="text-dark">Punts d'interès</a></li>
@@ -37,7 +38,7 @@
             </nav>
             <!--Enlaces de cambio de idioma con icono-->
             <div class="menu-idioma-desplegable">
-                <button class="idioma" id="idioma-btn" aria-expanded="false" aria-controls="menu-idioma"><a href="#"><img src="css/icons/idioma/cat_dark.webp" alt="Icona idioma català"></a>
+                <button class="idioma" id="idioma-btn" aria-expanded="false" aria-controls="menu-idioma"><a href="#"><img src="css/icons/idioma/cat_dark.webp" alt="Icona idioma català"></button>
             
                 <ul id="menu-idioma" class="menu-idioma-oculto" hidden>
                     <li class="idioma oculto"><a href="#"><img src="css/icons/idioma/esp_dark.webp" alt="Icona idioma castellà"></a></li>
@@ -45,7 +46,6 @@
                     <li class="idioma oculto"><a href="#"><img src="css/icons/idioma/fr_dark.webp" alt="Icona idioma francès"></a></li>
                 </ul>
             </div>
-
         </header>
 
     

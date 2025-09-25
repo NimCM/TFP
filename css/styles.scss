@@ -87,7 +87,7 @@ header{
     
     nav{ 
         @include flex(row, space-around, center);
-        width: 50%;
+        width: 80%;
     } 
     
     a{ 
@@ -230,18 +230,25 @@ a.btn:hover, .btn:hover{
 
     position: absolute;
     top: 100%;
+
+    //Fondo de color para que se vea bien el menú desplegado
+    .oculto{
+        background-color: rgba($middlePurple, 1);
+        border-radius:  0, $borderRadiusS; //REVISAR
+        padding: 5px;
+    }
 } 
 
-#menu-idioma[hidden]{
+#menu-idioma[hidden], #menu-navegacion[hidden]{
     display: none;
 }
 
-.idioma{ 
+.idioma, .navegacion{ 
     padding:0; 
     height: 100%; 
 }
 
-#idioma-btn{
+#idioma-btn, #nav-btn{
     background-color: transparent;
     border: none;
 
@@ -413,4 +420,46 @@ a.btn:hover, .btn:hover{
         max-width: 90%;
     }
 
+    header{
+        #menu-navegacion [hidden]{
+        display:none;
+        }
+
+        .menu-nav-desplegable{ /* MIRAR COM ALINEAR AL FINAL*/
+            padding:0; 
+            height: 50%; 
+            width: 80%;
+            flex-direction: column;
+            align-items: end;
+
+            position: relative;
+            display: flex;
+        }
+
+        #menu-navegacion{
+            @include flex(column, start, center);
+            background-color: rgba($middlePurple, 1);
+            padding: 20px;
+            border-radius: $borderRadiusS;
+            margin: 2px;
+            gap: 5px;
+        }
+
+        #nav-btn{
+            display: flex;
+        }
+
+        //Fondo de color para que se vea bien el menú desplegado
+        .desplegado{
+         background-color: rgba($middlePurple, 1);
+            padding: 20px;
+            border-radius: $borderRadiusS ;   
+        }
+    
+    }
 }
+
+
+/* Revisar fondo de color para menú desplegado idiomas, tema round
+
+Revisar eprque no m'aplica la classe desplegado quan es desplega el menú, mirar erferencia class scrolled */
