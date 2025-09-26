@@ -77,9 +77,13 @@ header {
   transition: background-color 0.3s ease; /* Transición para el cambio de color del header */
   z-index: 1000; /* queda encima de todo el contenido */
 }
+header .logo-link {
+  height: 100%;
+  flex: 0 0 80px;
+}
 header img {
   height: 100%;
-  /*flex: 0 0 80px; */
+  width: auto;
 }
 header #menu-navegacion {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
@@ -164,6 +168,8 @@ footer {
   flex-direction: row;
   align-items: center;
   gap: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: clamp(28px, 1vw, 32px);
   font-weight: bold;
   border: none;
@@ -180,6 +186,8 @@ footer {
   flex-direction: row;
   align-items: center;
   gap: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: clamp(20psx, 1vw, 24px);
   font-weight: bold;
   border: none;
@@ -196,6 +204,8 @@ footer {
   flex-direction: row;
   align-items: center;
   gap: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: clamp(14px, 1vw, 18px);
   font-weight: normal;
   border: 1px solid;
@@ -213,6 +223,8 @@ footer {
   flex-direction: row;
   align-items: center;
   gap: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: clamp(14px, 1vw, 18px);
   font-weight: normal;
   border: 1px solid;
@@ -291,6 +303,14 @@ a.btn:hover, .btn:hover {
   position: relative;
   display: flex;
 }
+.menu-idioma-desplegable #idioma-btn-desplegado {
+  background-color: #693c82;
+  border: none;
+  padding: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+}
 
 #menu-idioma {
   padding: 0;
@@ -301,7 +321,7 @@ a.btn:hover, .btn:hover {
 }
 #menu-idioma .oculto {
   background-color: #693c82;
-  border-radius: 0, 16px;
+  border-radius: 8px;
   padding: 5px;
 }
 
@@ -330,8 +350,14 @@ a.btn:hover, .btn:hover {
   top: 0;
   left: 0;
   min-height: 50vh;
+  background-size: auto;
 }
 
+@media (min-width: 1800px) {
+  .hero-bg-inici {
+    background-size: contain;
+  }
+}
 .inicio {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
@@ -363,6 +389,7 @@ a.btn:hover, .btn:hover {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  align-items: center;
 }
 
 .inicio-fade {
@@ -508,6 +535,9 @@ a.btn:hover, .btn:hover {
   .carroussel-interes, .imagen-funciona {
     max-width: 90%;
   }
+  header {
+    gap: 10px;
+  }
   header #menu-navegacion [hidden] {
     display: none;
   }
@@ -535,12 +565,21 @@ a.btn:hover, .btn:hover {
   header #nav-btn {
     display: flex;
   }
+  header #nav-btn-desplegado {
+    display: flex;
+    background-color: #693c82;
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+  }
   header .desplegado {
     background-color: #693c82;
     padding: 20px;
     border-radius: 16px;
   }
-}
-/* Revisar fondo de color para menú desplegado idiomas, tema round
-
-Revisar eprque no m'aplica la classe desplegado quan es desplega el menú, mirar erferencia class scrolled *//*# sourceMappingURL=styles.css.map */
+  .prova {
+    background-color: pink;
+  }
+}/*# sourceMappingURL=styles.css.map */

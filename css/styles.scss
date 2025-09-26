@@ -73,12 +73,16 @@ header{
     transition: background-color 0.3s ease; /* Transición para el cambio de color del header */
     z-index: 1000; /* queda encima de todo el contenido */
     
+   .logo-link{
+    height: 100%;
+    flex: 0 0 80px;
+   }
+
     img{ 
         height: 100%;
-
-        /*flex: 0 0 80px; */
+        width: auto;
     }
-        
+    
     #menu-navegacion{ 
         @include flex(row, space-between, center);
         padding: 0; 
@@ -221,6 +225,16 @@ a.btn:hover, .btn:hover{
 
     position: relative;
     display: flex;
+
+    #idioma-btn-desplegado{
+    background-color: rgba($middlePurple, 1);
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+
+    cursor:pointer;
+    padding: 0;
+    }
 }
 
 #menu-idioma{ 
@@ -231,10 +245,9 @@ a.btn:hover, .btn:hover{
     position: absolute;
     top: 100%;
 
-    //Fondo de color para que se vea bien el menú desplegado
     .oculto{
         background-color: rgba($middlePurple, 1);
-        border-radius:  0, $borderRadiusS; //REVISAR
+        border-radius:8px;
         padding: 5px;
     }
 } 
@@ -256,6 +269,8 @@ a.btn:hover, .btn:hover{
     padding: 0;
 }
 
+
+
 /* INICI MAIN */
 
 .hero-bg-inici{ /* Imagen de fondo de la seccion inicial */
@@ -267,6 +282,14 @@ a.btn:hover, .btn:hover{
     top: 0;
     left: 0;
     min-height: 50vh;
+    background-size: auto;
+}
+
+@media (min-width: 1800px) {
+    .hero-bg-inici{
+        background-size: contain;
+
+    }
 }
 
 
@@ -291,6 +314,7 @@ a.btn:hover, .btn:hover{
 
     .buttons-inicio{
         @include flex(column, center, center);
+        align-items: center;
     }
 }
 
@@ -421,6 +445,7 @@ a.btn:hover, .btn:hover{
     }
 
     header{
+        gap:10px;
         #menu-navegacion [hidden]{
         display:none;
         }
@@ -449,17 +474,28 @@ a.btn:hover, .btn:hover{
             display: flex;
         }
 
+        #nav-btn-desplegado{
+            display: flex;
+            background-color: rgba($middlePurple, 1);
+            border: none;
+            padding: 5px;
+            border-radius: 8px;
+
+         cursor:pointer;
+            padding: 0;
+
+        }
+
+
+
         //Fondo de color para que se vea bien el menú desplegado
         .desplegado{
          background-color: rgba($middlePurple, 1);
             padding: 20px;
             border-radius: $borderRadiusS ;   
         }
-    
+    }
+    .prova{
+        background-color: pink;
     }
 }
-
-
-/* Revisar fondo de color para menú desplegado idiomas, tema round
-
-Revisar eprque no m'aplica la classe desplegado quan es desplega el menú, mirar erferencia class scrolled */

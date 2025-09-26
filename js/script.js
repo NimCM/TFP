@@ -3,7 +3,7 @@
 window.addEventListener("scroll", function() { //el navegador esta pendiente de cuando hay scroll
   const header = document.querySelector("header"); //se guarda el elemento header en una constante, se usa querySelector porque solo elije el primer elemento y de header solo hay uno
   
-  if (window.scrollY > 250) {  // cuantos pixeles tiene que haber bajado el header para cambiar
+  if (window.scrollY > 100) {  // cuantos pixeles tiene que haber bajado el header para cambiar
       header.classList.add("scrolled"); //añade la classe scrolled al header, si se cumple la parte anterior de la función
   } else {
       header.classList.remove("scrolled"); //si no ha bajado más de los pixeles, elimina la clase. Al volver a la parte superior el fondo desaparece
@@ -27,10 +27,13 @@ idiomaBtn.addEventListener("click", function (event) {
    if (isHidden) {
     menuIdioma.removeAttribute("hidden"); // se elimina el atributo hidden
     idiomaBtn.setAttribute("aria-expanded", "true"); // definimos que esta desplegado
+    idiomaBtn.id = "idioma-btn-desplegado";
+
     // Si  el menú ya esta visible lo ocultamos
    }else {
     menuIdioma.setAttribute("hidden", ""); // añadimos otra vez el atrobuto hidden
     idiomaBtn.setAttribute("aria-expanded", "false"); // definimos que esta plegado
+    idiomaBtn.id = "idioma-btn";
   }
 });
 
@@ -49,6 +52,8 @@ document.addEventListener("click", function (event) {
 // Llamamos al botón que hace la acción y la lista de menú de navegacion
 const navBtn = document.getElementById("nav-btn");
 const menuNav = document.getElementById("menu-navegacion");
+const navBtnBg = document.getElementById("nav-btn");
+
 
 // Función que activa/desactiva el menú segun resolución de pantalla
 function checkScreenSize() {
@@ -74,10 +79,13 @@ navBtn.addEventListener("click", function (event) {
     if (isHidden) { // Si esta oculto, lo mostramos, cambiamos el valor de la boolean de aria-expanded a true
       menuNav.removeAttribute("hidden"); // se elimina el atributo hidden
       navBtn.setAttribute("aria-expanded", "true");  // Si  el menú ya esta visible lo ocultamos
-      navBtn.classList.add("desplegado"); //REVISAR!!!!!!!!
+      navBtnBg.id = "nav-btn-desplegado";
+
+
     } else {
       menuNav.setAttribute("hidden", ""); // añadimos otra vez el atrobuto hidden
       navBtn.setAttribute("aria-expanded", "false");// definimos que esta plegado
+      navBtnBg.id = "nav-btn";
     }
   }
 });

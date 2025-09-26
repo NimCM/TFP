@@ -10,23 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <!--Link a los archivos CSS-->
-    <link rel="stylesheet" href="css/styles.css">
-
     <!--Link a la biblioteca de Swiper de JS-->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-
+    
+    <!--Link a los archivos CSS-->
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
 
     <div class="hero-bg-inici"> 
         <header>
-            <img src="css/logos/logo_darkmode.webp" id="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona">
-        
+            <div class="logo-link">
+                <a href="index.html"><img src="css/logos/logo-hightlightgreen.png" id="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona"></a>
+            </div>
             <nav class="menu-nav-desplegable">
-               <button class="navegacion" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
+               <button class="navegacion proba" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
                 <ul id="menu-navegacion">
                     <li><a href="#" class="text-dark">Com funciona?</a></li>
                     <li><a href="#" class="text-dark">Punts d'interès</a></li>
@@ -48,7 +48,6 @@
             </div>
         </header>
 
-    
         <main id="main-index">
             <div class="inicio">
                 <article class="text-inicio text-dark">
@@ -60,7 +59,7 @@
                     <a href="#" class="btn btn-primary btn-dark">Inicia la ruta! <img src="css/icons/btn/ruta-light.webp" class="btn-icon-primary" alt="Enllaç per iniciar la ruta amb una icona de una dona caminant"></a>
                     <a href="#" class="btn btn-secondary btn-light">Llocs destacats <img src="css/icons/btn/ubi-dark.webp" class="btn-icon-secondary" alt="Enllaç per visitar la llista de llocs destacats amb una icona de ubicació"></a>
                 </article>
-                <artcile class="inicio-fade"></article>
+                <article class="inicio-fade"></article>
             </div>
             
             <div class="com-funciona">
