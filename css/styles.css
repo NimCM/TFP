@@ -44,12 +44,12 @@ h3 {
 }
 
 p {
-  font-size: clamp(18px, 1.5vw, 18px);
+  font-size: clamp(18px, 1.5vw, 20px);
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
 }
 
 .mini {
-  font-size: clamp(16px, 1vw, 16px);
+  font-size: clamp(16px, 1vw, 18px);
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
 }
 
@@ -122,7 +122,7 @@ a {
 
 li {
   list-style-type: none;
-  font-size: clamp(18px, 1.5vw, 18px);
+  font-size: clamp(18px, 1.5vw, 20px);
   font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
 }
 
@@ -151,6 +151,9 @@ footer {
   justify-content: space-around;
   align-content: flex-end;
   align-items: center;
+}
+footer .credits-designer {
+  font-size: clamp(16px, 1vw, 18px);
 }
 
 .footer-light {
@@ -410,7 +413,7 @@ a.btn:hover, .btn:hover {
 
 .li-comfunciona {
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
-  font-size: clamp(18px, 1.5vw, 18px);
+  font-size: clamp(18px, 1.5vw, 20px);
   line-height: 250%; /* Ampliación del alto de linea para separar los pasos de la lista */
   list-style-type: decimal; /* Definiendo el número de cada item de la lista */
   margin-left: 25px;
@@ -606,7 +609,7 @@ a.btn:hover, .btn:hover {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  padding-top: 100px; /* Como el header esta fixed el documento no lo reconoce en el flujo, añadir un margin con la altura del header */
+  padding-top: 90px; /* Como el header esta fixed el documento no lo reconoce en el flujo, añadir un margin con la altura del header */
   align-items: center;
   max-width: 10%;
   margin: 0 auto;
@@ -634,11 +637,13 @@ a.btn:hover, .btn:hover {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   gap: 20px;
   margin-bottom: 10px;
   overflow-y: auto;
+  max-width: 400px;
+  height: 75vh;
 }
 
 .card-llocs {
@@ -648,7 +653,7 @@ a.btn:hover, .btn:hover {
   justify-content: center;
   align-content: center;
   background-color: white;
-  max-width: 400px;
+  width: 100%;
   padding: 24px;
   border-radius: 28px;
   display: flex;
@@ -669,7 +674,7 @@ a.btn:hover, .btn:hover {
   font-size: clamp(20px, 2.5vw, 22px);
 }
 .card-llocs .nom-dona-list {
-  font-size: clamp(18px, 1.5vw, 18px);
+  font-size: clamp(18px, 1.5vw, 20px);
 }
 .card-llocs .icones-list {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
@@ -702,11 +707,35 @@ a.btn:hover, .btn:hover {
   background-color: white;
   border-radius: 28px;
   width: 65%;
-  height: 72vh;
+  max-height: 600px;
 }
 
 #map {
   width: 100%;
-  height: 700px;
+  height: 100%;
   border-radius: 16px;
+  z-index: 1;
+}
+
+.footer-mapa {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+  padding-right: 50px;
+  gap: 50px;
+  width: 50%;
+  justify-self: end;
+  padding-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.footer-mapa img {
+  height: 60px;
+}
+.footer-mapa .credits-designer {
+  font-size: clamp(16px, 1vw, 18px);
 }/*# sourceMappingURL=styles.css.map */
