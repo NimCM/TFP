@@ -1,3 +1,6 @@
+// esperar a que el HTML este completamente cargado para cargar el JS
+document.addEventListener('DOMContentLoaded', function() {
+
 // ACTIVAR CLASSE SCROLLED PARA EL HEADER
 
 window.addEventListener("scroll", function() { //el navegador esta pendiente de cuando hay scroll
@@ -126,4 +129,43 @@ const swiper = new Swiper('.swiper', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   }
+});
+
+// MAPA con LEAFLET
+
+//Inicializamos el mapa y elegimos las coordenadas del sitio que se ve y el zoom
+var map = L.map('map').setView([41.699524, 2.850787], 18); //Coordenadas Museu del Mar, inicio de la ruta
+
+//Se añade la URL del OpenStreetMaps para poder usar sus tiles (imagenes fragmentadas) y tener la visualización del mapa. Aquí también se define la atribución a OpenStreetMaps y el máximo nivel de zoom
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  crossOrigin: true // Ayuda con problemas de CORS, Crossed Origin Resource Shring, contenido que proviene de paginas con un URL distinto, como el mapa
+}).addTo(map);
+
+//Añadimos los marcadores
+//var marker = L.marker([41.699524, 2.850787]).addTo(map);
+
+//Añadir marcadores a través del arxivo JSON (Base creada con AI: )
+
+fetch('./js/llocs_interes.json') // Cargar el archivo JSON
+  .then(response => response.json())
+  .then(data => {
+    // Iterar sobre cada ubicación
+    data.forEach(ubicacio => {
+      // Crea el marcador amb les coordenades
+      var marker = L.marker([ubicacio.coordinates.lat, ubicacio.coordinates.lng])
+        .addTo(map);
+    });
+  })
+  //.catch(error => console.error('Error carregant el JSON:', error));
+
+// Forzar la re-renderización del mapa
+  setTimeout(function() {
+    map.invalidateSize();
+    console.log('Mapa carregat correctament');
+  }, 100);
+
+
+
 });

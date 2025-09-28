@@ -14,6 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     
+    <!-- Leaflet CSS stylesheet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    
     <!--Link a los archivos CSS-->
     <link rel="stylesheet" href="./css/styles.css">
 </head>
@@ -275,7 +280,7 @@
                 </section>
             </div>
             <div class="llocs-mapa">
-                <p>Proba</p><!--Mapa leaflet-->
+                <div id="map"></div><!--Mapa leaflet-->
             </div>
         </div>
    
@@ -285,7 +290,12 @@
         <img src="css/logos/logo_ajunt_lloret.png" class="logo-ajunt-lloret" alt="Logotip de l'Ajuntament de Lloret de Mar">
         <p class="credits-designer">Designed by: Nim Carbonell Mas</p>
     </footer>
-        
+    
+    <!-- Leaflet JavaScript, after the CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    
     <!-- El link a JS va al final porque cuando algo falla, no carga nada de lo que viene después, Si queremos evitar esos problemas lo ponemos al finaly así si hay algun problema no nos impide la visualiación -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>

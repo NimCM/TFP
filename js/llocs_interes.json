@@ -1,0 +1,181 @@
+{
+"locations":[
+    {
+        "id":1,
+        "name": "Museu del Mar",
+        "woman": "Lliberada Parés",
+        "coordinates": {
+            "lat": 41.699524,
+            "lng": 2.850787
+        },
+        "tipus": ["museu","interior"],
+        "price": "pagament",
+        "access": "accessible"
+    }, 
+    {
+        "id":2,
+        "name": "Dona Marinera",
+        "woman": "Sra Margarita Puig Esqueu",
+        "coordinates": {
+            "lat":41.695193363493644, 
+            "lng":2.844887902220333
+        },
+        "tipus": ["escultura", "exterior"],
+        "price": "gratuit",
+        "access": "no_accessible"
+    },
+    {
+        "id":3,
+        "name": "Castell St Joan",
+        "woman": "Sicardis de Montsoriu",
+        "coordinates": {
+            "lat":41.693890531324804,
+            "lng":2.839347646389623
+        },
+        "tipus": ["ruinas", "exterior"],
+        "price": "pagament",
+        "access": "no_accessible"
+    },
+    {
+        "id":4,
+        "name": "Jardins de Sta Clotilde",
+        "woman": "Clotilde de Rocamora",
+        "coordinates": {
+            "lat":41.693784129153016, 
+            "lng":2.8248975845096025
+        },
+        "tipus": ["natural", "exterior"],
+        "price": "pagament",
+        "access": "accessible"
+    },
+    {
+        "id":5,
+        "name": "Escultures Sirenes",
+        "woman": "Maria Llimona i Benet",
+        "coordinates": {
+            "lat":41.691496, 
+            "lng":2.825818
+        },
+        "tipus": ["monument", "exterior"],
+        "price": "pagament",
+        "access": "accessible"
+    },
+    {
+        "id":6,
+        "name": "Ermita Sta Cristina",
+        "woman": "Santa Cristina",
+        "coordinates": {
+            "lat":41.68782400415335,
+            "lng":2.8162711972034855
+        },
+        "tipus": ["natural","religios","exterior"],
+        "price": "gratuit",
+        "access": "no_accessible"
+    },
+    {
+        "id":7,
+        "name": "St Pere del Bosc",
+        "woman": "Dolors Montserdà",
+        "coordinates": {
+            "lat":41.71192359661002,
+            "lng":2.7904884731616324
+        },
+        "tipus": ["natural","exterior"],
+        "price": "gratuit",
+        "access": "accessible"
+    },
+    {
+        "id":8,
+        "name": "Barri de la Càndida",
+        "woman": "Càndida Masgrau i Campeny",
+        "coordinates": {
+            "lat":41.705496,
+            "lng":2.833148
+        },
+        "tipus": ["urba","exterior"],
+        "price": "gratuit",
+        "access": "accessible"
+    },
+    {
+        "id":9,
+        "name": "Ermita de les Alegries",
+        "woman": "Senyora del Rossell",
+        "coordinates": {
+            "lat":41.71768614341468,
+            "lng":2.8294887141102607
+        },
+        "tipus": ["religios","exterior"],
+        "price": "gratuit",
+        "access": "accessible"
+    },
+    {
+        "id":10,
+        "name": "Escola Àngels Alemany i Boris",
+        "woman": "Àngels Alemany i Boris",
+        "coordinates": {
+            "lat":41.70571581907457,
+            "lng":2.8387768413824745
+        },
+        "tipus": ["urba", "exterior","edifici"],
+        "price": "gratuit",
+        "access": "accessible"
+    },
+    {
+        "id":11,
+        "name": "Barri del Rieral",
+        "woman": "Gertrudis Moret i Farigola",
+        "coordinates": {
+            "lat":41.70549881041903, 
+            "lng":2.8378980955553175
+        },
+        "tipus": ["urba","exterior"],
+        "price": "gratuit",
+        "access": "accessible"
+    },
+    {
+        "id":12,
+        "name": "Biblioteca",
+        "woman": "Antònia Pares i Macià",
+        "coordinates": {
+            "lat":41.70137353704667,
+            "lng":2.8450136015178247
+        },
+        "tipus": ["edifici", "exterior", "interior"],
+        "price": "gratuit",
+        "access": "accessible"
+    },
+    {
+        "id":13,
+        "name": "Carrer Venècia",
+        "woman": "Rosita Mistos",
+        "coordinates": {
+            "lat":41.70073994037073,
+            "lng":2.852665029935177
+        },
+        "tipus": ["urba","exterior"],
+        "price": "gratuit",
+        "access": "accessible"
+    }
+],
+"filters": {
+    "tipus": [
+        { "value": "interior", "label": "Interior" }, 
+        { "value": "exterior", "label": "Exterior" }, 
+        { "value": "museu", "label": "Museu" },
+        { "value": "escultura", "label": "Escultura" },
+        { "value": "ruines", "label": "Ruines històriques" },
+        { "value": "natural", "label": "Espai natural" },
+        { "value": "religios", "label": "Espai religiós" },
+        { "value": "urba", "label": "Espai urba" },
+        { "value": "edifici", "label": "Edificació" }
+    ],
+    "price": [
+      { "value": "gratuit", "label": "Gratuït" },
+      { "value": "pagament", "label": "De pagament" }
+    ],
+    "access": [
+      { "value": "accessible", "label": "Accessible" },
+      { "value": "no_accessible", "label": "No accessible" }
+    ]
+  }
+}
