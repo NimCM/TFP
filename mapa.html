@@ -16,10 +16,11 @@
     <!-- Leaflet y Leaflet Routing Machine CSS stylesheet-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
     <!--Link a los archivos CSS-->
-    <link rel="stylesheet" href="css/styles.css">
+   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <header class="header-mapa">
@@ -56,24 +57,29 @@
         </div>
         <div class="llista-mapa">
             <div class="llocs-list">
-                <section class="card-llocs"> <!--1-->
+                 <div class="cards-container" id="cards-container"></div>
+                 <!--<section class="card-llocs"> 1
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Museu del Mar</h2>
                         <h3 class="nom-dona-list text-light">Lliberada Parés</h3>
                         <ul class="caracteristiques-lloc-list text-ultralight">
-                            <li class="li-mapa mini">Museu</li>
-                            <li class="li-mapa mini">Temps: 0 min</li>
+                            <li class="li-mapa mini tipus">Museu</li>
+                            <li class="li-mapa mini temps">Temps: 0 min</li>
                         </ul>
                         <div class="icones-list">
-                            <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
+                            <section="access">
+                                <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
+                            </section>
+                            <section="price">
                             <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            </section>
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/museu_mar.webp"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> <!--2-->
+                <section class="card-llocs"> 2
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Dona Marinera</h2>
                         <h3 class="nom-dona-list text-light">Sra Margarita Puig Esqueu</h3>
@@ -90,7 +96,7 @@
                         <img src="./files/img/dona_marinera_tochange.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"><!--3-->
+                <section class="card-llocs">3
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Castell St Joan</h2>
                         <h3 class="nom-dona-list text-light">Sicardis de Montsoriu</h3>
@@ -107,7 +113,7 @@
                         <img src="./files/img/castell_joan.webp"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"><!--4-->
+                <section class="card-llocs">4
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Jardins de Sta Clotilde</h2>
                         <h3 class="nom-dona-list text-light">Clotilde de Rocamora</h3>
@@ -124,7 +130,7 @@
                         <img src="./files/img/jardins-clotilde.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> <!--5-->
+                <section class="card-llocs"> 5
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Escultures Sirenes</h2>
                         <h3 class="nom-dona-list text-light">Maria Llimona i Benet</h3>
@@ -141,7 +147,7 @@
                         <img src="./files/img/sirenes.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> <!--6-->
+                <section class="card-llocs"> 6
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Ermita Sta Cristina</h2>
                         <h3 class="nom-dona-list text-light">Santa Cristina</h3>
@@ -158,7 +164,7 @@
                         <img src="./files/img/sta_cristina.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> <!--7-->
+                <section class="card-llocs"> 7
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">St Pere del Bosc</h2>
                         <h3 class="nom-dona-list text-light">Dolors Montserdà</h3>
@@ -175,7 +181,7 @@
                         <img src="./files/img/st_pere_bosc_tochange.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"><!--8-->
+                <section class="card-llocs">8
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Barri de la Càndida</h2>
                         <h3 class="nom-dona-list text-light">Càndida Masgrau i Campeny</h3>
@@ -192,7 +198,7 @@
                         <img src="./files/img/candida-masgrau.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"><!--9-->
+                <section class="card-llocs">9
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Ermita de les Alegries</h2>
                         <h3 class="nom-dona-list text-light">Senyora del Rossell</h3>
@@ -209,7 +215,7 @@
                         <img src="./files/img/ermita-alegries.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> <!--10-->
+                <section class="card-llocs"> 10
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Escola Àngels Alemany i Boris</h2>
                         <h3 class="nom-dona-list text-light">Àngels Alemany i Boris</h3>
@@ -226,7 +232,7 @@
                         <img src="./files/img/escola-angels.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"><!--11-->
+                <section class="card-llocs">11
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Barri del Rieral</h2>
                         <h3 class="nom-dona-list text-light">Gertrudis Moret i Farigola</h3>
@@ -243,7 +249,7 @@
                         <img src="./files/img/getrudis-2.jpeg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"><!--12-->
+                <section class="card-llocs">12
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Biblioteca</h2>
                         <h3 class="nom-dona-list text-light">Antònia Pares i Macià</h3>
@@ -260,7 +266,7 @@
                         <img src="./files/img/biblio.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> <!--13-->
+                <section class="card-llocs">13
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Carrer Venècia</h2>
                         <h3 class="nom-dona-list text-light">Rosita Mistos</h3>
@@ -276,7 +282,7 @@
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/dona_marinera_tochange.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
-                </section>
+                </section>-->
             </div>
             <div class="llocs-mapa">
                 <div id="map"></div><!--Mapa leaflet-->
@@ -292,12 +298,14 @@
     
     <!-- Leaflet JavaScript, after the CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
     <!-- El link a JS va al final porque cuando algo falla, no carga nada de lo que viene después, Si queremos evitar esos problemas lo ponemos al finaly así si hay algun problema no nos impide la visualiación -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="js/llocs_interes.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

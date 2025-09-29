@@ -139,6 +139,10 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() { //función para esperar un poco más en cargar a ver si carga el mapa
   var map = L.map('map').setView([41.70220603341134, 2.8357029478855527], 13); //Coordenadas Museu del Mar, inicio de la ruta
 
+  setTimeout(function() { //Se hace esperar la inicialización a que el mapa este renderizado
+    map.invalidateSize();
+  }, 200);
+
   //Se añade la URL del OpenStreetMaps para poder usar sus tiles (imagenes fragmentadas) y tener la visualización del mapa. Aquí también se define la atribución a OpenStreetMaps y el máximo nivel de zoom
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -161,29 +165,31 @@ document.addEventListener('DOMContentLoaded', function() {
       iconUrl: '../css/icons/btn/ubi-light.webp',
 
       iconSize:     [36.94, 38.52], // tamaño del icono
-      iconAnchor:   [36.94, 38.52], // punto de la ubicación
-      popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      iconAnchor:   [18.47, 38.52], // punto de la ubicación
+      popupAnchor:  [0, -38] // point from which the popup should open relative to the iconAnchor
   });
 
   L.Icon.Default.mergeOptions({
     shadowUrl: null
   });
 
+L.Marker.prototype.options.icon = ubiLight; //cambiar los markers predefinidos por mi icono
+
   //Añadimos los marcadores des de un archivo JSON con ayuda de la IA: https://claude.ai/share/06ccc0c3-a1e0-413f-b433-081a6a3578b2
 
-  console.log('Iniciant càrrega de marcadors...');
+  //console.log('Iniciant càrrega de marcadors...');
 
   fetch('js/llocs_interes.json') //link con el archivo JSON
     .then(response => {
-      console.log('Resposta rebuda:', response.status);
+      //console.log('Resposta rebuda:', response.status);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
-      console.log('Dades carregades:', data);
-      console.log('Número d\'ubicacions:', data.locations.length);
+      //console.log('Dades carregades:', data);
+      //console.log('Número d\'ubicacions:', data.locations.length);
       
       if (!Array.isArray(data.locations)) {
         throw new Error('Les dades no són un array');
@@ -192,10 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
       let waypoints = []; //crear un array a partir de los puntos del JSON
 
       data.locations.forEach((ubicacio, index) => { 
-        console.log(`Ubicació ${index + 1}:`, ubicacio.name, ubicacio.coordinates);
+        //console.log(`Ubicació ${index + 1}:`, ubicacio.name, ubicacio.coordinates);
         
         if (!ubicacio.coordinates || !ubicacio.coordinates.lat || !ubicacio.coordinates.lng) {
-          console.error('Coordenades incorrectes per:', ubicacio.name);
+          //console.error('Coordenades incorrectes per:', ubicacio.name);
           return;
         }
         
@@ -203,38 +209,372 @@ document.addEventListener('DOMContentLoaded', function() {
         
         waypoints.push(L.latLng(ubicacio.coordinates.lat, ubicacio.coordinates.lng)); //añadimos los waypoints al control de rutas
       
-        console.log('Marcador creat per:', ubicacio.name);
+        //console.log('Marcador creat per:', ubicacio.name);
       });
 
-      console.log('Waypoints preparats:', waypoints);
+      //console.log('Waypoints preparats:', waypoints);
 
-      console.log('Tots els marcadors processats');
+      //console.log('Tots els marcadors processats');
 
-      L.Routing.control({
-        waypoints: waypoints,
-        router: L.Routing.osrmv1({
-          serviceUrl: 'https://router.project-osrm.org/route/v1'
-        }),
-        show: false,         // amaga panell lateral
-        addWaypoints: false, // evita que l’usuari afegeixi punts nous
-        routeWhileDragging: true
-      }).addTo(map);
-      console.log('Control de rutes afegit');
+      setTimeout(function() {
+        var routingControl =L.Routing.control({
+          waypoints: waypoints,
+          router: L.Routing.osrmv1({
+            serviceUrl: 'https://router.project-osrm.org/route/v1'
+          }),
+          show: false,         // amaga panell lateral
+          addWaypoints: false, // evita que l’usuari afegeixi punts nous
+          routeWhileDragging: true,
+          lineOptions: {
+          styles: [{color: '#260936', weight: 4}] //estilo de la ruta
+          },
+          createMarker: function() { return null; }//no crear marcadores automáticos
+        }).addTo(map);
+
+        routingControl.on('routesfound', function(e) { //Ajuste para asegurar que la ruta se carga y se ve centrada
+          //console.log('Ruta trobada correctament!');
+          var bounds = L.latLngBounds(waypoints);
+          map.fitBounds(bounds, {padding: [50, 50]});
+        });
+        routingControl.on('routingerror', function(e) {
+          //console.error('✗ Error en la ruta:', e);
+        });
+
+        setTimeout(function() {
+          map.invalidateSize();
+        }, 500);
+
+        //console.log('Control de rutes afegit');
+      }, 200);
 
     })
 
     .catch(error => {
-      console.error('Error detallat:', error);
+     //console.error('Error detallat:', error);
     });
 
-        setTimeout(function() {
-            map.invalidateSize();
-        }, 200);
-        
-    }, 300); // Esperar 300ms antes de inicializar para que pueda cargar el mapa entero
+
+    }, 100); // Esperar 300ms antes de inicializar para que pueda cargar el mapa entero
 
 
   //POP UPS PARA EL MAPA
+
+  //CARDS para FILTROS (Ayuda de AI: https://claude.ai/share/ebfcb39a-b793-4749-88ea-0fefef5d6ec6)
+              
+/*  function generateCards() {
+    const container = document.getElementById('cards-container'); // Contenedor de las cards
+    
+    data.locations.forEach(location => {
+        // Crear section principal
+        const section = document.createElement('section');
+        section.className = 'card-llocs';
+        section.dataset.locationId = location.id;
+
+        // Crear zona del texto
+        const textArticle = document.createElement('article');
+        textArticle.className = 'text-list';
+
+        // H2 - Nombre del sitio
+        const h2 = document.createElement('h2'); //Seleccion del elemento
+        h2.className = 'nom-lloc-list text-ultralight'; //Seleccion de la class de HTML
+        h2.textContent = location.name; //Seleccion del tag asociado en JSON
+
+        // H3 - Nom de la dona
+        const h3 = document.createElement('h3');
+        h3.className = 'nom-dona-list text-light';
+        h3.textContent = location.woman;
+
+        // UL - Característiques
+        const ul = document.createElement('ul');
+        ul.className = 'caracteristiques-lloc-list text-ultralight';
+
+        // LI - Tipus
+        const liTipus = document.createElement('li');
+        liTipus.className = 'li-mapa mini tipus';
+        liTipus.textContent = location.tipus.join(', ');
+
+        // LI - Temps
+        const liTemps = document.createElement('li');
+        liTemps.className = 'li-mapa mini temps';
+        liTemps.textContent = location.temps;
+
+        ul.appendChild(liTipus);
+        ul.appendChild(liTemps);
+
+        // Div - Icones
+        const iconesDiv = document.createElement('div');
+        iconesDiv.className = 'icones-list';
+
+        // Section access - Condicional para definir si es accesible o no y que icono toca poner
+        const accessSection = document.createElement('section');
+        accessSection.className = 'access';
+        const accessFilter = data.filters.access.find(a => a.value === location.access);
+        if (accessFilter && accessFilter.icon) {
+            const accessImg = document.createElement('img');
+            accessImg.src = accessFilter.icon;
+            accessImg.className = 'icona-list-map';
+            accessImg.alt = `Icona ${accessFilter.label}`;
+            accessSection.appendChild(accessImg);
+        }
+
+        // Section price - Condicional para definir si es gratuito o no y que icono toca poner
+        const priceSection = document.createElement('section');
+        priceSection.className = 'price';
+        const priceFilter = data.filters.price.find(p => p.value === location.price);
+        if (priceFilter && priceFilter.icon) {
+            const priceImg = document.createElement('img');
+            priceImg.src = priceFilter.icon;
+            priceImg.className = 'icona-list-map';
+            priceImg.alt = `Icona ${priceFilter.label}`;
+            priceSection.appendChild(priceImg);
+        }
+
+        iconesDiv.appendChild(accessSection);
+        iconesDiv.appendChild(priceSection);
+
+        // Añadir todo al article de texto
+        textArticle.appendChild(h2);
+        textArticle.appendChild(h3);
+        textArticle.appendChild(ul);
+        textArticle.appendChild(iconesDiv);
+
+        // Crear article de imagen
+        const imatgeArticle = document.createElement('article');
+        imatgeArticle.className = 'imatge-list-container';
+
+        const img = document.createElement('img');
+        img.src = location.image;
+        img.className = 'imatge-list';
+        img.alt = `Imatge de ${location.name}`;
+
+        imatgeArticle.appendChild(img);
+
+        // Añadir articles a la section
+        section.appendChild(textArticle);
+        section.appendChild(imatgeArticle);
+
+        // Añadir section al contenedor
+        container.appendChild(section);
+    });
+  }  */
+
+
+
+let data = dataLocations; // Canvia això
+let activeFilters = { tipus: [], price: [], access: [] };
+
+// Elimina la funció loadData() completament
+
+function generateCards() {
+    if (!data || !data.locations) {
+        console.error('❌ No hi ha dades');
+        return;
+    }
+    
+    console.log('=== GENERANT CARDS ===');
+    
+    const container = document.getElementById('cards-container');
+    
+    
+    if (!container) {
+        console.error('❌ No es troba #cards-container');
+        return;
+    }
+    
+    container.innerHTML = '';
+    
+    data.locations.forEach((location) => {
+        const section = document.createElement('section');
+        section.className = 'card-llocs';
+        section.dataset.locationId = location.id;
+
+        const textArticle = document.createElement('article');
+        textArticle.className = 'text-list';
+
+        const h2 = document.createElement('h2');
+        h2.className = 'nom-lloc-list';
+        h2.textContent = location.name;
+
+        h2.style.cssText = 'color: black !important; font-size: 24px !important; display: block !important; visibility: visible !important; opacity: 1 !important;';
+
+
+        const h3 = document.createElement('h3');
+        h3.className = 'nom-dona-list';
+        h3.textContent = location.woman;
+
+        const ul = document.createElement('ul');
+        ul.className = 'caracteristiques-lloc-list';
+
+        const liTipus = document.createElement('li');
+        liTipus.className = 'li-mapa mini tipus';
+        liTipus.textContent = location.tipus.join(', ');
+
+        const liTemps = document.createElement('li');
+        liTipus.className = 'li-mapa mini temps';
+        liTemps.textContent = location.temps;
+
+        ul.appendChild(liTipus);
+        ul.appendChild(liTemps);
+
+        const iconesDiv = document.createElement('div');
+        iconesDiv.className = 'icones-list';
+
+        const accessSection = document.createElement('section');
+        accessSection.className = 'access';
+        const accessFilter = data.filters.access.find(a => a.value === location.access);
+        if (accessFilter && accessFilter.icon) {
+            const accessImg = document.createElement('img');
+            accessImg.src = accessFilter.icon;
+            accessImg.className = 'icona-list-map';
+            accessImg.alt = accessFilter.label;
+            accessSection.appendChild(accessImg);
+        }
+
+        const priceSection = document.createElement('section');
+        priceSection.className = 'price';
+        const priceFilter = data.filters.price.find(p => p.value === location.price);
+        if (priceFilter && priceFilter.icon) {
+            const priceImg = document.createElement('img');
+            priceImg.src = priceFilter.icon;
+            priceImg.className = 'icona-list-map';
+            priceImg.alt = priceFilter.label;
+            priceSection.appendChild(priceImg);
+        }
+
+        iconesDiv.appendChild(accessSection);
+        iconesDiv.appendChild(priceSection);
+
+        textArticle.appendChild(h2);
+        textArticle.appendChild(h3);
+        textArticle.appendChild(ul);
+        textArticle.appendChild(iconesDiv);
+
+        const imatgeArticle = document.createElement('article');
+        imatgeArticle.className = 'imatge-list-container';
+
+        const img = document.createElement('img');
+        img.src = location.image;
+        img.className = 'imatge-list';
+        img.alt = `Imatge de ${location.name}`;
+
+        imatgeArticle.appendChild(img);
+
+        section.appendChild(textArticle);
+        section.appendChild(imatgeArticle);
+
+        container.appendChild(section);
+    });
+    
+    console.log(`✓ ${data.locations.length} cards generades`);
+}
+
+function generateFilters() {
+    if (!data || !data.filters) {
+        console.error('❌ No hi ha filtres');
+        return;
+    }
+    
+    console.log('=== GENERANT FILTRES ===');
+    
+    const tipusContainer = document.getElementById('tipus-filters');
+    if (tipusContainer) {
+        data.filters.tipus.forEach(filter => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.textContent = filter.label;
+            btn.onclick = () => toggleFilter('tipus', filter.value, btn);
+            tipusContainer.appendChild(btn);
+        });
+    }
+
+    const priceContainer = document.getElementById('price-filters');
+    if (priceContainer) {
+        data.filters.price.forEach(filter => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.textContent = filter.label;
+            btn.onclick = () => toggleFilter('price', filter.value, btn);
+            priceContainer.appendChild(btn);
+        });
+    }
+
+    const accessContainer = document.getElementById('access-filters');
+    if (accessContainer) {
+        data.filters.access.forEach(filter => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.textContent = filter.label;
+            btn.onclick = () => toggleFilter('access', filter.value, btn);
+            accessContainer.appendChild(btn);
+        });
+    }
+}
+
+function toggleFilter(category, value, btnElement) {
+    const index = activeFilters[category].indexOf(value);
+    
+    if (index > -1) {
+        activeFilters[category].splice(index, 1);
+        btnElement.classList.remove('active');
+    } else {
+        activeFilters[category].push(value);
+        btnElement.classList.add('active');
+    }
+    
+    applyFilters();
+}
+
+function clearFilters() {
+    activeFilters = { tipus: [], price: [], access: [] };
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    applyFilters();
+}
+
+function applyFilters() {
+    if (!data) return;
+    
+    const cards = document.querySelectorAll('.card-llocs');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        const locationId = parseInt(card.dataset.locationId);
+        const location = data.locations.find(loc => loc.id === locationId);
+        let show = true;
+
+        if (activeFilters.tipus.length > 0) {
+            show = activeFilters.tipus.some(filter => location.tipus.includes(filter));
+        }
+
+        if (show && activeFilters.price.length > 0) {
+            show = activeFilters.price.includes(location.price);
+        }
+
+        if (show && activeFilters.access.length > 0) {
+            show = activeFilters.access.includes(location.access);
+        }
+
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+    });
+
+    console.log(`Filtrat: ${visibleCount} de ${cards.length} visibles`);
+}
+
+// INICIALITZAR
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Iniciant...');
+        generateFilters();
+        generateCards();
+    });
+} else {
+    console.log('Iniciant...');
+    generateFilters();
+    generateCards();
+}
+
 
 
 
