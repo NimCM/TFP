@@ -65,7 +65,7 @@
             "lat":41.691496, 
             "lng":2.825818
         },
-        "tipus": ["monument", "exterior"],
+        "tipus": ["escultura", "exterior"],
         "temps":"2 mins",
         "price": "pagament",
         "access": "accessible"

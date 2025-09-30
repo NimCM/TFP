@@ -57,29 +57,24 @@
         </div>
         <div class="llista-mapa">
             <div class="llocs-list">
-                 <div class="cards-container" id="cards-container"></div>
-                 <!--<section class="card-llocs"> 1
+                <section class="card-llocs" data-category="museu interior" data-price="pagament" data-access="accessible"> <!--1-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Museu del Mar</h2>
                         <h3 class="nom-dona-list text-light">Lliberada Parés</h3>
                         <ul class="caracteristiques-lloc-list text-ultralight">
-                            <li class="li-mapa mini tipus">Museu</li>
-                            <li class="li-mapa mini temps">Temps: 0 min</li>
+                            <li class="li-mapa mini">Museu</li>
+                            <li class="li-mapa mini">Temps: 0 min</li>
                         </ul>
                         <div class="icones-list">
-                            <section="access">
-                                <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            </section>
-                            <section="price">
+                            <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
                             <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
-                            </section>
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
-                        <img src="./files/img/museu_mar.webp"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
+                        <img src="./files/img/museu_mar.webp"  class="imatge-list" alt="Imatge de l'edifici del Museu del Mar a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> 2
+                <section class="card-llocs" data-category="escultura exterior" data-price="gratuit" data-access="no_accessible"> <!--2-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Dona Marinera</h2>
                         <h3 class="nom-dona-list text-light">Sra Margarita Puig Esqueu</h3>
@@ -88,15 +83,15 @@
                             <li class="li-mapa mini">Temps: 20 min</li>
                         </ul>
                         <div class="icones-list">
-                            <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/no_accessible_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/dona_marinera_tochange.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">3
+                <section class="card-llocs" data-category="ruines exterior" data-price="pagament" data-access="no_accessible"><!--3-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Castell St Joan</h2>
                         <h3 class="nom-dona-list text-light">Sicardis de Montsoriu</h3>
@@ -105,7 +100,7 @@
                             <li class="li-mapa mini">Temps: 20 min</li>
                         </ul>
                         <div class="icones-list">
-                            <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
+                            <img src="./css/icons/access/no_accessible_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
                             <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
@@ -113,7 +108,7 @@
                         <img src="./files/img/castell_joan.webp"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">4
+                <section class="card-llocs" data-category="natural exterior" data-price="pagament" data-access="accessible"><!--4-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Jardins de Sta Clotilde</h2>
                         <h3 class="nom-dona-list text-light">Clotilde de Rocamora</h3>
@@ -130,7 +125,7 @@
                         <img src="./files/img/jardins-clotilde.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> 5
+                <section class="card-llocs" data-category="escultura exterior" data-price="pagament" data-access="accessible"> <!--5-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Escultures Sirenes</h2>
                         <h3 class="nom-dona-list text-light">Maria Llimona i Benet</h3>
@@ -147,7 +142,7 @@
                         <img src="./files/img/sirenes.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> 6
+                <section class="card-llocs" data-category="natural religios exterior" data-price="gratuit" data-access="no_accessible"> <!--6-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Ermita Sta Cristina</h2>
                         <h3 class="nom-dona-list text-light">Santa Cristina</h3>
@@ -156,15 +151,15 @@
                             <li class="li-mapa mini">Temps: 35 min</li>
                         </ul>
                         <div class="icones-list">
-                            <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/no_accessible_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/sta_cristina.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> 7
+                <section class="card-llocs" data-category="natural exterior" data-price="gratuit" data-access="accessible"> <!--7-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">St Pere del Bosc</h2>
                         <h3 class="nom-dona-list text-light">Dolors Montserdà</h3>
@@ -174,14 +169,14 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/st_pere_bosc_tochange.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">8
+                <section class="card-llocs" data-category="urba exterior" data-price="gratuit" data-access="accessible"><!--8-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Barri de la Càndida</h2>
                         <h3 class="nom-dona-list text-light">Càndida Masgrau i Campeny</h3>
@@ -191,14 +186,14 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/candida-masgrau.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">9
+                <section class="card-llocs" data-category="religios exterior" data-price="gratuit" data-access="accessible"><!--9-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Ermita de les Alegries</h2>
                         <h3 class="nom-dona-list text-light">Senyora del Rossell</h3>
@@ -208,14 +203,14 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/ermita-alegries.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs"> 10
+                <section class="card-llocs" data-category="urba edifici exterior" data-price="gratuit" data-access="accessible"> <!--10-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Escola Àngels Alemany i Boris</h2>
                         <h3 class="nom-dona-list text-light">Àngels Alemany i Boris</h3>
@@ -225,14 +220,14 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/escola-angels.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">11
+                <section class="card-llocs" data-category="urba exterior" data-price="gratuit" data-access="accessible"><!--11-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Barri del Rieral</h2>
                         <h3 class="nom-dona-list text-light">Gertrudis Moret i Farigola</h3>
@@ -242,14 +237,14 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/getrudis-2.jpeg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">12
+                <section class="card-llocs" data-category="urba edifici interior" data-price="gratuit" data-access="accessible"><!--12-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Biblioteca</h2>
                         <h3 class="nom-dona-list text-light">Antònia Pares i Macià</h3>
@@ -259,14 +254,14 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/biblio.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
                 </section>
-                <section class="card-llocs">13
+                <section class="card-llocs" data-category="urba exterior" data-price="gratuit" data-access="accessible"><!--13-->
                     <article class="text-list">
                         <h2 class="nom-lloc-list text-ultralight">Carrer Venècia</h2>
                         <h3 class="nom-dona-list text-light">Rosita Mistos</h3>
@@ -276,16 +271,39 @@
                         </ul>
                         <div class="icones-list">
                             <img src="./css/icons/access/cadira_light.png" class="icona-list-map" alt="Icona accessibilitat dona amb cadira de rodes">
-                            <img src="./css/icons/access/preu_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
+                            <img src="./css/icons/access/gratuit_light.png" class="icona-list-map" alt="Icona amb el símbol de euro">
                         </div>
                     </article>
                     <article class="imatge-list-contaniner">
                         <img src="./files/img/dona_marinera_tochange.jpg"  class="imatge-list" alt="Imatge del monument de la Dona Marinera a Lloret de Mar">
                     </article>
-                </section>-->
+                </section>
             </div>
-            <div class="llocs-mapa">
-                <div id="map"></div><!--Mapa leaflet-->
+            <div class="mapa-filters">
+                <section class="llocs-filter">
+                    <div id="contenidor-filtres"></div> <!--Filtro desplegable tipo de sitio, hecho en JS-->
+                    <div class="filtre-grup"> <!--Checkbox accesibilidad-->
+                        <label>Accessibilitat:</label>
+                        <div class="checkbox-grup">
+                            <label>
+                                <input type="checkbox" class="filtre-access" value="accessible">
+                                Accessible
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filtre-grup">
+                        <label>Preu:</label>
+                        <div class="checkbox-grup">
+                            <label>
+                                <input type="checkbox" class="filtre-preu" value="gratuit">
+                                Gratuït
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <section class="llocs-mapa">
+                    <div id="map"></div> <!--Mapa leaflet-->
+                </section>
             </div>
         </div>
    
@@ -305,7 +323,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-    <script src="js/llocs_interes.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
