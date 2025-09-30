@@ -37,7 +37,7 @@
             "lat":41.693890531324804,
             "lng":2.839347646389623
         },
-        "tipus": ["ruinas", "exterior"],
+        "tipus": ["ruines", "exterior"],
         "temps":"20 mins",
         "price": "pagament",
         "access": "no_accessible"
