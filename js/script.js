@@ -133,275 +133,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  /*
-  // MAPA con LEAFLET
-
-  
-  let markers = [];
-  let map;
-
-  setTimeout(function() { //función para esperar un poco más en cargar a ver si carga el mapa
-  var map = L.map('map').setView([41.70220603341134, 2.8357029478855527], 13); 
-  console.log('✓ Mapa carregat correctament');  // <-- AQUÍ VA AQUESTA LÍNIA
-
-  setTimeout(function() { //Se hace esperar la inicialización a que el mapa este renderizado
-    map.invalidateSize();
-  }, 200);
-
-  //Se añade la URL del OpenStreetMaps para poder usar sus tiles (imagenes fragmentadas) y tener la visualización del mapa. Aquí también se define la atribución a OpenStreetMaps y el máximo nivel de zoom
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    crossOrigin: true // Ayuda con problemas de CORS, Crossed Origin Resource Shring, contenido que proviene de paginas con un URL distinto, como el mapa
-  }).addTo(map);
-
-  //Cambiamos el marcador predeterminado por un icono
-  var ubiLight = L.icon({
-      iconUrl: '../css/icons/btn/ubi-light.webp',
-
-      iconSize:     [36.94, 38.52], // tamaño del icono
-      iconAnchor:   [18.47, 38.52], // punto de la ubicación
-      popupAnchor:  [0, -38] // point from which the popup should open relative to the iconAnchor
-  });
-
-  L.Icon.Default.mergeOptions({
-    shadowUrl: null
-  });
-
-  L.Marker.prototype.options.icon = ubiLight; //cambiar los markers predefinidos por mi icono
-
-  //Añadimos los marcadores des de un archivo JSON con ayuda de la IA: https://claude.ai/share/06ccc0c3-a1e0-413f-b433-081a6a3578b2
-
-  //console.log('Iniciant càrrega de marcadors...');
-
-  fetch('js/llocs_interes.json') //link con el archivo JSON
-    .then(response => {
-      //console.log('Resposta rebuda:', response.status);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      //console.log('Dades carregades:', data);
-      //console.log('Número d\'ubicacions:', data.locations.length);
-      
-      if (!Array.isArray(data.locations)) {
-        throw new Error('Les dades no són un array');
-      }
-
-      let waypoints = []; //crear un array a partir de los puntos del JSON
-
-      data.locations.forEach((ubicacio, index) => { 
-        //console.log(`Ubicació ${index + 1}:`, ubicacio.name, ubicacio.coordinates);
-        
-        if (!ubicacio.coordinates || !ubicacio.coordinates.lat || !ubicacio.coordinates.lng) {
-          //console.error('Coordenades incorrectes per:', ubicacio.name);
-          return;
-        }        
-        
-        var marker = L.marker([ubicacio.coordinates.lat, ubicacio.coordinates.lng],{icon: ubiLight}).addTo(map); //recopilación de las coordenadas para ponerlas con un marcador
-        
-        marker.properties = { //guardar propiedades de los markers
-          id: ubicacio.id,
-          category: ubicacio.tipus,
-          access: ubicacio.access,
-          price: ubicacio.price    
-        };
-      
-        markers.push(marker); // Guardar el marker a l'array
-        waypoints.push(L.latLng(ubicacio.coordinates.lat, ubicacio.coordinates.lng)); //añadimos los waypoints al control de rutas
-        
-        console.log('✓ Tots els markers carregats'); // AFEGIT: Confirmar que tots els markers estan al mapa
-        mapaCarregat = true; // AFEGIT: Indicar que el mapa ja està llest per filtrar
-        //console.log('Marcador creat per:', ubicacio.name);
-      });
-
-      //console.log('Waypoints preparats:', waypoints);
-
-      //console.log('Tots els marcadors processats');
-
-      setTimeout(function() {
-        var routingControl =L.Routing.control({
-          waypoints: waypoints,
-          router: L.Routing.osrmv1({
-            serviceUrl: 'https://router.project-osrm.org/route/v1'
-          }),
-          show: false,         // amaga panell lateral
-          addWaypoints: false, // evita que l’usuari afegeixi punts nous
-          routeWhileDragging: true,
-          lineOptions: {
-          styles: [{color: '#260936', weight: 4}] //estilo de la ruta
-          },
-          createMarker: function() { return null; }//no crear marcadores automáticos
-        }).addTo(map);
-
-        routingControl.on('routesfound', function(e) { //Ajuste para asegurar que la ruta se carga y se ve centrada
-          //console.log('Ruta trobada correctament!');
-          var bounds = L.latLngBounds(waypoints);
-          map.fitBounds(bounds, {padding: [50, 50]});
-        });
-        routingControl.on('routingerror', function(e) {
-          //console.error('✗ Error en la ruta:', e);
-        });
-
-        setTimeout(function() {
-          map.invalidateSize();
-        }, 500);
-
-        //console.log('Control de rutes afegit');
-      }, 200);
-
-    })
-
-    .catch(error => {
-      console.error('Error detallat:', error);
-    });
-
-
-    }, 100); // Esperar 300ms antes de inicializar para que pueda cargar el mapa entero
-
-
-  //POP UPS PARA EL MAPA
-
-
-  // DESPLEGABLE FILTROS  con AI para los filtros: https://claude.ai/share/b6af483b-6a22-4ec5-972c-677cce4de038
-    const filtreGrup = document.getElementById('contenidor-filtres');
-
-    const customSelect = document.createElement('div');//Crear el elemento div en el html
-    customSelect.className = 'custom-select'; // da una classe
-    customSelect.id = 'tipus-lloc'; //associa un id
-
-    const selectSelected = document.createElement('div');
-    selectSelected.className = 'select-selected';
-    selectSelected.textContent = 'Tots';
-
-    const selectItems = document.createElement('div');
-    selectItems.className = 'select-items select-hide';
-
-    const opcions = [ //opciones en el desplegable segun las caracteristicas que se pueden encontrar en el json y html
-        { value: 'tots', text: 'Tots' },
-        { value: 'escultura', text: 'Escultura' },
-        { value: 'edifici', text: 'Edifici' },
-        { value: 'museu', text: 'Museu' },
-        { value: 'ruines', text: 'Ruines' },
-        { value: 'natural', text: 'Espai Natural' },
-        { value: 'religios', text: 'Espai Religios' },
-        { value: 'urba', text: 'Espai Urbà' },
-        { value: 'exterior', text: 'Exterior' },
-        { value: 'interior', text: 'Interior' }
-    ];
-
-    opcions.forEach(opcio => {
-        const item = document.createElement('div');
-        item.dataset.value = opcio.value;
-        item.textContent = opcio.text;
-        selectItems.appendChild(item);
-    });
-
-  customSelect.appendChild(selectSelected);
-  customSelect.appendChild(selectItems);
-  filtreGrup.appendChild(customSelect);
-
-  //Funcionamiento del desplegado, soporte AI (mismo link que la seccion anterior)
-
-  let tipusSeleccionat = 'tots'; //variable que guarda la seleccion del desplegable
-  let mapaCarregat = false;
-
-  // Abrir/cerrar desplegable
-  selectSelected.addEventListener('click', function(e) {
-      e.stopPropagation();
-      selectItems.classList.toggle('select-hide');
-  });
-
-  // Seleccionar opción
-  selectItems.querySelectorAll('div').forEach(item => {
-      item.addEventListener('click', function(e) {
-          e.stopPropagation();
-          tipusSeleccionat = this.dataset.value;
-          selectSelected.textContent = this.textContent;
-          selectItems.classList.add('select-hide');
-          if (mapaCarregat) { 
-          aplicarFiltres();
-        } //llamra al filtro cuando cambia la seleccion del desplegable y el mapa este cargado
-      });
-  });
-
-  // Cerrar si clicas fuera
-  document.addEventListener('click', function() {
-      selectItems.classList.add('select-hide');
-  });
-
-  //Marcar las dos checkboxes del filtro
-
-  const checkboxes = document.querySelectorAll('.filtre-check');
-
-  checkboxes.forEach(cb => {
-      cb.addEventListener('change', aplicarFiltres);
-    if (mapaCarregat) { 
-        aplicarFiltres();
-    }
-  });
-
-
-
-  //FILTROS MAPA soposrte Ai mismo link que el anterior
-  
-  function aplicarFiltres() {
-    
-    if (!map) {
-      console.warn('El mapa encara no està carregat');
-    return;
-  }
-    const volAccessible = document.querySelector('[data-filter="accessible"]')?.checked || false;
-    const volGratuit = document.querySelector('[data-filter="gratuit"]')?.checked || false;
-    
-    // Filtrar CARDS
-    const cards = document.querySelectorAll('.card-llocs');
-    cards.forEach(card => {
-      const categoryData = card.dataset.category || '';
-      const passaTipus = tipusSeleccionat === 'tots' || categoryData.includes(tipusSeleccionat); // Comprobar si pasa el filtro de tipo
-      const passaAccess = !volAccessible || card.dataset.access === 'accessible';// Comprobar si pasa el filtro de accessibilidad
-      const passaPreu = !volGratuit || card.dataset.price === 'gratuit'; // Comprobar si pasa el filtro de gratuito
-
-      if (passaTipus && passaAccess && passaPreu) {
-        card.classList.remove('hidden');
-        card.style.display = '';
-      } else {
-        card.classList.add('hidden');
-        card.style.display = 'none';
-      }
-    });
-    
-  // Filtrar MARKERS
-    markers.forEach(marker => {
-      if (!marker.properties) return;
-      
-      const categoryArray = marker.properties.category || [];
-      const passaTipus = tipusSeleccionat === 'tots' || categoryArray.includes(tipusSeleccionat); // Comprobar si pasa el filtro de tipo
-      const passaAccess = !volAccessible || marker.properties.access === 'accessible';// Comprobar si pasa el filtro de accessibilidad
-      const passaPreu = !volGratuit || marker.properties.price === 'gratuit'; // Comprobar si pasa el filtro de gratuito
-
-    // Mostrar o amagar el marker
-    if (passaTipus && passaAccess && passaPreu) {
-      if (!map.hasLayer(marker)) {
-        marker.addTo(map);
-      }
-    } else {
-      if (map.hasLayer(marker)) {
-        map.removeLayer(marker);
-      }
-    }
-    });
-    console.log('✓ Filtres aplicats correctament al mapa i les cards');
-  }
-  
-  */
 
 // MAPA con LEAFLET (con filtros y depslegable, AI:  https://claude.ai/share/35d57a74-0b43-457e-8c57-a7fdcd718f39)
 
 let map;
-let allLocations = []; // Guardar todass las ubicaciones del JSON
+let allLocations = []; // Guardar todas las ubicaciones del JSON
 let routingControl = null; // Guardar el control de rutas per poder eliminarlo
 let tipusSeleccionat = 'tots';
 let volAccessible = false;
@@ -453,10 +189,10 @@ setTimeout(function() {
       allLocations = data.locations; // Guardar totes les ubicacions
       console.log('✓ Dades carregades:', allLocations.length, 'ubicacions');
       
-      // Generar markers i ruta inicial (amb tots els punts)
+      // Generar markers y ruta inicial (con todos los puntos)
       generarMapaIRuta(ubiLight);
       
-      // Inicialitzar els filtres DESPRÉS de carregar les dades
+      // Inicializar los filtros  despues de cragar los datos
       inicialitzarFiltres();
     })
     .catch(error => {
@@ -482,7 +218,7 @@ function generarMapaIRuta(iconMarker) {
     routingControl = null;
   }
   
-  // FILTRAR les ubicacions segons els criteris
+  // FILTRAR las ubicaciones segun los criterios
   const ubicacionsFiltrades = allLocations.filter(ubicacio => {
     const passaTipus = tipusSeleccionat === 'tots' || ubicacio.tipus.includes(tipusSeleccionat);
     const passaAccess = !volAccessible || ubicacio.access === 'accessible';
@@ -493,7 +229,7 @@ function generarMapaIRuta(iconMarker) {
   
   console.log('✓ Ubicacions filtrades:', ubicacionsFiltrades.length, 'de', allLocations.length);
   
-  // Si no hi ha ubicacions filtrades, no fer res
+  // Si no hay ubicaciones filtradas, no hacer nada
   if (ubicacionsFiltrades.length === 0) {
     console.warn('⚠️ No hi ha ubicacions que compleixin els filtres');
     return;
@@ -501,7 +237,7 @@ function generarMapaIRuta(iconMarker) {
   
   let waypoints = []; //crear un array a partir de los puntos del JSON
   
-  // Crear només els markers de les ubicacions filtrades
+  // Crear solo markers de las ubicaciones filtradas
   ubicacionsFiltrades.forEach((ubicacio) => {
     if (!ubicacio.coordinates || !ubicacio.coordinates.lat || !ubicacio.coordinates.lng) {
       return;
@@ -525,6 +261,10 @@ function generarMapaIRuta(iconMarker) {
     
     marker.on('mouseout', function() {//cerrar el popup al quitar el ratón
       this.closePopup();
+    });
+
+    marker.on('click', function() { //Añadir event listener para el click, así centrará la card solo con clicl, no con mouseover
+      gestionarClicMarcador(ubicacio.id);
     });
 
     waypoints.push(L.latLng(ubicacio.coordinates.lat, ubicacio.coordinates.lng)); //añadimos los waypoints al control de rutas
@@ -558,6 +298,64 @@ function generarMapaIRuta(iconMarker) {
     // Si només hi ha un punt, centrar-lo
     map.setView(waypoints[0], 15);
     console.log('✓ Només 1 punt, sense ruta');
+  }
+}
+
+//HIGHLIGHT EN LAS CARDS CUANDO SE SELECCIONA EL MARKER (AI: https://claude.ai/share/fdae29c0-6a77-4323-a448-f155343b5914)
+
+//Función para ver el click en el marcador
+function gestionarClicMarcador(idLloc) {
+  console.log('🎯 Marcador clicat - ID:', idLloc);
+  
+  // Encontrar la card que toca
+  const card = document.getElementById(idLloc);
+  
+  if (!card) {
+    console.warn('⚠️ No s\'ha trobat la card amb ID:', idLloc);
+    return;
+  }
+  
+  // Quitar la classe highlight de todas las cards
+  document.querySelectorAll('.card-llocs').forEach(c => {
+    c.classList.remove('card-highlighted');
+  });
+  
+  // Añadir la classe highlight a la card seleccionada
+  card.classList.add('card-highlighted');
+  
+  // Hacer scroll segun dipositivo
+  scrollCapACard(card);
+}
+
+// FUNCIÓ PARA HACER SCROLL Y CENTRAR LA CARD
+function scrollCapACard(card) {
+  const llocsList = document.querySelector('.llocs-list');
+  const isMobile = window.matchMedia('(max-width: 865px)').matches;
+  
+  if (isMobile) {
+    // MÒBIL: Scroll horizontal per centrar la card
+    const containerWidth = llocsList.offsetWidth;
+    const cardLeft = card.offsetLeft;
+    const cardWidth = card.offsetWidth;
+    
+    // Calcular la posicióN per centrar la card
+    const scrollPosition = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+    
+    llocsList.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    
+    console.log('📱 Scroll horitzontal a la card');
+  } else {
+    // DESKTOP: Scroll vertical para asegurar que la card está visible
+    card.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center', // Centrar verticalmente
+      inline: 'nearest'
+    });
+    
+    console.log('🖥️ Scroll vertical a la card');
   }
 }
 

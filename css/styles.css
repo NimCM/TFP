@@ -921,6 +921,13 @@ a.btn:hover, .btn:hover {
   color: #260936 !important;
 }
 
+/* Estado Highlighted para las cards */
+.card-highlighted {
+  box-shadow: 1px 1px 10px white, 1px 1px 10px rgba(38, 9, 54, 0.15);
+  border: 1px solid #260936;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 .footer-mapa {
   display: none;
   /*
