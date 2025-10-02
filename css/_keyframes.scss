@@ -1,0 +1,10 @@
+@keyframes pulse-glow { /* Animación de glow */
+    0%, 100% {
+        box-shadow: 0 0 5px $middlePurple, 
+                    0 0 10px $middlePurple;
+    }
+    50% {
+        box-shadow: 0 0 15px $middlePurple, 
+                    0 0 20px $middlePurple;
+    }
+}
