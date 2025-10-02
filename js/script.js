@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isHidden) {
       menuIdioma.removeAttribute("hidden"); // se elimina el atributo hidden
       idiomaBtn.setAttribute("aria-expanded", "true"); // definimos que esta desplegado
-      idiomaBtn.id = "idioma-btn-desplegado";
+      idiomaBtn.classList.add("desplegado"); 
 
       // Si  el menú ya esta visible lo ocultamos
     }else {
       menuIdioma.setAttribute("hidden", ""); // añadimos otra vez el atrobuto hidden
       idiomaBtn.setAttribute("aria-expanded", "false"); // definimos que esta plegado
-      idiomaBtn.id = "idioma-btn";
+      idiomaBtn.classList.remove("desplegado");
     }
   });
 
@@ -84,13 +84,13 @@ document.addEventListener('DOMContentLoaded', function() {
       if (isHidden) { // Si esta oculto, lo mostramos, cambiamos el valor de la boolean de aria-expanded a true
         menuNav.removeAttribute("hidden"); // se elimina el atributo hidden
         navBtn.setAttribute("aria-expanded", "true");  // Si  el menú ya esta visible lo ocultamos
-        navBtnBg.id = "nav-btn-desplegado";
+        navBtn.classList.add("desplegado");
 
 
       } else {
         menuNav.setAttribute("hidden", ""); // añadimos otra vez el atrobuto hidden
         navBtn.setAttribute("aria-expanded", "false");// definimos que esta plegado
-        navBtnBg.id = "nav-btn";
+        navBtn.classList.remove("desplegado");
       }
     }
   });
