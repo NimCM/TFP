@@ -117,6 +117,7 @@ header nav {
 }
 header a {
   color: #dec7eb;
+  font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
 }
 
 header.scrolled { /* Definición de las propiedades CSS de la class scrolled que se activa con Java Script */
@@ -131,7 +132,8 @@ a {
 li {
   list-style-type: none;
   font-size: clamp(18px, 1.5vw, 20px);
-  font-family: "Fjalla One", "Gill Sans", Calibri, sans-serif;
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 #titol-web {
@@ -1076,4 +1078,39 @@ a.btn:hover, .btn:hover {
   #map {
     max-height: 350px;
   }
+}
+/* FICHA MUJERES */
+.hero-bg { /* Imagen de fondo de la seccion de fichas */
+  background: linear-gradient(rgba(105, 60, 130, 0.7), rgba(105, 60, 130, 0.7));
+  /* Imagen de fondo con filtro de color por encima */
+  background-position: top left; /* Coge de referencia la esuqina sueprior izquierda, al hacer pequeña la pantalla la imagen se mantiene estática en esa posición, interesa por como es el contenido de la imagen */
+  background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
+  top: 0;
+  left: 0;
+  min-height: 70vh;
+  background-size: auto;
+}
+
+.bola {
+  background-color: #dec7eb;
+  border-radius: 50%;
+  max-width: 500px;
+  max-height: 500px;
+  aspect-ratio: 1/1;
+  justify-self: end;
+}
+.bola ul {
+  text-transform: capitalize;
+}
+.bola .textos-ficha {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: end;
+}
+.bola .info-ficha {
+  align-self: flex-end;
 }/*# sourceMappingURL=styles.css.map */

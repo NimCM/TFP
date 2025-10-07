@@ -102,6 +102,7 @@ header{
     
     a{ 
         color: $lightPurple;
+        font-family: $tipoH2;
     }
 }
 
@@ -117,8 +118,9 @@ a{
 li{ 
     list-style-type: none; 
     font-size: $fluidP;
-    font-family: $tipoH2;
-} 
+    font-family: $tipoP;
+    font-weight: normal;
+}
 
 #titol-web{
     font-size: clamp(50px, 4vw, 80px);
@@ -251,6 +253,7 @@ a.btn:hover, .btn:hover{
     padding: 0;
     }
 }
+
 
 #menu-idioma{ 
     padding:0; 
@@ -983,5 +986,42 @@ a.btn:hover, .btn:hover{
 
     #map{
         max-height: 350px;
+    }
+}
+
+/* FICHA MUJERES */
+
+.hero-bg{ /* Imagen de fondo de la seccion de fichas */
+    
+    background:  linear-gradient(rgba($middlePurple, 0.7), rgba($middlePurple, 0.7));
+    /* Imagen de fondo con filtro de color por encima */
+    background-position: top left; /* Coge de referencia la esuqina sueprior izquierda, al hacer pequeña la pantalla la imagen se mantiene estática en esa posición, interesa por como es el contenido de la imagen */
+    background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
+    top: 0;
+    left: 0;
+    min-height: 70vh;
+    background-size: auto;
+}
+
+.bola{
+    background-color: $lightPurple;
+    border-radius: 50%;
+    max-width: 500px;
+    max-height: 500px;
+    aspect-ratio: 1/1;
+    justify-self: end;
+
+    ul{
+        text-transform: capitalize;
+    }
+    
+    .textos-ficha{
+        @include flex (column, center, center);
+        flex-wrap: wrap;
+        align-items: end;
+    }
+
+    .info-ficha{
+        align-self: flex-end;
     }
 }

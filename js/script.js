@@ -543,8 +543,39 @@ function aplicarFiltres() {
   console.log('✓ Filtres aplicats -', cardsVisibles, 'cards visibles');
 }
 
+//PAGINAS FICHAS MUJERES INFO DES DE JSON (AI: https://chatgpt.com/share/68e50646-4868-8000-9fd6-6b17553b7e20)
 
+fetch('./js/llocs_interes.json') //buscar archivo json
+  .then(response => response.json())
+  .then(data => {
+    data.locations.forEach(location => { //buscar en el documento cada elemento a rellenar 
+      const h1 = document.querySelector(`h1[data-id='${location.id}']`);
+      const h2 = document.querySelector(`h2[data-id='${location.id}']`);
+      const p = document.querySelector(`p[data-id='${location.id}']`);
+      const ul = document.querySelector(`ul[data-id='${location.id}']`);
+      const div = document.querySelector(`.hero-bg[data-id='${location.id}']`);
+
+      //rellenar la info con los datos que hay en el JSON
+      if(h1) h1.textContent = location.name;
+      if(h2) h2.textContent = location.woman;
+      if(p) p.textContent = location.info; 
+      if (ul) { //ul con datos del sitio
+        // se vacía ul por seguridad
+        ul.innerHTML = '';
+        location.tipus.forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = t;
+          ul.appendChild(li);
+        });
+      if(div) { //imagens fondo
+        div.style.backgroundImage = `url(${location.image})`;
+        div.style.backgroundSize = 'auto';
+        div.style.backgroundPosition = 'top-left';
+      }
+    }
+  });
     
 });
 
+});
 
