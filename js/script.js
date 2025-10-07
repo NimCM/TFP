@@ -152,6 +152,55 @@ setTimeout(function() {
     map.invalidateSize();
   }, 200);
 
+  // SEGUIMIENTO DEL USUARIO EN PANTALLAS PEQUEÑAS, dentro del set timeout del mapa para que funcione
+
+  // Activa el código con una pantalla menor a 865px, como el media queries del SCSS
+  console.log("Amplada actual:", window.innerWidth);
+  if (window.innerWidth < 3000 && "geolocation" in navigator) { //ideal poner a 865, ahora mismo cambiado para poder ver des de el ordenador
+    console.log("Activant seguiment d'ubicació...");
+
+    // Icono para el usuario
+    const userIcon = L.icon({
+      iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+          <circle cx="12" cy="12" r="8" fill="#dec7eb" stroke="#693c82" stroke-width="2"/>
+        </svg>
+      `),
+      iconSize: [24, 24],
+      iconAnchor: [12, 12]
+    });
+
+    let userMarker = null;
+
+    // Activa el watchPosition para seguir la ubicación del usuario
+    const watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        console.log("Nova posició:", position.coords);
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        if (!userMarker) {
+          // Si no existe, se crea el marcador inicial
+          userMarker = L.marker([lat, lng], { icon: userIcon }).addTo(map);
+        } else {
+          // Actualitza su posición
+          userMarker.setLatLng([lat, lng]);
+        }
+
+        // Centrar mapa sobre la posición del usuario, por ahora desconectado ya que el mapa a veces falla
+        // map.setView([lat, lng]);
+      },
+      (error) => {
+        console.error("Error al seguir la posició:", error);
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 10000,
+        timeout: 10000
+      }
+    );
+  }
+
   //Se añade la URL del OpenStreetMaps para poder usar sus tiles (imagenes fragmentadas) y tener la visualización del mapa. Aquí también se define la atribución a OpenStreetMaps y el máximo nivel de zoom
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -198,6 +247,7 @@ setTimeout(function() {
     .catch(error => {
       console.error('Error detallat:', error);
     });
+
 }, 100); 
 
 
@@ -299,7 +349,9 @@ function generarMapaIRuta(iconMarker) {
     map.setView(waypoints[0], 15);
     console.log('✓ Només 1 punt, sense ruta');
   }
+
 }
+
 
 //HIGHLIGHT EN LAS CARDS CUANDO SE SELECCIONA EL MARKER (AI: https://claude.ai/share/fdae29c0-6a77-4323-a448-f155343b5914)
 

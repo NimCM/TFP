@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lloret en femení</title>
+    <!--Link a las tipografías de google, los dos primeros links son la optimización de la connexión, los dos últimos los links. ala tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!--Link a la biblioteca de Swiper de JS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <!--Link a los archivos CSS-->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <div class="hero-bg-inici"> 
+        <header class="header-inicio">
+            <div class="logo-link">
+                <a href="index.html"><img src="./css/logos/logo-hightlightgreen.png" id="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona"></a>
+            </div>
+            <nav class="menu-nav-desplegable">
+               <button class="navegacion proba" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="./css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
+                <ul id="menu-navegacion">
+                    <li><a href="#" class="text-dark">Com funciona?</a></li>
+                    <li><a href="#" class="text-dark">Punts d'interès</a></li>
+                    <li><a href="#" class="text-dark">Accessibilitat</a></li>
+                    <li><a href="mapa.html" class="text-dark">Mapa</a></li>
+                    <li><a href="#" class="text-dark">Contacte</a></li>
+                    <li><a href="#" class="text-dark">Log-in</a></li>
+                </ul>
+            </nav>
+            <!--Enlaces de cambio de idioma con icono-->
+            <div class="menu-idioma-desplegable">
+                <button class="idioma" id="idioma-btn" aria-expanded="false" aria-controls="menu-idioma"><a href="#"><img src="css/icons/idioma/cat_dark.webp" alt="Icona idioma català"></button>
+            
+                <ul id="menu-idioma" class="menu-idioma-oculto" hidden>
+                    <li class="idioma oculto"><a href="#"><img src="./css/icons/idioma/esp_dark.webp" alt="Icona idioma castellà"></a></li>
+                    <li class="idioma oculto"><a href="#"><img src="./css/icons/idioma/eng_dark.webp" alt="Icona idioma anglès"></a></li>
+                    <li class="idioma oculto"><a href="#"><img src="./css/icons/idioma/fr_dark.webp" alt="Icona idioma francès"></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main id="main-index">
+            <div class="bola">
+                <button class="btn btn-share btn-light"><img src="./css/icons/btn/share-green.png" class="btn-icon-share" alt="Botó per a compartir la pàgina amb una icona de avió de paper"></button>
+                <section class="textos-ficha">
+                    <h1>Dona Marinera</h1>
+                    <h2>Sra Margarita Puig Esqueu</h2>
+                    <ul>
+                        <li>Monument</li>
+                        <li>Exterior</li>
+                        <li>Gratuït</li>
+                    </ul>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </section>
+                <section class="iconos-ficha">
+                    <img src="./css/icons/access/temps_light.png" class="icona-accessibilitat" alt="Icona de un rellotge">
+                    <img src="./css/icons/access/cadira_light.png" class="icona-accessibilitat" alt="Icona accessibilitat dona amb cadira de rodes">
+                    <img src="./css/icons/access/preu_light.png" class="icona-accessibilitat" alt="Icona amb el símbol de euro">
+                </section>
+
+                <a href="#" class="btn btn-next btn-light">Següent <img src="css/icons/btn/fletxa-light.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
+            </div>
+            <div class="lower-section-ficha">
+                <a href="#" class="btn btn-ant btn-light-border"> <img src="css/icons/btn/fletxa-ant-light.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+
+                <section class="otros-comentarios">
+                    <h2>Comentaris</h2>
+                    <article class="comentari">
+                        <h3>Fàtima Vidal</h3>
+                        <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
+                    </article>
+                    <article class="comentari">
+                        <h3>Tilda Clua Leal</h3>
+                        <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
+                    </article>
+                    <article class="comentari">
+                        <h3>Cesca Mas Marquès</h3>
+                        <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                    </article>
+                    <article class="comentari">
+                        <h3>Sita Clua Leal</h3>
+                        <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
+                    </article>
+                    <article class="comentari">
+                        <h3>Ricard Caparròs Navarro</h3>
+                        <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
+                    </article>
+                    <article class="comentari">
+                        <h3>Manuel García López</h3>
+                        <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                    </article>
+                </section>
+                <section class="formulari-comentari">
+                    <h2>Deixa el teu comentari...</h2>
+                    <form action="#" method="post" class="form-comentari">
+                        <label for="nom">Nom:</label>
+                        <input type="text" id="nom" name="nom" required>
+
+                        <label for="comentari">Comentari:</label>
+                        <textarea id="comentari" name="comentari" rows="4" required></textarea>
+
+                        <button type="submit" class="btn btn-primary btn-dark">Enviar</button>
+                    </form>
+                </section>
+                <section class="mobile-qr">
+                    <h2>Prova-ho al mòbil!</h2>
+                    <img src="./files/img/qr.png" class="img-qr" alt="Codi QR per a accedir a la app al mòbil">
+                    <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
+                </section>
+            </div>
+
+
+            
+        </main>
+    </div>
+    
+    <footer class="footer-light">
+        <img src="./css/logos/logo_ajunt_lloret.png" class="logo-ajunt-lloret" alt="Logotip de l'Ajuntament de Lloret de Mar">
+        <p class="credits-designer">Designed by: Nim Carbonell Mas</p>
+    </footer> 
+        
+    <!-- El link a JS va al final porque cuando algo falla, no carga nada de lo que viene después, Si queremos evitar esos problemas lo ponemos al finaly así si hay algun problema no nos impide la visualiación -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    
+</body>
+</html>
+
