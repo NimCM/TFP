@@ -17,7 +17,7 @@
 html, body {
   display: block;
   width: 100%;
-  background-color: green;
+  background-color: #dec7eb;
 }
 
 * {
@@ -1114,4 +1114,4 @@ a.btn:hover, .btn:hover {
 }
 .bola .info-ficha {
   align-self: flex-end;
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=prova.css.map */
