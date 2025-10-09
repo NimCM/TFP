@@ -1008,20 +1008,21 @@ a.btn:hover, .btn:hover{
 /* FICHA MUJERES */
 
 .hero-bg{ /* Imagen de fondo de la seccion de fichas */
-    
-    background:  linear-gradient(rgba($middlePurple, 0.7), rgba($middlePurple, 0.7));
+
     /* Imagen de fondo con filtro de color por encima */
     background-position: top left; /* Coge de referencia la esuqina sueprior izquierda, al hacer pequeña la pantalla la imagen se mantiene estática en esa posición, interesa por como es el contenido de la imagen */
     background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
     top: 0;
     left: 0;
     min-height: 70vh;
+    position: relative;
+    z-index: 0;
     background-size: auto;
 }
 
 .upper-section-ficha {
   position: relative;
-  overflow-x: hidden; /* Esconde el trozo de la bola que queda fuera de la pantalla */
+  overflow-x: clip; /* Esconde el trozo de la bola que queda fuera de la pantalla */
   overflow-y: visible;
   z-index: 10;
   min-height: 80vh;
@@ -1040,7 +1041,7 @@ a.btn:hover, .btn:hover{
     z-index: 9999; /* Para ponerla encima de la sección lower */
     margin-left: auto;
     top:15%;
-    right: -13%;
+    right:-10%;
     pointer-events: auto;
     padding: 5px;
     
@@ -1081,7 +1082,7 @@ a.btn:hover, .btn:hover{
         justify-self: end;
         margin-right: 200px;
         gap:30px;
-        padding: 20px;
+        padding: 15px;
         max-width: 60%;
         
         .temps-ficha{
@@ -1112,7 +1113,7 @@ a.btn:hover, .btn:hover{
         @include flex (row, end, center);
         justify-self: end;
         margin: 0px; /* Quitar los margenes definidos en el btn general */
-        margin-right: 230px;
+        margin-right: 260px;
         border: none;
     }
     
@@ -1126,7 +1127,7 @@ a.btn:hover, .btn:hover{
     gap: 10px;
     box-sizing: border-box;
     height: 70vh;
-    position: relative;
+    z-index: -10;
     overflow: visible;
 
 
@@ -1147,9 +1148,12 @@ a.btn:hover, .btn:hover{
     
     .otros-comentarios{
         width:30%;
-
-        overflow-y: auto;
         height: 60vh;
+    }
+
+    .scroll-comments{
+        overflow-y: auto;
+        height: 55vh;
 
         scroll-behavior: smooth; // Scroll suave    
         scrollbar-width: thin; // Ocultar scrollbar però mantenir funcionalitat
@@ -1238,3 +1242,45 @@ a.btn:hover, .btn:hover{
     }
 }
 
+@media (max-width: 769px) {
+
+    .lower-section-ficha{
+        background-color: $lightPurple;
+    }
+
+    .lower-comentaris{
+        @include flex (column, start, center);
+        width: 100%;
+        
+        h2{
+            color: $middlePurple;
+        }
+
+        .otros-comentarios{
+            max-height: 150px;
+            width: 100%;
+        }
+    }
+
+    .scroll-comments{
+        @include flex (row, start, center);
+        gap:15px;
+        overflow-x: auto;
+
+        scroll-behavior: smooth; // Scroll suave    
+        scrollbar-width: thin; // Ocultar scrollbar però mantenir funcionalitat
+        scrollbar-color: rgba($lightPurple, 0.5 )transparent;
+
+        .comentari{
+            height: 100%;
+            width: 300px;
+        }
+    }
+
+    
+
+    .mobile-qr{
+        display: none;
+    }
+
+}

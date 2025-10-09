@@ -549,6 +549,7 @@ fetch('./js/llocs_interes.json') //buscar archivo json
   .then(response => response.json())
   .then(data => {
     data.locations.forEach(location => { //buscar en el documento cada elemento a rellenar 
+      const hero = document.querySelector('.hero-bg');
       const h1 = document.querySelector(`h1[data-id='${location.id}']`);
       const h2 = document.querySelector(`h2[data-id='${location.id}']`);
       const p = document.querySelector(`p[data-id='${location.id}']`);
@@ -556,6 +557,7 @@ fetch('./js/llocs_interes.json') //buscar archivo json
       const tempsP = document.querySelector(`.temps-ficha p[data-id-temps='${location.id}']`);
       const div = document.querySelector(`.hero-bg[data-id='${location.id}']`);
       const iconesDiv = document.querySelector(`.icones-ficha-json[data-id='${location.id}']`);
+      const heroDiv = document.querySelector(`.hero-bg[data-id='${location.id}']`);
 
       //rellenar la info con los datos que hay en el JSON
       if(h1) h1.textContent = location.name;
@@ -593,7 +595,14 @@ fetch('./js/llocs_interes.json') //buscar archivo json
           iconPrice.alt = priceInfo.label; // opcional
         }
 
-      }   
+      }
+      
+      if(heroDiv) {
+        heroDiv.style.backgroundImage = `url(${location.image})`;
+        heroDiv.style.backgroundSize = 'cover';
+        heroDiv.style.backgroundPosition = 'top left';
+      }
+
     }
   });
     
