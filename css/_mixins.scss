@@ -63,7 +63,7 @@
 @mixin btn-light{
     background-color: $middlePurple;
     color: $lightPurple;
-    box-shadow: 2px 2px 4px $lightPurple;
+    box-shadow: 2px 2px 4px $darkPurple;
 }
 
 @mixin btn-dark{

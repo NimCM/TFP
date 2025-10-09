@@ -154,6 +154,10 @@ footer{
     background-color: $lightPurple;
 }
 
+.footer-dark{
+    background-color: $middlePurple;
+}
+
 .logo-ajunt-lloret{
     height: 70px;
     padding: 5px;
@@ -289,7 +293,7 @@ a.btn:hover, .btn:hover{
 
 
 
-/* INICI MAIN */
+/* INICIO MAIN */
 
 .hero-bg-inici{ /* Imagen de fondo de la seccion inicial */
     background:  linear-gradient(rgba($middlePurple, 0.7), rgba($middlePurple, 0.7)),
@@ -331,6 +335,10 @@ a.btn:hover, .btn:hover{
     .buttons-inicio{
         @include flex(column, center, center);
         align-items: center;
+
+        .btn-iniciar-hero{
+            box-shadow: 2px 2px 10px $darkPurple;
+        }
     }
 }
 
@@ -1015,6 +1023,9 @@ a.btn:hover, .btn:hover{
   position: relative;
   overflow-x: hidden; /* Esconde el trozo de la bola que queda fuera de la pantalla */
   overflow-y: visible;
+  z-index: 10;
+  min-height: 80vh;
+
 }
 
 .bola{
@@ -1025,10 +1036,12 @@ a.btn:hover, .btn:hover{
     justify-self: end;
 
     /* Desplazar la bola a la derecha de la pantalla */
-    position:relative;
-    z-index: 10; /* Para ponerla encima de la sección lower */
+    position:absolute;
+    z-index: 9999; /* Para ponerla encima de la sección lower */
     margin-left: auto;
-    transform: translate(30%, 20%);
+    top:15%;
+    right: -13%;
+    pointer-events: auto;
     padding: 5px;
     
     .share-ficha{
@@ -1087,6 +1100,11 @@ a.btn:hover, .btn:hover{
             width: auto;
         }
 
+        .icones-ficha-json{
+            display: flex;
+            gap:30px;
+        }
+
     }
  
 
@@ -1095,8 +1113,8 @@ a.btn:hover, .btn:hover{
         justify-self: end;
         margin: 0px; /* Quitar los margenes definidos en el btn general */
         margin-right: 230px;
+        border: none;
     }
-
     
 }
 
@@ -1107,18 +1125,35 @@ a.btn:hover, .btn:hover{
     padding:10px;
     gap: 10px;
     box-sizing: border-box;
+    height: 70vh;
+    position: relative;
+    overflow: visible;
+
+
+    .btn-ant-ficha{
+        box-shadow: 1px 1px 3px rgba($darkPurple, 0.7);
+    }
+
 }
 
 .lower-comentaris{
-    @include flex(row, space-between, center);
+    @include flex(row, space-around, center);
     align-items: flex-start;
     width: 100%;
-    gap: 50px;
+    gap: 30px;
     box-sizing: border-box;
     margin: 15px 10px;
+
     
     .otros-comentarios{
         width:30%;
+
+        overflow-y: auto;
+        height: 60vh;
+
+        scroll-behavior: smooth; // Scroll suave    
+        scrollbar-width: thin; // Ocultar scrollbar però mantenir funcionalitat
+        scrollbar-color: rgba($lightPurple, 0.5 )transparent;
     }
 }
 
@@ -1129,7 +1164,7 @@ a.btn:hover, .btn:hover{
     background-color: $whitePurple;
     box-shadow: 2px 2px 10px $darkPurple;
     border-radius: 24px;
-    width: 100%;
+    width: 95%;
     padding: 15px;
     margin: 20px 0;
     border: none;
@@ -1151,8 +1186,55 @@ a.btn:hover, .btn:hover{
         font-family: $tipoH3;
         font-size: $fluidH3;
     }
+
+    .btn-enviar{
+        font-size: $fluidP;
+        box-shadow: 2px 2px 10px $darkPurple;
+    }
+
+    #nom{
+        height:40px;
+    }
+
+    #comentari{
+        height: 200px;
+        resize: none; /* Evitar que el usuario pueda camviar el tamaño del input */
+    }
+
+    ::placeholder{
+        color: rgba($middlePurple, 0.7);
+        font-family: $tipoMini;
+        font-size: 16px;
+    }
+
+    #nom:focus, #comentari:focus{
+        outline: 2px solid $highlightGreen;
+        border: 2px solid $middlePurple;
+    }
+
+    #feedbackform{
+        color: $lightPurple;
+    }
 }
 
 .mobile-qr{
     width: 30%;
+    height: 50vh;
+    margin-right: 40px;
+
+    .mobile-qr-img{
+        @include flex (row, space-evenly, end);
+        height: 60vh;
+
+        .img-qr{
+            max-height: 40%;
+            align-self: center;
+        }
+
+        .mobile-mockup{
+            max-height: 80%;
+            align-self: center;
+        }
+    }
 }
+

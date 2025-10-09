@@ -555,6 +555,7 @@ fetch('./js/llocs_interes.json') //buscar archivo json
       const ul = document.querySelector(`ul[data-id='${location.id}']`);
       const tempsP = document.querySelector(`.temps-ficha p[data-id-temps='${location.id}']`);
       const div = document.querySelector(`.hero-bg[data-id='${location.id}']`);
+      const iconesDiv = document.querySelector(`.icones-ficha-json[data-id='${location.id}']`);
 
       //rellenar la info con los datos que hay en el JSON
       if(h1) h1.textContent = location.name;
@@ -568,16 +569,70 @@ fetch('./js/llocs_interes.json') //buscar archivo json
           const li = document.createElement('li');
           li.textContent = t;
           ul.appendChild(li);
-        });
+      });
+
       if(div) { //imagens fondo
         div.style.backgroundImage = `url(${location.image})`;
         div.style.backgroundSize = 'auto';
         div.style.backgroundPosition = 'top-left';
       }
+
+      if(iconesDiv) {
+        // Icono accesibilidat
+        const iconAccess = iconesDiv.querySelector('.icona-access');
+        const accessInfo = data.filters.access.find(a => a.value === location.access);
+        if(iconAccess && accessInfo) {
+          iconAccess.src = accessInfo.icon;
+          iconAccess.alt = accessInfo.label; // opcional, posar text descriptiu
+        }
+        //Icono precio
+        const iconPrice = iconesDiv.querySelector('.icona-preu');
+        const priceInfo = data.filters.price.find(p => p.value === location.price);
+        if(iconPrice && priceInfo) {
+          iconPrice.src = priceInfo.icon;
+          iconPrice.alt = priceInfo.label; // opcional
+        }
+
+      }   
     }
   });
     
 });
+
+//CHECK FORMULARIO ANTES DE ENVIAR
+const feedbackformulari = document.getElementById('feedbackform'); //selecciona el párrafo donde se mostrará el mensaje de feedback, se guarda feedbackformulari dentro de una variable constante 
+
+document.querySelectorAll('.form-comentari').forEach(function(form){
+    //llama a todos los elementos de clase form-comentari, en este caso, los formularios; forEach recorre todos los elementos que encuentre para aplicar la función
+    form.addEventListener('submit', function(event){ //addEventListener se fija en el elemento submit para llevar a cabo la función evento
+        event.preventDefault(); //evitar el envio de manera directa
+        
+        let valido=true; // se asume que los campos son validos
+        const elements = form.querySelectorAll('input, textarea'); //se crea una constante elements con los elementos que se van a comprobar
+
+        elements.forEach(function(el){ //recorre todos los elementos para aplicar la funcion el, que se define en el bucle de abajo
+
+            if(el.value.trim()===''){ //si el es igual a vacío, valido pasa a ser falso
+                valido = false;
+                el.style.border = '2px solid red' //cambio de color del borde del elemento que no se ha rellenado a color rojo
+            }
+
+             el.addEventListener('input', function(){ //añadimir event listener para que cuando el usuario escriba en los campos se limpie el estilo aplicado con el error
+                el.style.border = '';
+                feedbackformulari.innerText = ''; //borrar el mensaje de feedback
+            });
+        });
+        
+        if(valido){ //si los campos estan rellenos, valido=true, manda mensaje de exito
+            console.log('si'); //para comprobar que funciona en consola
+            feedbackformulari.innerText="✅ Comentario enviado correctamente, en breves sera publicado!"; //cambio del texto dentro del párrafo <p> con el id feedbackform
+        } else { //si uno de los campos esta vacio manda mensaje de error
+             console.log('no'); //para comprobar que funciona en consola
+             feedbackformulari.innerText="❌ Por favor, rellena todos los campos";
+        }
+    });
+  });
+
 
 });
 

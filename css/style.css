@@ -170,6 +170,10 @@ footer .credits-designer {
   background-color: #dec7eb;
 }
 
+.footer-dark {
+  background-color: #693c82;
+}
+
 .logo-ajunt-lloret {
   height: 70px;
   padding: 5px;
@@ -253,7 +257,7 @@ footer .credits-designer {
 .btn-light {
   background-color: #693c82;
   color: #dec7eb;
-  box-shadow: 2px 2px 4px #dec7eb;
+  box-shadow: 2px 2px 4px #260936;
 }
 
 .btn-dark {
@@ -364,7 +368,7 @@ a.btn:hover, .btn:hover {
   padding: 0;
 }
 
-/* INICI MAIN */
+/* INICIO MAIN */
 .hero-bg-inici { /* Imagen de fondo de la seccion inicial */
   background: linear-gradient(rgba(105, 60, 130, 0.7), rgba(105, 60, 130, 0.7)), url("../files/img/dona_marinera_tochange.jpg");
   /* Imagen de fondo con filtro de color por encima */
@@ -413,6 +417,9 @@ a.btn:hover, .btn:hover {
   justify-content: center;
   align-content: center;
   align-items: center;
+}
+.inicio .buttons-inicio .btn-iniciar-hero {
+  box-shadow: 2px 2px 10px #260936;
 }
 
 .inicio-fade {
@@ -1100,6 +1107,8 @@ a.btn:hover, .btn:hover {
   position: relative;
   overflow-x: hidden; /* Esconde el trozo de la bola que queda fuera de la pantalla */
   overflow-y: visible;
+  z-index: 10;
+  min-height: 80vh;
 }
 
 .bola {
@@ -1109,10 +1118,12 @@ a.btn:hover, .btn:hover {
   aspect-ratio: 1/1;
   justify-self: end;
   /* Desplazar la bola a la derecha de la pantalla */
-  position: relative;
-  z-index: 10; /* Para ponerla encima de la sección lower */
+  position: absolute;
+  z-index: 9999; /* Para ponerla encima de la sección lower */
   margin-left: auto;
-  transform: translate(30%, 20%);
+  top: 15%;
+  right: -13%;
+  pointer-events: auto;
   padding: 5px;
 }
 .bola .share-ficha {
@@ -1179,6 +1190,10 @@ a.btn:hover, .btn:hover {
   height: clamp(40px, 3vw, 44px);
   width: auto;
 }
+.bola .iconos-ficha .icones-ficha-json {
+  display: flex;
+  gap: 30px;
+}
 .bola .btn-next-ficha {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
@@ -1188,6 +1203,7 @@ a.btn:hover, .btn:hover {
   justify-self: end;
   margin: 0px; /* Quitar los margenes definidos en el btn general */
   margin-right: 230px;
+  border: none;
 }
 
 .lower-section-ficha {
@@ -1196,22 +1212,33 @@ a.btn:hover, .btn:hover {
   padding: 10px;
   gap: 10px;
   box-sizing: border-box;
+  height: 70vh;
+  position: relative;
+  overflow: visible;
+}
+.lower-section-ficha .btn-ant-ficha {
+  box-shadow: 1px 1px 3px rgba(38, 9, 54, 0.7);
 }
 
 .lower-comentaris {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
   align-items: flex-start;
   width: 100%;
-  gap: 50px;
+  gap: 30px;
   box-sizing: border-box;
   margin: 15px 10px;
 }
 .lower-comentaris .otros-comentarios {
   width: 30%;
+  overflow-y: auto;
+  height: 60vh;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(222, 199, 235, 0.5) transparent;
 }
 
 /* Comentarios ficha */
@@ -1219,7 +1246,7 @@ a.btn:hover, .btn:hover {
   background-color: #f7f0fb;
   box-shadow: 2px 2px 10px #260936;
   border-radius: 24px;
-  width: 100%;
+  width: 95%;
   padding: 15px;
   margin: 20px 0;
   border: none;
@@ -1243,7 +1270,53 @@ a.btn:hover, .btn:hover {
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
   font-size: clamp(20px, 2.5vw, 22px);
 }
+.formulari-comentari .btn-enviar {
+  font-size: clamp(18px, 1.5vw, 20px);
+  box-shadow: 2px 2px 10px #260936;
+}
+.formulari-comentari #nom {
+  height: 40px;
+}
+.formulari-comentari #comentari {
+  height: 200px;
+  resize: none; /* Evitar que el usuario pueda camviar el tamaño del input */
+}
+.formulari-comentari ::-moz-placeholder {
+  color: rgba(105, 60, 130, 0.7);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+.formulari-comentari ::placeholder {
+  color: rgba(105, 60, 130, 0.7);
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+.formulari-comentari #nom:focus, .formulari-comentari #comentari:focus {
+  outline: 2px solid #c8e28b;
+  border: 2px solid #693c82;
+}
+.formulari-comentari #feedbackform {
+  color: #dec7eb;
+}
 
 .mobile-qr {
   width: 30%;
+  height: 50vh;
+  margin-right: 40px;
+}
+.mobile-qr .mobile-qr-img {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: end;
+  height: 60vh;
+}
+.mobile-qr .mobile-qr-img .img-qr {
+  max-height: 40%;
+  align-self: center;
+}
+.mobile-qr .mobile-qr-img .mobile-mockup {
+  max-height: 80%;
+  align-self: center;
 }/*# sourceMappingURL=style.css.map */

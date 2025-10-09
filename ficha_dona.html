@@ -62,15 +62,17 @@
                             <img src="./css/icons/access/temps_light.png" class="icona-ficha" alt="Icona de un rellotge">
                             <p data-id-temps="2" class="temps-ficha-mini"></p>
                         </div>
-                        <img src="./css/icons/access/cadira_light.png" class="icona-ficha" alt="Icona accessibilitat dona amb cadira de rodes">
-                        <img src="./css/icons/access/preu_light.png" class="icona-ficha" alt="Icona amb el símbol de euro">
+                        <div class="icones-ficha-json" data-id="2">
+                            <img class="icona-access icona-ficha" alt="">
+                            <img class="icona-preu icona-ficha" alt="">
+                        </div>
                     </section>
             
                     <a href="#" class="btn btn-next btn-light btn-next-ficha">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
                 </div>
             </div>
             <div class="lower-section-ficha">
-                <a href="#" class="btn btn-ant btn-dark-border"> <img src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+                <a href="#" class="btn btn-ant btn-dark-border btn-ant-ficha"> <img src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
                
                 <div class="lower-comentaris">
                     <section class="otros-comentarios">
@@ -104,28 +106,29 @@
                         <h2 class="text-dark">Deixa el teu comentari...</h2>
                         <form action="#" method="post" class="form-comentari">
                             <label for="nom" class="titols-form text-dark">Nom:</label>
-                            <input type="text" id="nom" name="nom" required>
+                            <input type="text" id="nom" name="nom"  placeholder="El teu nom">
 
                             <label for="comentari" class="titols-form text-dark">Comentari:</label>
-                            <textarea id="comentari" name="comentari" rows="4" required></textarea>
+                            <textarea id="comentari" name="comentari" rows="4"  placeholder="Què t'ha semblat el lloc?"></textarea>
 
-                            <button type="submit" class="btn btn-primary btn-dark">Enviar</button>
+                            <button type="submit" class="btn btn-primary btn-dark btn-enviar">Enviar</button>
+                            <p id="feedbackform"></p>
                         </form>
                     </section>
                     <section class="mobile-qr">
                         <h2 class="text-dark">Prova-ho al mòbil!</h2>
-                    <!-- <img src="./files/img/qr.png" class="img-qr" alt="Codi QR per a accedir a la app al mòbil">
-                        <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
-                    --> </section>
+                        <div class="mobile-qr-img">
+                            <img src="./files/img/qr.png" class="img-qr" alt="Codi QR per a accedir a la app al mòbil">
+                            <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
+                        </div>
+                    </section>
                  </div>
             </div>
 
-
-            
         </main>
     </div>
     
-    <footer class="footer-light">
+    <footer class="footer-dark">
         <img src="./css/logos/logo_ajunt_lloret.png" class="logo-ajunt-lloret" alt="Logotip de l'Ajuntament de Lloret de Mar">
         <p class="credits-designer">Designed by: Nim Carbonell Mas</p>
     </footer> 
