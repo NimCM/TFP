@@ -13,8 +13,8 @@
     <!--Link a la biblioteca de Swiper de JS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <!--Link a los archivos CSS-->
-    <!--<link rel="stylesheet" href="/css/styles.css">-->
-    <link rel="stylesheet" href="/css/prova.css">
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
@@ -27,9 +27,9 @@
             <nav class="menu-nav-desplegable">
                <button class="navegacion proba" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="./css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
                 <ul id="menu-navegacion">
-                    <li><a href="#" class="text-dark">Com funciona?</a></li>
+                    <li><a href="index.html#comfunciona" class="text-dark">Com funciona?</a></li>
                     <li><a href="#" class="text-dark">Punts d'interès</a></li>
-                    <li><a href="#" class="text-dark">Accessibilitat</a></li>
+                    <li><a href="index.html#section-accessibilitat" class="text-dark">Accessibilitat</a></li>
                     <li><a href="mapa.html" class="text-dark">Mapa</a></li>
                     <li><a href="#" class="text-dark">Contacte</a></li>
                     <li><a href="#" class="text-dark">Log-in</a></li>
@@ -66,51 +66,53 @@
             </div>
             <div class="lower-section-ficha">
                 <a href="#" class="btn btn-ant btn-dark-border"> <img src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+               
+                <div class="lower-comentaris">
+                    <section class="otros-comentarios">
+                        <h2 class="text-dark">Comentaris</h2>
+                        <article class="comentari">
+                            <h3 class="text-ultralight">Fàtima Vidal</h3>
+                            <p class="text-ultralight">Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
+                        </article>
+                        <article class="comentari">
+                            <h3>Tilda Clua Leal</h3>
+                            <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
+                        </article>
+                        <article class="comentari">
+                            <h3>Cesca Mas Marquès</h3>
+                            <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                        </article>
+                        <article class="comentari">
+                            <h3>Sita Clua Leal</h3>
+                            <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
+                        </article>
+                        <article class="comentari">
+                            <h3>Ricard Caparròs Navarro</h3>
+                            <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
+                        </article>
+                        <article class="comentari">
+                            <h3>Manuel García López</h3>
+                            <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                        </article>
+                    </section>
+                    <section class="formulari-comentari">
+                        <h2 class="text-dark">Deixa el teu comentari...</h2>
+                        <form action="#" method="post" class="form-comentari">
+                            <label for="nom" class="titols-form text-dark">Nom:</label>
+                            <input type="text" id="nom" name="nom" required>
 
-                <section class="otros-comentarios">
-                    <h2>Comentaris</h2>
-                    <article class="comentari">
-                        <h3>Fàtima Vidal</h3>
-                        <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
-                    </article>
-                    <article class="comentari">
-                        <h3>Tilda Clua Leal</h3>
-                        <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
-                    </article>
-                    <article class="comentari">
-                        <h3>Cesca Mas Marquès</h3>
-                        <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
-                    </article>
-                    <article class="comentari">
-                        <h3>Sita Clua Leal</h3>
-                        <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
-                    </article>
-                    <article class="comentari">
-                        <h3>Ricard Caparròs Navarro</h3>
-                        <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
-                    </article>
-                    <article class="comentari">
-                        <h3>Manuel García López</h3>
-                        <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
-                    </article>
-                </section>
-                <section class="formulari-comentari">
-                    <h2>Deixa el teu comentari...</h2>
-                    <form action="#" method="post" class="form-comentari">
-                        <label for="nom">Nom:</label>
-                        <input type="text" id="nom" name="nom" required>
+                            <label for="comentari" class="titols-form text-dark">Comentari:</label>
+                            <textarea id="comentari" name="comentari" rows="4" required></textarea>
 
-                        <label for="comentari">Comentari:</label>
-                        <textarea id="comentari" name="comentari" rows="4" required></textarea>
-
-                        <button type="submit" class="btn btn-primary btn-dark">Enviar</button>
-                    </form>
-                </section>
-                <section class="mobile-qr">
-                    <h2>Prova-ho al mòbil!</h2>
-                   <!-- <img src="./files/img/qr.png" class="img-qr" alt="Codi QR per a accedir a la app al mòbil">
-                    <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
-               --> </section>
+                            <button type="submit" class="btn btn-primary btn-dark">Enviar</button>
+                        </form>
+                    </section>
+                    <section class="mobile-qr">
+                        <h2 class="text-dark">Prova-ho al mòbil!</h2>
+                    <!-- <img src="./files/img/qr.png" class="img-qr" alt="Codi QR per a accedir a la app al mòbil">
+                        <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
+                    --> </section>
+                 </div>
             </div>
 
 

@@ -12,7 +12,8 @@
         "tipus": ["museu","interior"],
         "temps":"0 mins",
         "price": "pagament",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     }, 
     {
         "id":2,
@@ -26,7 +27,8 @@
         "tipus": ["escultura", "exterior"],
         "temps":"20 mins",
         "price": "gratuit",
-        "access": "no_accessible"
+        "access": "no_accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":3,
@@ -40,7 +42,8 @@
         "tipus": ["ruines", "exterior"],
         "temps":"20 mins",
         "price": "pagament",
-        "access": "no_accessible"
+        "access": "no_accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":4,
@@ -54,7 +57,8 @@
         "tipus": ["natural", "exterior"],
         "temps":"30 mins",
         "price": "pagament",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":5,
@@ -68,7 +72,8 @@
         "tipus": ["escultura", "exterior"],
         "temps":"2 mins",
         "price": "pagament",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":6,
@@ -82,7 +87,8 @@
         "tipus": ["natural","religios","exterior"],
         "temps":"35 mins",
         "price": "gratuit",
-        "access": "no_accessible"
+        "access": "no_accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":7,
@@ -96,7 +102,8 @@
         "tipus": ["natural","exterior"],
         "temps":"45 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":8,
@@ -110,7 +117,8 @@
         "tipus": ["urba","exterior"],
         "temps":"35 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":9,
@@ -124,7 +132,8 @@
         "tipus": ["religios","exterior"],
         "temps":"35 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":10,
@@ -138,7 +147,8 @@
         "tipus": ["urba", "exterior","edifici"],
         "temps":"25 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":11,
@@ -152,7 +162,8 @@
         "tipus": ["urba","exterior"],
         "temps":"2 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":12,
@@ -166,7 +177,8 @@
         "tipus": ["edifici", "exterior", "interior"],
         "temps":"15 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     },
     {
         "id":13,
@@ -180,7 +192,8 @@
         "tipus": ["urba","exterior"],
         "temps":"0 mins",
         "price": "gratuit",
-        "access": "accessible"
+        "access": "accessible",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
     }
 ],
 "filters": {
