@@ -1096,15 +1096,33 @@ a.btn:hover, .btn:hover {
   background-size: auto;
 }
 
+.upper-section-ficha {
+  position: relative;
+  overflow-x: hidden; /* Esconde el trozo de la bola que queda fuera de la pantalla */
+  overflow-y: visible;
+}
+
 .bola {
   background-color: #dec7eb;
   border-radius: 50%;
-  max-width: 500px;
-  max-height: 500px;
+  width: clamp(590px, 60vw, 650px);
   aspect-ratio: 1/1;
   justify-self: end;
   /* Desplazar la bola a la derecha de la pantalla */
-  position: absolute;
+  position: relative;
+  z-index: 10; /* Para ponerla encima de la sección lower */
+  margin-left: auto;
+  transform: translate(30%, 20%);
+  padding: 5px;
+}
+.bola .share-ficha {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-content: center;
+  justify-self: center;
+  margin-right: 240px;
 }
 .bola ul {
   text-transform: capitalize;
@@ -1117,27 +1135,80 @@ a.btn:hover, .btn:hover {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-content: center;
+  gap: 15px;
   flex-wrap: wrap;
   align-items: end;
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+  margin-left: 40px;
 }
-.bola .info-ficha {
+.bola .info-ficha, .bola .lu-ficha, .bola .dona-ficha, .bola .lloc-ficha {
   align-self: flex-end;
   text-align: right;
+  padding-left: 15px;
+}
+.bola .iconos-ficha {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-content: center;
+  justify-self: end;
+  margin-right: 200px;
+  gap: 30px;
+  padding: 20px;
+  max-width: 60%;
+}
+.bola .iconos-ficha .temps-ficha {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.bola .iconos-ficha .temps-ficha-mini {
+  font-family: "Cantarell", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #693c82;
+}
+.bola .iconos-ficha .icona-ficha {
+  height: clamp(40px, 3vw, 44px);
+  width: auto;
+}
+.bola .btn-next-ficha {
+  /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-content: center;
+  justify-self: end;
+  margin: 0px; /* Quitar los margenes definidos en el btn general */
+  margin-right: 230px;
 }
 
 .lower-section-ficha {
   background-color: #693c82;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+  box-sizing: border-box;
 }
 
 .lower-comentaris {
   /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
   display: flex;
   flex-direction: row;
-  justify-content: start;
-  align-content: start;
+  justify-content: space-between;
+  align-content: center;
+  align-items: flex-start;
+  width: 100%;
   gap: 50px;
+  box-sizing: border-box;
+  margin: 15px 10px;
 }
 .lower-comentaris .otros-comentarios {
   width: 30%;
@@ -1150,7 +1221,7 @@ a.btn:hover, .btn:hover {
   border-radius: 24px;
   width: 100%;
   padding: 15px;
-  margin: 20px;
+  margin: 20px 0;
   border: none;
 }
 .comentari h3, #nom h3, #comentari h3 {
@@ -1171,4 +1242,8 @@ a.btn:hover, .btn:hover {
 .formulari-comentari .titols-form {
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
   font-size: clamp(20px, 2.5vw, 22px);
+}
+
+.mobile-qr {
+  width: 30%;
 }/*# sourceMappingURL=style.css.map */

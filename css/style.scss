@@ -1011,16 +1011,31 @@ a.btn:hover, .btn:hover{
     background-size: auto;
 }
 
+.upper-section-ficha {
+  position: relative;
+  overflow-x: hidden; /* Esconde el trozo de la bola que queda fuera de la pantalla */
+  overflow-y: visible;
+}
+
 .bola{
     background-color: $lightPurple;
     border-radius: 50%;
-    max-width: 500px;
-    max-height: 500px;
+    width: clamp(590px, 60vw, 650px);
     aspect-ratio: 1/1;
     justify-self: end;
 
     /* Desplazar la bola a la derecha de la pantalla */
-    position:absolute;
+    position:relative;
+    z-index: 10; /* Para ponerla encima de la sección lower */
+    margin-left: auto;
+    transform: translate(30%, 20%);
+    padding: 5px;
+    
+    .share-ficha{
+        @include flex (row, end, center);
+        justify-self: center;
+        margin-right: 240px;
+    }
 
     ul{
         text-transform: capitalize;
@@ -1031,24 +1046,76 @@ a.btn:hover, .btn:hover{
     }
     
     .textos-ficha{
-        @include flex (column, center, center);
+        @include flex (column, end, center);
+        gap: 15px;
         flex-wrap: wrap;
         align-items: end;
+        position: relative;
+        z-index: 2;
+        max-width: 60%;
+        margin-left: 40px;
+
     }
 
-    .info-ficha{
+    .info-ficha, .lu-ficha, .dona-ficha, .lloc-ficha{
         align-self: flex-end;
         text-align: right;
+        padding-left: 15px;
     }
+
+    .iconos-ficha{
+        @include flex (row, end, center);
+        justify-self: end;
+        margin-right: 200px;
+        gap:30px;
+        padding: 20px;
+        max-width: 60%;
+        
+        .temps-ficha{
+            @include flex (column, center, center);
+            align-items: center;
+        }
+
+        .temps-ficha-mini{
+            font-family: $tipoMini;
+            font-size: 16px;
+            color: $middlePurple;
+        }
+
+        .icona-ficha{
+            height: clamp(40px, 3vw, 44px);
+            width: auto;
+        }
+
+    }
+ 
+
+    .btn-next-ficha{
+        @include flex (row, end, center);
+        justify-self: end;
+        margin: 0px; /* Quitar los margenes definidos en el btn general */
+        margin-right: 230px;
+    }
+
+    
 }
+
 
 .lower-section-ficha{
     background-color: $middlePurple;
+    width: 100%;
+    padding:10px;
+    gap: 10px;
+    box-sizing: border-box;
 }
 
 .lower-comentaris{
-    @include flex(row, start, start);
+    @include flex(row, space-between, center);
+    align-items: flex-start;
+    width: 100%;
     gap: 50px;
+    box-sizing: border-box;
+    margin: 15px 10px;
     
     .otros-comentarios{
         width:30%;
@@ -1058,14 +1125,13 @@ a.btn:hover, .btn:hover{
 /* Comentarios ficha */
 
 
-
 .comentari, #nom, #comentari{
     background-color: $whitePurple;
     box-shadow: 2px 2px 10px $darkPurple;
     border-radius: 24px;
     width: 100%;
     padding: 15px;
-    margin: 20px;
+    margin: 20px 0;
     border: none;
 
     h3{
@@ -1085,4 +1151,8 @@ a.btn:hover, .btn:hover{
         font-family: $tipoH3;
         font-size: $fluidH3;
     }
+}
+
+.mobile-qr{
+    width: 30%;
 }

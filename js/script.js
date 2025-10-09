@@ -553,12 +553,14 @@ fetch('./js/llocs_interes.json') //buscar archivo json
       const h2 = document.querySelector(`h2[data-id='${location.id}']`);
       const p = document.querySelector(`p[data-id='${location.id}']`);
       const ul = document.querySelector(`ul[data-id='${location.id}']`);
+      const tempsP = document.querySelector(`.temps-ficha p[data-id-temps='${location.id}']`);
       const div = document.querySelector(`.hero-bg[data-id='${location.id}']`);
 
       //rellenar la info con los datos que hay en el JSON
       if(h1) h1.textContent = location.name;
       if(h2) h2.textContent = location.woman;
       if(p) p.textContent = location.info; 
+      if(tempsP) tempsP.textContent = location.temps; 
       if (ul) { //ul con datos del sitio
         // se vacía ul por seguridad
         ul.innerHTML = '';
