@@ -535,9 +535,6 @@ a.btn:hover, .btn:hover{
             border-radius: $borderRadiusS ;   
         }
     }
-    .prova{
-        background-color: pink;
-    }
 
     .header-mapa{ //ajuste color de fondo en la seccion mapa
         #menu-navegacion{
@@ -600,7 +597,7 @@ a.btn:hover, .btn:hover{
     gap:20px;
     margin-bottom: 10px;
     overflow-y: auto;
-    max-width: 33vw;
+    max-width: 35vw;
     height: 75vh;
     padding:8px 0;
 
@@ -620,7 +617,8 @@ a.btn:hover, .btn:hover{
     display: flex;
     flex-direction: row;
     gap: 14px;
-    max-height:225px;
+    max-height:230px;
+    transform: scale(0.95);
 
     .text-list{
         width: 100%;
@@ -795,7 +793,7 @@ a.btn:hover, .btn:hover{
 
 #map{
     width: 100%;
-    height: 585px;
+    height: 500px;
     border-radius: $borderRadiusS;
     z-index: 1;
 }
@@ -835,20 +833,20 @@ a.btn:hover, .btn:hover{
 /* Estilitzar el contenedor del popup de Leaflet */
 .leaflet-popup-content-wrapper {
   border-radius: 8px;
-  box-shadow: 0 3px 14px $middlePurple;
+  box-shadow: 2px 2px 6px $darkPurple;
   padding: 0;
-  background-color: $lightPurple;
+  background-color: $whitePurple;
 }
 
 .leaflet-popup-content {
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
 
 .leaflet-popup-tip {
-  background: rgb(104, 161, 104);
+  background: $middlePurple;
   border-radius: 25px;
-  border: 5px solid $lightPurple;
+  border: 5px solid $whitePurple;
   width:25px;
   height:25px;
 }
@@ -868,7 +866,7 @@ a.btn:hover, .btn:hover{
 .card-highlighted {
     box-shadow: 0 0 5px $middlePurple, 0 0 10px $middlePurple;
     border: 1px solid rgba($middlePurple, 0.7);
-    transform: scale(1.02);
+    transform: scale(0.95);
     
     // Animación de glow al pulsar
     animation: 2s ease-in-out 1 pulse-glow; 
@@ -965,12 +963,13 @@ a.btn:hover, .btn:hover{
         display: flex;
         flex-direction: row;
         gap: 14px;
-        max-height:225px;
+        max-height:230px;
         scroll-snap-align: center; // Mejora el centrado de la card
+        transform: scale(0.95);
     }
 
     .card-highlighted{
-        transform: scale(1);
+        transform: scale(0.95);
     }
 
 }
@@ -1025,7 +1024,7 @@ a.btn:hover, .btn:hover{
   overflow-x: clip; /* Esconde el trozo de la bola que queda fuera de la pantalla */
   overflow-y: visible;
   z-index: 10;
-  min-height: 80vh;
+  min-height: 90vh;
 
 }
 
@@ -1040,7 +1039,7 @@ a.btn:hover, .btn:hover{
     position:absolute;
     z-index: 9999; /* Para ponerla encima de la sección lower */
     margin-left: auto;
-    top:15%;
+    top:20%;
     right:-10%;
     pointer-events: auto;
     padding: 5px;
@@ -1113,7 +1112,7 @@ a.btn:hover, .btn:hover{
         @include flex (row, end, center);
         justify-self: end;
         margin: 0px; /* Quitar los margenes definidos en el btn general */
-        margin-right: 260px;
+       margin-right: 260px;
         border: none;
     }
     
@@ -1242,13 +1241,62 @@ a.btn:hover, .btn:hover{
     }
 }
 
+@media (min-width: 770px) and (max-width: 860px) {
+    .bola{
+        top:30%;
+    }
+}
+
 @media (max-width: 769px) {
+
+    #main-index{
+        align-content: center;
+    }
+
+    .upper-section-ficha{
+        position: static;
+        display: flex;
+        justify-content: end;
+        z-index: 0;
+    }
+
+    .bola{
+        border-radius: 800px 0 0 0;
+        width: 100%;
+        aspect-ratio: auto;
+        position: static;
+        margin-top: 72vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        z-index: 0; /* Bajamos el index para poner la bola por debajo del header */
+
+        .share-ficha{
+            margin-right: 40%;
+        }
+
+        .textos-ficha{
+            max-width: 90%;
+        }
+       
+        .iconos-ficha, .btn-next-ficha{
+            margin-right: 0;
+        }
+    }
+
+
 
     .lower-section-ficha{
         background-color: $lightPurple;
+        z-index: 0;
+        height: auto;
     }
 
-    .lower-comentaris{
+    .btn-ant-ficha{
+       @include btn-light-border; 
+    }
+
+   .lower-comentaris{
         @include flex (column, start, center);
         width: 100%;
         
@@ -1257,30 +1305,59 @@ a.btn:hover, .btn:hover{
         }
 
         .otros-comentarios{
-            max-height: 150px;
             width: 100%;
+            overflow-x: auto;
+            height: auto;
         }
-    }
-
-    .scroll-comments{
-        @include flex (row, start, center);
-        gap:15px;
-        overflow-x: auto;
-
-        scroll-behavior: smooth; // Scroll suave    
-        scrollbar-width: thin; // Ocultar scrollbar però mantenir funcionalitat
-        scrollbar-color: rgba($lightPurple, 0.5 )transparent;
 
         .comentari{
-            height: 100%;
+            margin: 5px;
+            flex: 0 0 auto;
+            height: 170px;
             width: 300px;
+            box-shadow: 2px 2px 6px $darkPurple;
+        }
+
+        .scroll-comments{
+            @include flex (row, start, center);
+            gap:15px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin-top: 10px;
+            height: fit-content;
+            padding-bottom: 10px;
+
+            scroll-behavior: smooth; // Scroll suave    
+            scrollbar-width: thin; // Ocultar scrollbar però mantenir funcionalitat
+            scrollbar-color: rgba($middlePurple, 0.5 )transparent;            
         }
     }
 
     
 
+    .formulari-comentari{
+        width: 100%;
+
+        #feedbackform{
+        color: $middlePurple;
+        }
+
+    }
+    
+    .titols-form{
+        color: $middlePurple;
+    }
+    
+
     .mobile-qr{
         display: none;
+    }
+
+    .footer-dark{
+        background-color: $lightPurple;
+        position: relative;
+        width: 100%;
+        margin-top: auto;
     }
 
 }

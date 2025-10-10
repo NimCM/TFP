@@ -623,9 +623,6 @@ a.btn:hover, .btn:hover {
     padding: 20px;
     border-radius: 16px;
   }
-  .prova {
-    background-color: pink;
-  }
   .header-mapa #menu-navegacion {
     background-color: #dec7eb;
     box-shadow: 2px 2px 4px rgba(105, 60, 130, 0.7);
@@ -692,7 +689,7 @@ a.btn:hover, .btn:hover {
   gap: 20px;
   margin-bottom: 10px;
   overflow-y: auto;
-  max-width: 33vw;
+  max-width: 35vw;
   height: 75vh;
   padding: 8px 0;
   scroll-behavior: smooth;
@@ -713,7 +710,8 @@ a.btn:hover, .btn:hover {
   display: flex;
   flex-direction: row;
   gap: 14px;
-  max-height: 225px;
+  max-height: 230px;
+  transform: scale(0.95);
 }
 .card-llocs .text-list {
   width: 100%;
@@ -884,7 +882,7 @@ a.btn:hover, .btn:hover {
 
 #map {
   width: 100%;
-  height: 585px;
+  height: 500px;
   border-radius: 16px;
   z-index: 1;
 }
@@ -924,20 +922,20 @@ a.btn:hover, .btn:hover {
 /* Estilitzar el contenedor del popup de Leaflet */
 .leaflet-popup-content-wrapper {
   border-radius: 8px;
-  box-shadow: 0 3px 14px #693c82;
+  box-shadow: 2px 2px 6px #260936;
   padding: 0;
-  background-color: #dec7eb;
+  background-color: #f7f0fb;
 }
 
 .leaflet-popup-content {
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
 
 .leaflet-popup-tip {
-  background: rgb(104, 161, 104);
+  background: #693c82;
   border-radius: 25px;
-  border: 5px solid #dec7eb;
+  border: 5px solid #f7f0fb;
   width: 25px;
   height: 25px;
 }
@@ -956,7 +954,7 @@ a.btn:hover, .btn:hover {
 .card-highlighted {
   box-shadow: 0 0 5px #693c82, 0 0 10px #693c82;
   border: 1px solid rgba(105, 60, 130, 0.7);
-  transform: scale(1.02);
+  transform: scale(0.95);
   animation: 2s ease-in-out 1 pulse-glow;
 }
 
@@ -1058,11 +1056,12 @@ a.btn:hover, .btn:hover {
     display: flex;
     flex-direction: row;
     gap: 14px;
-    max-height: 225px;
+    max-height: 230px;
     scroll-snap-align: center;
+    transform: scale(0.95);
   }
   .card-highlighted {
-    transform: scale(1);
+    transform: scale(0.95);
   }
 }
 @media (max-width: 595px) { /* Ajustar filtros por debajo 595px */
@@ -1109,7 +1108,7 @@ a.btn:hover, .btn:hover {
   overflow-x: clip; /* Esconde el trozo de la bola que queda fuera de la pantalla */
   overflow-y: visible;
   z-index: 10;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 .bola {
@@ -1122,7 +1121,7 @@ a.btn:hover, .btn:hover {
   position: absolute;
   z-index: 9999; /* Para ponerla encima de la sección lower */
   margin-left: auto;
-  top: 15%;
+  top: 20%;
   right: -10%;
   pointer-events: auto;
   padding: 5px;
@@ -1325,9 +1324,50 @@ a.btn:hover, .btn:hover {
   align-self: center;
 }
 
+@media (min-width: 770px) and (max-width: 860px) {
+  .bola {
+    top: 30%;
+  }
+}
 @media (max-width: 769px) {
+  #main-index {
+    align-content: center;
+  }
+  .upper-section-ficha {
+    position: static;
+    display: flex;
+    justify-content: end;
+    z-index: 0;
+  }
+  .bola {
+    border-radius: 800px 0 0 0;
+    width: 100%;
+    aspect-ratio: auto;
+    position: static;
+    margin-top: 72vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 0; /* Bajamos el index para poner la bola por debajo del header */
+  }
+  .bola .share-ficha {
+    margin-right: 40%;
+  }
+  .bola .textos-ficha {
+    max-width: 90%;
+  }
+  .bola .iconos-ficha, .bola .btn-next-ficha {
+    margin-right: 0;
+  }
   .lower-section-ficha {
     background-color: #dec7eb;
+    z-index: 0;
+    height: auto;
+  }
+  .btn-ant-ficha {
+    color: #693c82;
+    box-shadow: 2px 2px 4px #693c82;
+    border: 1px solid #693c82;
   }
   .lower-comentaris {
     /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
@@ -1341,10 +1381,18 @@ a.btn:hover, .btn:hover {
     color: #693c82;
   }
   .lower-comentaris .otros-comentarios {
-    max-height: 150px;
     width: 100%;
+    overflow-x: auto;
+    height: auto;
   }
-  .scroll-comments {
+  .lower-comentaris .comentari {
+    margin: 5px;
+    flex: 0 0 auto;
+    height: 170px;
+    width: 300px;
+    box-shadow: 2px 2px 6px #260936;
+  }
+  .lower-comentaris .scroll-comments {
     /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
     display: flex;
     flex-direction: row;
@@ -1352,15 +1400,31 @@ a.btn:hover, .btn:hover {
     align-content: center;
     gap: 15px;
     overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 10px;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding-bottom: 10px;
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: rgba(222, 199, 235, 0.5) transparent;
+    scrollbar-color: rgba(105, 60, 130, 0.5) transparent;
   }
-  .scroll-comments .comentari {
-    height: 100%;
-    width: 300px;
+  .formulari-comentari {
+    width: 100%;
+  }
+  .formulari-comentari #feedbackform {
+    color: #693c82;
+  }
+  .titols-form {
+    color: #693c82;
   }
   .mobile-qr {
     display: none;
+  }
+  .footer-dark {
+    background-color: #dec7eb;
+    position: relative;
+    width: 100%;
+    margin-top: auto;
   }
 }/*# sourceMappingURL=style.css.map */

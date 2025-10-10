@@ -292,7 +292,8 @@ function generarMapaIRuta(iconMarker) {
     if (!ubicacio.coordinates || !ubicacio.coordinates.lat || !ubicacio.coordinates.lng) {
       return;
     }
-    
+  
+
     var marker = L.marker([ubicacio.coordinates.lat, ubicacio.coordinates.lng], {icon: iconMarker}).addTo(map); //recopilación de las coordenadas para ponerlas con un marcador
     
     const popupContent = `
@@ -305,16 +306,20 @@ function generarMapaIRuta(iconMarker) {
     
     marker.bindPopup(popupContent); //Abrir pop up al pasar el ratón por encima
     
-    marker.on('mouseover', function() {
+
+    marker.on('mouseover', function() { //Abrir popup al pasar el ratón
       this.openPopup();
     });
-    
+
+
+
     marker.on('mouseout', function() {//cerrar el popup al quitar el ratón
       this.closePopup();
     });
 
     marker.on('click', function() { //Añadir event listener para el click, así centrará la card solo con clicl, no con mouseover
       gestionarClicMarcador(ubicacio.id);
+      this.openPopup();
     });
 
     waypoints.push(L.latLng(ubicacio.coordinates.lat, ubicacio.coordinates.lng)); //añadimos los waypoints al control de rutas
@@ -634,14 +639,37 @@ document.querySelectorAll('.form-comentari').forEach(function(form){
         
         if(valido){ //si los campos estan rellenos, valido=true, manda mensaje de exito
             console.log('si'); //para comprobar que funciona en consola
-            feedbackformulari.innerText="✅ Comentario enviado correctamente, en breves sera publicado!"; //cambio del texto dentro del párrafo <p> con el id feedbackform
+            feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; //cambio del texto dentro del párrafo <p> con el id feedbackform
         } else { //si uno de los campos esta vacio manda mensaje de error
              console.log('no'); //para comprobar que funciona en consola
-             feedbackformulari.innerText="❌ Por favor, rellena todos los campos";
+             feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
         }
     });
   });
 
+  // CAMBIO IMAGEN FLECHA ANTERIOR MEDIAQUERIES
+
+  const imgDark = "css/icons/btn/fletxa-ant-dark.png";
+  const imgLight = "css/icons/btn/fletxa-ant-light.png";
+
+  const imgElement = document.getElementById("btnAntChange");
+
+  // Función que actualiza la imagen segun media queries
+  function updateButtonIcon(e) {
+    if (e.matches) {
+      imgElement.src = imgLight; // si el media queries se cumple se pone la imagen Light
+    } else {
+      imgElement.src = imgDark; // si no, la versión dark
+    }
+  }
+
+  // Definición del breakpoint
+  const mediaQuery = window.matchMedia("(max-width: 769px)");
+
+  mediaQuery.addEventListener("change", updateButtonIcon);
+
+  // Executar al cargar la página
+  updateButtonIcon(mediaQuery);
 
 });
 
