@@ -250,6 +250,12 @@ setTimeout(function() {
 
 }, 100); 
 
+//Comprovamos tamaño del dispositivo
+
+    function isMobile() {
+      return window.innerWidth <= 865; 
+    }
+
 
 // FUNCIÓ PER GENERAR MARKERS I RUTA segons els filtres actius
 function generarMapaIRuta(iconMarker) {
@@ -313,12 +319,6 @@ function generarMapaIRuta(iconMarker) {
     }).setContent(popupContent);
 
     marker.bindPopup(popup);
-
-    //Comprovamos tamaño del dispositivo antes de abrir los popups
-
-    function isMobile() {
-      return window.innerWidth <= 865; 
-    }
 
     // Abrir el pop-up temporalmente con mouseover
     marker.on('mouseover', function () {
@@ -458,6 +458,119 @@ function generarMapaIRuta(iconMarker) {
   }
 
 }
+
+//Calculo del tiempo segun posición del usuario (API: https://project-osrm.org/docs/v5.7.0/api/#responses)
+
+
+// Función para obtener el tiempo caminando con la API de OSRM
+async function obtenirTempsOSRM(userLat, userLng, destLat, destLng) {
+  try {
+    const url = `https://router.project-osrm.org/route/v1/foot/${userLng},${userLat};${destLng},${destLat}?overview=false`;
+    //El tiempo no es muy preciso pero se mantiene el sistema de la Api como muestra
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Error OSRM: ' + response.status);
+
+    const data = await response.json();
+    if (data.routes && data.routes.length > 0) {
+      const tempsSegons = data.routes[0].duration;
+      const tempsMin = Math.round(tempsSegons / 60); // convertir a minutos
+      return tempsMin;
+    } else {
+      return null;
+    }
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+// WatchPosition del usuario (solo en modo móvil)
+
+if ("geolocation" in navigator) {
+  navigator.geolocation.watchPosition(
+    async (position) => {
+      const userLat = position.coords.latitude;
+      const userLng = position.coords.longitude;
+
+      for (const ubicacio of allLocations) {
+        if (!ubicacio.coordinates?.lat || !ubicacio.coordinates?.lng) continue;
+
+        const tempsMin = await obtenirTempsOSRM(
+          userLat,
+          userLng,
+          ubicacio.coordinates.lat,
+          ubicacio.coordinates.lng
+        );
+
+        if (tempsMin !== null) {
+          // Solo actualiza los datos en modo móvil
+          if (window.innerWidth <= 865) {
+            const liTempsElems = document.querySelectorAll(
+              `.card-llocs[data-id='${ubicacio.id}'] .li-mapa.mini`
+            );
+            const liTemps = liTempsElems[1];
+            if (liTemps) {
+              liTemps.textContent = `${tempsMin} min caminant`;
+              liTemps.dataset.id = ubicacio.id;
+            }
+
+            map.eachLayer((layer) => {
+              if (layer instanceof L.Marker && layer.options.idLloc === ubicacio.id) {
+                const popup = layer.getPopup();
+                if (popup) {
+                  popup.setContent(`
+                    <div class="popup-marker">
+                      <h3>${ubicacio.name}</h3>
+                      <p><strong>${ubicacio.woman}</strong></p>
+                      <p>Temps estimat caminant: ${tempsMin} min</p>
+                    </div>
+                  `);
+                }
+              }
+            });
+          }
+        }
+      }
+    },
+    (err) => console.error(err),
+    { enableHighAccuracy: true, maximumAge: 10000, timeout: 10000 }
+  );
+}
+
+// Listener para redimensionar la ventana y restaurar info JSON en modo desktop
+window.addEventListener("resize", () => {
+  allLocations.forEach((ubicacio) => {
+    const liTempsElems = document.querySelectorAll(
+      `.card-llocs[data-id='${ubicacio.id}'] .li-mapa.mini`
+    );
+    const liTemps = liTempsElems[1]; // segundo <li>
+
+    if (!liTemps) return;
+
+    if (window.innerWidth > 865) {
+      // Desktop: volver a la info del JSON
+      liTemps.textContent = `Temps: ${ubicacio.temps || "20 min"}`;
+      delete liTemps.dataset.id;
+
+      // Popup también recupera la info del JSON
+      map.eachLayer((layer) => {
+        if (layer instanceof L.Marker && layer.options.idLloc === ubicacio.id) {
+          const popup = layer.getPopup();
+          if (popup) {
+            popup.setContent(`
+              <div class="popup-marker">
+                <h3>${ubicacio.name}</h3>
+                <p><strong>${ubicacio.woman}</strong></p>
+                <p>${ubicacio.temps}</p>
+              </div>
+            `);
+          }
+        }
+      });
+    }
+  });
+});
+
 
 
 

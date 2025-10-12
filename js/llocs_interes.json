@@ -4,7 +4,7 @@
         "id":1,
         "name": "Museu del Mar",
         "woman": "Lliberada Parés",
-        "image": "../files/img/museu_mar.wepb",
+        "image": "../files/img/museu_mar.webp",
         "coordinates": {
             "lat": 41.699524,
             "lng": 2.850787
@@ -34,7 +34,7 @@
         "id":3,
         "name": "Castell St Joan",
         "woman": "Sicardis de Montsoriu",
-        "image": "../files/img/castell_joan.wepb",
+        "image": "../files/img/castell_joan.webp",
         "coordinates": {
             "lat":41.693890531324804,
             "lng":2.839347646389623

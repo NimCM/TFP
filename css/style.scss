@@ -1028,14 +1028,14 @@ a.btn:hover, .btn:hover{
   overflow-x: clip; /* Esconde el trozo de la bola que queda fuera de la pantalla */
   overflow-y: visible;
   z-index: 10;
-  min-height: 90vh;
+  min-height: 110vh;
 
 }
 
 .bola{
     background-color: $lightPurple;
     border-radius: 50%;
-    width: clamp(590px, 80vw, 800px);
+    width: clamp(590px, 80vw, 700px);
     min-height: 700px;
     aspect-ratio: 1/1;
     justify-self: end;
@@ -1044,8 +1044,8 @@ a.btn:hover, .btn:hover{
     position:absolute;
     z-index: 9999; /* Para ponerla encima de la sección lower */
     margin-left: auto;
-    top:20%;
-    right:-10%;
+    top:15%;
+    right:-8%;
     pointer-events: auto;
     padding: 5px;
     
@@ -1075,8 +1075,13 @@ a.btn:hover, .btn:hover{
 
     }
 
-    .info-ficha, .lu-ficha, .dona-ficha, .lloc-ficha{
+    .info-ficha, .dona-ficha, .lloc-ficha{
         align-self: flex-end;
+        text-align: right;
+        padding-left: 15px;
+    }
+
+    .lu-ficha{
         text-align: right;
         padding-left: 15px;
     }
@@ -1110,6 +1115,10 @@ a.btn:hover, .btn:hover{
             gap:30px;
         }
 
+    }
+
+    p{
+        font-size: clamp(16px, 1.5vw, 18px);
     }
  
 
@@ -1243,6 +1252,16 @@ a.btn:hover, .btn:hover{
             max-height: 80%;
             align-self: center;
         }
+    }
+}
+
+@media (min-width:1880px){
+    .bola{
+     width: clamp(590px, 80vw, 750px);
+    }
+
+    .upper-section-ficha{
+        min-height: 80vh;
     }
 }
 
