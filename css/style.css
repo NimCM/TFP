@@ -1336,6 +1336,10 @@ a.btn:hover, .btn:hover {
   align-self: center;
 }
 
+.btns-movile {
+  display: none;
+}
+
 @media (min-width: 1880px) {
   .bola {
     width: clamp(590px, 80vw, 750px);
@@ -1362,6 +1366,7 @@ a.btn:hover, .btn:hover {
   .bola {
     border-radius: 800px 0 0 0;
     width: 100%;
+    min-height: 200px;
     aspect-ratio: auto;
     position: static;
     margin-top: 72vh;
@@ -1369,15 +1374,19 @@ a.btn:hover, .btn:hover {
     flex-direction: column;
     align-items: flex-end;
     z-index: 0; /* Bajamos el index para poner la bola por debajo del header */
+    padding: 10px;
   }
   .bola .share-ficha {
     margin-right: 40%;
   }
   .bola .textos-ficha {
-    max-width: 90%;
+    max-width: 70%;
   }
-  .bola .iconos-ficha, .bola .btn-next-ficha {
+  .bola .iconos-ficha {
     margin-right: 0;
+  }
+  .bola .btn-next-ficha {
+    display: none;
   }
   .lower-section-ficha {
     background-color: #dec7eb;
@@ -1446,5 +1455,14 @@ a.btn:hover, .btn:hover {
     position: relative;
     width: 100%;
     margin-top: auto;
+  }
+  .btn-desktop {
+    display: none;
+  }
+  .btns-movile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */
