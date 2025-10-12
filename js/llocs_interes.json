@@ -13,7 +13,7 @@
         "temps":"0 mins",
         "price": "pagament",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Lliberada Parés va ser una dona lloretenca del segle XIX que va desafiar el destí i les normes del seu temps. Casada molt jove amb un indià ric, va quedar vídua abans dels vint-i-cinc anys i es va trobar envoltada de fortuna, sospites i expectatives. Quan va tornar a enamorar-se, la seva vida es va convertir en notícia: el testament del primer marit la condemnava a perdre-ho tot si tornava a casar-se, i ella va lluitar per defensar el seu dret a estimar i a viure lliurement. Intel·ligent, hàbil i decidida, va saber moure’s entre jutjats i ajuntaments per conservar part del que havia guanyat. La seva història, plena de coratge i escàndol, ressona encara al Museu del Mar com el retrat d’una dona que no es va deixar doblegar ni per la llei ni per les convencions."
     }, 
     {
         "id":2,
@@ -28,7 +28,7 @@
         "temps":"20 mins",
         "price": "gratuit",
         "access": "no_accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "La figura de la Dona Marinera és la veu col·lectiva de tantes dones del litoral: aguantant el fred de les matinades, cridant el peix del dia, bordant la trama del barri i del port amb les seves paraules. Algunes tradicions locals suggereixen que aquesta figura es basa en la Sra. Margarita Puig Esqueu, però això no és del tot cert per a totes les fonts, així que cal entendre-ho com una imatge que encarna moltes històries reals. Sigui com sigui, la Dona Marinera representa la resistència quotidiana, la complicitat amb la mar i la comunitat: dona que anuncia, avisa, cuida i sosté la vida de la platja amb una veu que creua carrers i memòria."
     },
     {
         "id":3,
@@ -43,7 +43,7 @@
         "temps":"20 mins",
         "price": "pagament",
         "access": "no_accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Sicardis de Montsoriu va néixer al segle XI com a hereva de les terres del seu pare. Tot i ser només una nena quan va quedar orfe, el seu esperit, intel·ligència i determinació la portarien a reclamar i defensar el seu dret sobre Lloret, responsabilitat que va assumir amb plena consciència. Casada amb Umbert Odó, va ser Senyora de Lloret i va promoure la consagració d’esglésies, com Sant Joan del Castell i Sant Romà, contribuint al paisatge espiritual i material de la vila. Fins a la seva mort al 1104, Sicardis va ser pilar de poder i llegat, sent reconeguda segles després quan Lloret va batejar una plaça amb el seu nom, la Plaça de Madona Sicardis de Montsoriu, record viu d’una dona que va marcar la història."
     },
     {
         "id":4,
@@ -58,7 +58,7 @@
         "temps":"30 mins",
         "price": "pagament",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Clotilde de Rocamora i Rosés, musa i dama elegant del seu temps, va inspirar els Jardins de Santa Clotilde, un paradís de verd i mar creat pel seu espòs, el marquès de Roviralta, com a homenatge al seu nom i al seu esperit. Entre els xiprers i les fonts renaixentistes, encara ressona la seva presència, símbol de bellesa, sensibilitat i del vincle entre l’amor, l’art i la natura que formen part de l’ànima de Lloret de Mar."
     },
     {
         "id":5,
@@ -73,7 +73,7 @@
         "temps":"2 mins",
         "price": "pagament",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Maria Llimona, filla d’una nissaga d’artistes, va descobrir la seva veu escultòrica ja madura, forjada en l’exili i en la recerca de la bellesa. Amb pacient deteniment va donar forma a les cinc sirenes de bronze que custodia l’escala dels Jardins de Santa Clotilde, figures que semblen respirar mar i llegenda, misteri i gràcia, penjant sobre el Mediterrani i el temps. La seva obra, noble i harmònica, reflecteix un esperit noucentista, fidel a la línia, al cos femení, al retrat i al sentiment religiós. Cada obra seva és un murmuri poètic: bellesa que reposa, que observa, que convida a la contemplació."
     },
     {
         "id":6,
@@ -88,7 +88,7 @@
         "temps":"35 mins",
         "price": "gratuit",
         "access": "no_accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Santa Cristina és la patrona de Lloret de Mar, una figura que combina llegenda, fe i identitat marinera. Diu la tradició que va ser una jove màrtir dels primers temps del cristianisme, que va preferir mantenir la seva fe abans que renegar-ne davant els perseguidors. El seu nom i la seva història van travessar segles fins arrelar al cor dels lloretencs, que cada 24 de juliol li reten homenatge amb la processó marinera fins a la seva ermita. L’ermita de Santa Cristina, blanca i serena damunt la costa, és un santuari de pau i devoció, símbol d’un poble que troba en aquesta santa la força, la protecció i la bellesa del seu mar."
     },
     {
         "id":7,
@@ -103,7 +103,7 @@
         "temps":"45 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Dolors Montserdà és nom d’escriptora, veu fermament catalana que va posar paraula i consciència a la vida de les dones. Entre la seva obra i la devoció local, se l’ha vinculat a la composició dels Goigs de Sant Pere del Bosc, una manifestació breu però profunda de fe i de llenguatge popular que uneix la pietat i la tradició. Recordar Montserdà és evocar una dona que no només escrivia, sinó que també treballava per la dignitat femenina, per projectes socials i per donar veu a les necessitats de la seva època: lletra que consola, que guia i que perdura."
     },
     {
         "id":8,
@@ -118,7 +118,7 @@
         "temps":"35 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Càndida Masgrau i Campeny, arribada de Massanes quan era jove, va esdevenir l’ànima d’un barri que amb els seus esforços i lluites després va prendre el seu nom. Mare de nombrosos fills, compromesa amb el seu veïnat, va batallar per serveis bàsics: llum al carrer, seguretat, dignitat de pobles emergents. No hi tenia gaire, però en canvi donava molt: menjar si calia, paraules d’ànim, defensa dels drets dels qui vivien prop. El barri de Puigventós —“Barri de la Càndida”— és el testimoni viu de la seva empenta, del record d’una dona que va fer-se escoltar i estimar."
     },
     {
         "id":9,
@@ -133,7 +133,7 @@
         "temps":"35 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "La Senyora de Rossell és llegenda i lliçó, dama d’un temps d’esplendor que després es va vestir de senzillesa i humilitat. Antiga propietària del mas i cavallera de llunyanes aparicions a missa, la història explica la seva caiguda econòmica i la transformació humil que va seguir: ja no la cort, sinó el pa amb nous ofert per una masovera, i unes paraules de recança que van tornar a fer-li trobar gust per les coses senzilles. És el record d’una dona poderosa que, en perdre-ho tot, va retrobar la seva humanitat; i l’ermita de la Mare de Déu de les Alegries segueix sent el lloc on aquesta imatge es fa llegenda i lloc comú del poble."
     },
     {
         "id":10,
@@ -148,7 +148,7 @@
         "temps":"25 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Nascuda a Girona el 1895, Àngels Alemany i Boris va dedicar la seva vida a l’ensenyament i a la formació de nenes en un moment en què l’educació de les dones encara no era una prioritat per a molts. Amb pas ferm va ocupar, entre altres càrrecs, la direcció de l’Escola Nacional de nenes, i va sobreviure als embats d’una guerra que posava a prova els principis. Malgrat les imposicions, es va mantenir fidel als valors de dignitat, respecte i compromís educatiu. Va retornar després de conflictes i injustícies, i va deixar gravat en Lloret una escola que duu el seu nom, com a homenatge a aquella mestra que va sembrar llum en temps foscos."
     },
     {
         "id":11,
@@ -163,7 +163,7 @@
         "temps":"2 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Gertrudis Moret i Farigola, natural de Salt, va ser mestra a Lloret, i va veure amb ulls sensibles les mancances de la seva comunitat. Amb cor i generositat va posar-se al servei de les dones treballadores obrint una escola nocturna gratuïta perquè poguessin aprendre encara després de les jornades laborals. Creia que l’educació no és només per als qui tenen temps i privilegi, sinó també per als qui treballen, per qui es lleva abans i acaba tard. Un gest modest, però valent, que ressona encara en el carrer que la recorda al barri Rieral i en els cors de qui sap que educar és sembrar esperança."
     },
     {
         "id":12,
@@ -178,7 +178,7 @@
         "temps":"15 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Antònia Parés i Macià va néixer a Lloret de Mar el 1913 i es va forjar en la cultura, l’amor als llibres i la vocació de servei. Formada en biblioteconomia, va exercir en temps difícils, entre exili i retorn, amb la seva biblioteca com a refugi i pont de comunicació. Entre llibre i llibre, entre lectora i lectora, va donar vida a un ofici callat però essencial, obrint finestres d’aprenentatge i companyia. És recordada com a dona amable, decidida, que va estimar la paraula escrita i va fer de la biblioteca un espai per a molts."
     },
     {
         "id":13,
@@ -193,7 +193,7 @@
         "temps":"0 mins",
         "price": "gratuit",
         "access": "accessible",
-        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit."
+        "info": "Rosita Mistos, Rosa Rodés que cridava el peix, és la veu sonora de la zona del carrer Venècia: posava pals per treure les barques, anunciava captura i vegades, i guardava en la seva veu i en la seva figura l’eco d’una comunitat marinera. Entre nits a la barca i dies plantant flors al seu voltant, Rosita va ser també la portaveu del que passava al port, la tafanera carinyosa i l’ànima que explicava el Lloret antic a qui volgués escoltar. Fins als seus darrers anys, quan anava vestida amb davantal i parlava pels carrers, va ser testimoni viu d’un món que ja gairebé no existeix: veu, gest i memòria d’un poble de mar."
     }
 ],
 "filters": {

@@ -710,7 +710,7 @@ a.btn:hover, .btn:hover {
   display: flex;
   flex-direction: row;
   gap: 14px;
-  max-height: 230px;
+  max-height: 240px;
   transform: scale(0.95);
 }
 .card-llocs .text-list {
@@ -889,6 +889,10 @@ a.btn:hover, .btn:hover {
 
 .leaflet-right .leaflet-routing-container.leaflet-routing-container-hide {
   display: none; /* Esconder el cuadro de indicaciones de leaflet */
+}
+
+.leaflet-tile {
+  filter: grayscale(40%) contrast(90%) !important; /* Se aplica un filtro de escala de grises en el mapa para que se vean mejor los markers*/
 }
 
 /* Estilo del contenido del popup */
@@ -1114,7 +1118,8 @@ a.btn:hover, .btn:hover {
 .bola {
   background-color: #dec7eb;
   border-radius: 50%;
-  width: clamp(590px, 60vw, 650px);
+  width: clamp(590px, 80vw, 800px);
+  min-height: 700px;
   aspect-ratio: 1/1;
   justify-self: end;
   /* Desplazar la bola a la derecha de la pantalla */
@@ -1153,8 +1158,8 @@ a.btn:hover, .btn:hover {
   align-items: end;
   position: relative;
   z-index: 2;
-  max-width: 60%;
-  margin-left: 40px;
+  max-width: 70%;
+  margin-left: 50px;
 }
 .bola .info-ficha, .bola .lu-ficha, .bola .dona-ficha, .bola .lloc-ficha {
   align-self: flex-end;

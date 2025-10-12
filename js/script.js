@@ -163,10 +163,10 @@ setTimeout(function() {
     const userIcon = L.icon({
       iconUrl: 'data:image/svg+xml;base64,' + btoa(`
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-          <circle cx="12" cy="12" r="8" fill="#dec7eb" stroke="#693c82" stroke-width="2"/>
+          <circle cx="12" cy="12" r="8" fill="#c8e28b" stroke="#693c82" stroke-width="2"/>
         </svg>
       `),
-      iconSize: [24, 24],
+      iconSize: [24, 24], //#dec7eb  #c8e28b 
       iconAnchor: [12, 12]
     });
 
@@ -288,44 +288,146 @@ function generarMapaIRuta(iconMarker) {
   let waypoints = []; //crear un array a partir de los puntos del JSON
   
   // Crear solo markers de las ubicaciones filtradas
-  ubicacionsFiltrades.forEach((ubicacio) => {
-    if (!ubicacio.coordinates || !ubicacio.coordinates.lat || !ubicacio.coordinates.lng) {
-      return;
-    }
-  
 
-    var marker = L.marker([ubicacio.coordinates.lat, ubicacio.coordinates.lng], {icon: iconMarker}).addTo(map); //recopilación de las coordenadas para ponerlas con un marcador
-    
-    const popupContent = `
+  const markersMap = {}; //Constante para que el mouseover en las cards reslate los markers
+
+  ubicacionsFiltrades.forEach((ubicacio) => {
+    if (!ubicacio.coordinates?.lat || !ubicacio.coordinates?.lng) return;
+
+    const marker = L.marker(
+      [ubicacio.coordinates.lat, ubicacio.coordinates.lng], //recopilación de las coordenadas para ponerlas con un marcador
+      { icon: iconMarker, idLloc: ubicacio.id } // guardar id del marcador
+    ).addTo(map);
+
+    const popupContent = ` 
       <div class="popup-marker">
         <h3>${ubicacio.name}</h3>
         <p><strong>${ubicacio.woman}</strong></p>
         <p>${ubicacio.temps}</p>
       </div>
-    `;
-    
-    marker.bindPopup(popupContent); //Abrir pop up al pasar el ratón por encima
-    
+    `; //Contenido del pop-up
 
-    marker.on('mouseover', function() { //Abrir popup al pasar el ratón
+    const popup = L.popup({
+      closeButton: true, //que el pop-up fijo tenga la cruz para cerrar
+      autoClose: false, // no cierra automáticamente cuando se abren  pop-ups con mouseover
+    }).setContent(popupContent);
+
+    marker.bindPopup(popup);
+
+    //Comprovamos tamaño del dispositivo antes de abrir los popups
+
+    function isMobile() {
+      return window.innerWidth <= 865; 
+    }
+
+    // Abrir el pop-up temporalmente con mouseover
+    marker.on('mouseover', function () {
+      if (isMobile()) return; //Si es dispositivo móvil no aplicar
+      if (!this.isPopupOpen()) {
+        this.openPopup();
+        // esconder la cruz en los pop-ups temporales
+        if (this._popup._closeButton) this._popup._closeButton.style.display = 'none';
+      }
+    });
+
+    // Cerrar el pop-up cuando el mouse no está encima
+    marker.on('mouseout', function () {
+      if (isMobile()) return;  //Si es dispositivo móvil no aplicar
+      if (!this._popup.options.permanent) {
+        this.closePopup();
+      }
+    });
+
+    // Abrir pop-up con click permanente
+    marker.on('click', function () {
+      // cerrar otros pop-ups permanentes
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker && layer._popup && layer.isPopupOpen()) {
+          layer.closePopup(); 
+          // desmarcar la card seleccionada anteriormente
+          const prevId = layer.options.idLloc;
+          if (prevId) {
+            document.getElementById(prevId)?.classList.remove('card-highlighted'); //elimina la classe highlighted de la card
+          }
+          layer._popup.options.permanent = false;
+        }
+      });
+
+      // abrir popup actual como permanente
+      this._popup.options.permanent = true;
+      this._popup.options.closeOnClick = true; // el pop-up permanente se cierra al tocar fuera del popup
       this.openPopup();
-    });
+      if (this._popup._closeButton)
+        this._popup._closeButton.style.display = ''; // muestra la cruz de cerrar
 
-
-
-    marker.on('mouseout', function() {//cerrar el popup al quitar el ratón
-      this.closePopup();
-    });
-
-    marker.on('click', function() { //Añadir event listener para el click, así centrará la card solo con clicl, no con mouseover
       gestionarClicMarcador(ubicacio.id);
-      this.openPopup();
     });
 
-    waypoints.push(L.latLng(ubicacio.coordinates.lat, ubicacio.coordinates.lng)); //añadimos los waypoints al control de rutas
+    //Quitar la classe highlighted de las cards cuando se des-selecciona el pop-up permanente
+    marker.on('popupclose', function () {
+      this._popup.options.permanent = false;
+      const card = document.getElementById(ubicacio.id);
+      if (card) card.classList.remove('card-highlighted');
+    });
+
+    markersMap[ubicacio.id] = marker; //Guardar el marker para el id
+    waypoints.push(L.latLng(ubicacio.coordinates.lat, ubicacio.coordinates.lng));
   });
+
+  //Mouseover en las cards aplica trasnformacion en los markers
+
+  document.querySelectorAll('.card-llocs').forEach(card => {
+    const idLloc = card.id;
+    const marker = markersMap[idLloc];
+    if (!marker) return;
+
+    card.addEventListener('mouseenter', () => {
+      const iconMarkerHover = L.icon({
+      iconUrl: '../css/icons/altres/ubi-ultralight.png',
+      iconSize: [50, 50],      // tamaño nuevo
+      iconAnchor: [20, 40]     // punto de anclaje, des de donde sale el marker 
+    });
+      marker.setIcon(iconMarkerHover);
+    });
+
+    card.addEventListener('mouseleave', () => { //Cuando el mouse deja la card, el marker vuelve a su tamaño real
+      marker.setIcon(iconMarker);
+    });
+  });
+
+  //En modo móvil, que cuando la card este visible en pantalla se resalte el marker
   
-  console.log('✓ Markers creats:', waypoints.length);
+    const iconHighlightMobile = L.icon({ //Icono de resaltar el marker, la misma que en desktop pero a parte por si la quiero cambiar
+      iconUrl: '../css/icons/altres/ubi-ultralight.png',
+      iconSize: [50, 50],
+      iconAnchor: [20, 40]
+    });
+
+    function isMobileHighlight() { //Detectar si esta en dispositivo móvil
+      return window.innerWidth <= 865;
+    }
+
+    const observer = new IntersectionObserver((entries) => { //Observar la posición de las cards para ver si estan completamente visbles
+      entries.forEach(entry => {
+        const card = entry.target;
+        const marker = markersMap[card.id];
+        if (!marker) return;
+
+        if (isMobileHighlight()) { // solo en modo mobil
+          if (entry.isIntersecting) {
+            marker.setIcon(iconHighlightMobile); // Resaltar marker (cambiarlo por el icono definifo arriba)
+          } else {
+            marker.setIcon(iconMarker); // Volver al original
+          }
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.5 // ≥50% visible de la card para aplicar el cambio
+    });
+
+    // Observamos todas las cards
+    document.querySelectorAll('.card-llocs').forEach(card => observer.observe(card));
   
   // Crear la ruta només amb els punts filtrats
   if (waypoints.length > 1) {
@@ -338,7 +440,7 @@ function generarMapaIRuta(iconMarker) {
       addWaypoints: false, //evitar que el usuario pueda añadir puntos nuevos
       routeWhileDragging: true,
       lineOptions: {
-        styles: [{color: '#260936', weight: 4}] //estilo de la ruta
+        styles: [{color: '#9f7fb2ff', weight: 4}] //estilo de la ruta #260936
       },
       createMarker: function() { return null; } //no crear marcadores automáticos
     }).addTo(map);
@@ -356,6 +458,8 @@ function generarMapaIRuta(iconMarker) {
   }
 
 }
+
+
 
 
 //HIGHLIGHT EN LAS CARDS CUANDO SE SELECCIONA EL MARKER (AI: https://claude.ai/share/fdae29c0-6a77-4323-a448-f155343b5914)
