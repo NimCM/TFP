@@ -125,6 +125,15 @@ header.scrolled { /* Definición de las propiedades CSS de la class scrolled que
   padding: 20px 10px 5px 20px;
 }
 
+.header-inicio.scrolled a, .header-inicio.scrolled li, .header-inicio.scrolled button, .header-inicio.scrolled img {
+  color: #dec7eb;
+  /* Nos asseguramos que el texto es de color claro al hacer scroll por si en alguna ficha decidimos cambiar el color de base */
+}
+
+.header-inicio-ficha {
+  background-color: rgba(105, 60, 130, 0.7);
+}
+
 a {
   text-decoration: none;
 }

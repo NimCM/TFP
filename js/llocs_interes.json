@@ -19,7 +19,7 @@
         "id":2,
         "name": "Dona Marinera",
         "woman": "Sra Margarita Puig Esqueu",
-        "image": "../files/img/dona_marinera_tochange.jpg" ,
+        "image": "../files/img/dona_marinera.jpg" ,
         "coordinates": {
             "lat":41.695193363493644, 
             "lng":2.844887902220333
@@ -184,7 +184,7 @@
         "id":13,
         "name": "Carrer Venècia",
         "woman": "Rosita Mistos",
-        "image": "../files/img/dona_marinera_tochange.jpg",
+        "image": "../files/img/zona_venecia.jpg",
         "coordinates": {
             "lat":41.70073994037073,
             "lng":2.852665029935177
