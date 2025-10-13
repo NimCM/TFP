@@ -19,7 +19,7 @@
         "id":2,
         "name": "Dona Marinera",
         "woman": "Sra Margarita Puig Esqueu",
-        "image": "../files/img/dona_marinera.jpg" ,
+        "image": "../files/img/dona_marinera_cut.jpg" ,
         "coordinates": {
             "lat":41.695193363493644, 
             "lng":2.844887902220333
