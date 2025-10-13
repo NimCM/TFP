@@ -133,6 +133,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  if (document.getElementById('map')){
+    initMAP();
+  }
+
+  if (!imgElement) return;
+  if (document.getElementById("btnAntChange")){
+    updateButtonIcon(mediaQuery);
+  }
+  
+
+}); //Cierre DOM Loaded
+
+
 
 // MAPA con LEAFLET (con filtros y depslegable, AI:  https://claude.ai/share/35d57a74-0b43-457e-8c57-a7fdcd718f39)
 
@@ -144,7 +157,7 @@ let volAccessible = false;
 let volGratuit = false;
 
 //Inicializamos el mapa y elegimos las coordenadas del sitio que se ve y el zoom
-setTimeout(function() { 
+function initMAP(){
   map = L.map('map').setView([41.70220603341134, 2.8357029478855527], 13);  //Coordenadas Museu del Mar, inicio de la ruta
   console.log('✓ Mapa carregat correctament');
   
@@ -224,31 +237,32 @@ setTimeout(function() {
 
   // Cargar el JSON
   fetch('js/llocs_interes.json') //link con el archivo JSON
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (!Array.isArray(data.locations)) {
-        throw new Error('Les dades no són un array');
-      }
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (!Array.isArray(data.locations)) {
+      throw new Error('Les dades no són un array');
+    }
 
-      allLocations = data.locations; // Guardar totes les ubicacions
-      console.log('✓ Dades carregades:', allLocations.length, 'ubicacions');
-      
-      // Generar markers y ruta inicial (con todos los puntos)
-      generarMapaIRuta(ubiLight);
-      
-      // Inicializar los filtros  despues de cragar los datos
-      inicialitzarFiltres();
-    })
-    .catch(error => {
-      console.error('Error detallat:', error);
-    });
+    allLocations = data.locations; // Guardar totes les ubicacions
+    console.log('✓ Dades carregades:', allLocations.length, 'ubicacions');
+    
+    // Generar markers y ruta inicial (con todos los puntos)
+    generarMapaIRuta(ubiLight);
+    
+    // Inicializar los filtros  despues de cragar los datos
+    inicialitzarFiltres();
+  })
+  .catch(error => {
+    console.error('Error detallat:', error);
+  });
 
-}, 100); 
+}
+
 
 //Comprovamos tamaño del dispositivo
 
@@ -871,8 +885,11 @@ document.querySelectorAll('.form-comentari').forEach(function(form){
 
   const imgElement = document.getElementById("btnAntChange");
 
+  
   // Función que actualiza la imagen segun media queries
   function updateButtonIcon(e) {
+    const isMatch = e.matches ?? window.matchMedia("(max-width: 769px)").matches;
+
     if (e.matches) {
       imgElement.src = imgLight; // si el media queries se cumple se pone la imagen Light
     } else {
@@ -885,8 +902,5 @@ document.querySelectorAll('.form-comentari').forEach(function(form){
 
   mediaQuery.addEventListener("change", updateButtonIcon);
 
-  // Executar al cargar la página
-  updateButtonIcon(mediaQuery);
 
-});
 
