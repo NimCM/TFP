@@ -1026,10 +1026,10 @@ a.btn:hover, .btn:hover{
     background-repeat: no-repeat; /* La imagen no se repite en el caso de que no rellene el fondo */
     top: 0;
     left: 0;
-    min-height: 70vh;
+    min-height: 110vh;
     position: relative;
     z-index: 0;
-    background-size: auto;
+    background-size: cover;
 }
 
 .upper-section-ficha {
@@ -1273,9 +1273,9 @@ a.btn:hover, .btn:hover{
      width: clamp(590px, 80vw, 750px);
     }
 
-    .upper-section-ficha{
+    /*.upper-section-ficha{
         min-height: 80vh;
-    }
+    }*/
 }
 
 @media (min-width: 770px) and (max-width: 860px) {

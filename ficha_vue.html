@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+
+    <!--Link a los archivos CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="card" :key="card.id">
+        <div class="hero-bg"  :style="{ backgroundImage: `url(${card.image})` }">
+        <header class="header-inicio header-inicio-ficha">
+            <div class="logo-link">
+                <a href="index.html"><img src="./css/logos/logo-hightlightgreen.png" id="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona"></a>
+            </div>
+            <nav class="menu-nav-desplegable">
+               <button class="navegacion proba" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="./css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
+                <ul id="menu-navegacion">
+                    <li><a href="index.html#comfunciona" class="text-dark">Com funciona?</a></li>
+                    <li><a href="#" class="text-dark">Punts d'interès</a></li>
+                    <li><a href="index.html#section-accessibilitat" class="text-dark">Accessibilitat</a></li>
+                    <li><a href="mapa.html" class="text-dark">Mapa</a></li>
+                    <li><a href="#" class="text-dark">Contacte</a></li>
+                    <li><a href="#" class="text-dark">Log-in</a></li>
+                </ul>
+            </nav>
+            <!--Enlaces de cambio de idioma con icono-->
+            <div class="menu-idioma-desplegable">
+                <button class="idioma" id="idioma-btn" aria-expanded="false" aria-controls="menu-idioma"><a href="#"><img src="css/icons/idioma/cat_dark.webp" alt="Icona idioma català"></button>
+            
+                <ul id="menu-idioma" class="menu-idioma-oculto" hidden>
+                    <li class="idioma oculto"><a href="#"><img src="./css/icons/idioma/esp_dark.webp" alt="Icona idioma castellà"></a></li>
+                    <li class="idioma oculto"><a href="#"><img src="./css/icons/idioma/eng_dark.webp" alt="Icona idioma anglès"></a></li>
+                    <li class="idioma oculto"><a href="#"><img src="./css/icons/idioma/fr_dark.webp" alt="Icona idioma francès"></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main id="main-index">
+            <div class="upper-section-ficha">
+                <div class="bola">
+                    <button class="btn btn-share btn-light share-ficha"><img src="./css/icons/btn/share-green.png" class="btn-icon-share" alt="Botó per a compartir la pàgina amb una icona de avió de paper"></button>
+                    <section class="textos-ficha">
+                        <h1 class="text-ultralight lloc-ficha"> {{ card.name }}</h1>
+                        <h2  class="text-light dona-ficha"> {{ card.woman }}</h2>
+                        <p class="text-ultralight info-ficha">{{ card.info }}</p>
+                    </section>
+                    <section class="iconos-ficha">
+                        <div class="temps-ficha">
+                            <img src="./css/icons/access/temps_light.png" class="icona-ficha" alt="Icona de un rellotge">
+                            <p  class="temps-ficha-mini">{{card.temps}}</p>
+                        </div>
+                        <div class="icones-ficha-json" :data-id="card.id"> <!--:data-id="card.id".  -->
+                            <img class="icona-access icona-ficha" alt="">
+                            <img class="icona-preu icona-ficha" alt="">
+                        </div>
+                        <ul :data-id="card.id" class="text-ultralight lu-ficha"></ul>
+                    </section>
+            
+                    <a :href="`ficha_vue.html?id=${nextId}`" class="btn btn-next btn-light btn-next-ficha btn-desktop">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
+                    <div class="btns-movile">
+                        <a :href="`ficha_vue.html?id=${nextId}`" class="btn btn-ant btn-dark-border btn-ant-ficha"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+                        <a :href="`ficha_vue.html?id=${prevId}`"class="btn btn-next btn-light">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="lower-section-ficha">
+                <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha btn-desktop"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+               
+                <div class="lower-comentaris">
+                    <section class="otros-comentarios">
+                        <h2 class="text-dark">Comentaris</h2>
+                        <div  class="scroll-comments">
+                            <article class="comentari">
+                                <h3 class="text-ultralight">Fàtima Vidal</h3>
+                                <p class="text-ultralight">Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
+                            </article>
+                            <article class="comentari">
+                                <h3>Tilda Clua Leal</h3>
+                                <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
+                            </article>
+                            <article class="comentari">
+                                <h3>Cesca Mas Marquès</h3>
+                                <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                            </article>
+                            <article class="comentari">
+                                <h3>Sita Clua Leal</h3>
+                                <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
+                            </article>
+                            <article class="comentari">
+                                <h3>Ricard Caparròs Navarro</h3>
+                                <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
+                            </article>
+                            <article class="comentari">
+                                <h3>Manuel García López</h3>
+                                <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                            </article>
+                        </div>
+                    </section>
+                    <section class="formulari-comentari">
+                        <h2 class="text-dark">Deixa el teu comentari...</h2>
+                        <form action="#" method="post" class="form-comentari">
+                            <label for="nom" class="titols-form text-dark">Nom:</label>
+                            <input type="text" id="nom" name="nom"  placeholder="El teu nom">
+
+                            <label for="comentari" class="titols-form text-dark">Comentari:</label>
+                            <textarea id="comentari" name="comentari" rows="4"  placeholder="Què t'ha semblat el lloc?"></textarea>
+
+                            <button type="submit" class="btn btn-primary btn-dark btn-enviar">Enviar</button>
+                            <p id="feedbackform"></p>
+                        </form>
+                    </section>
+                    <section class="mobile-qr">
+                        <h2 class="text-dark">Prova-ho al mòbil!</h2>
+                        <div class="mobile-qr-img">
+                            <img src="./files/img/qr.png" class="img-qr" alt="Codi QR per a accedir a la app al mòbil">
+                            <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
+                        </div>
+                    </section>
+                 </div>
+            </div>
+
+
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="./js/app.js"></script>
+    <!--<script src="js/prova_script.js"></script> -->
+
+  </body>
+</html>
