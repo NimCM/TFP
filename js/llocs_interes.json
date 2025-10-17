@@ -79,7 +79,7 @@
         "id":6,
         "name": "Ermita Sta Cristina",
         "woman": "Santa Cristina",
-        "image": "../files/img/sta_cristina",
+        "image": "../files/img/sta_cristina.jpg",
         "coordinates": {
             "lat":41.68782400415335,
             "lng":2.8162711972034855

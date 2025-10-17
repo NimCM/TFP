@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
+    <title>Lloret en femení</title>
 
     <!--Link a los archivos CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
   </head>
-  <body>
+  <body id="ficha-body">
     <div id="app">
       <div v-if="card" :key="card.id">
         <div class="hero-bg"  :style="{ backgroundImage: `url(${card.image})` }">
@@ -19,7 +19,7 @@
                 <a href="index.html"><img src="./css/logos/logo-hightlightgreen.png" id="logo" alt="Logo de Lloret en femení, agulla de ubicació amb forma del símbol de la dona"></a>
             </div>
             <nav class="menu-nav-desplegable">
-               <button class="navegacion proba" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden><a href="#"><img src="./css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
+               <button class="navegacion proba" id="nav-btn" aria-expanded="false" aria-controls="menu-navegacion" hidden ><a href="#"><img src="./css/icons/altres/list-dark.png" alt="Icona idioma català"></button>
                 <ul id="menu-navegacion">
                     <li><a href="index.html#comfunciona" class="text-dark">Com funciona?</a></li>
                     <li><a href="#" class="text-dark">Punts d'interès</a></li>
@@ -64,8 +64,8 @@
             
                     <a :href="`ficha_vue.html?id=${nextId}`" class="btn btn-next btn-light btn-next-ficha btn-desktop">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
                     <div class="btns-movile">
-                        <a :href="`ficha_vue.html?id=${nextId}`" class="btn btn-ant btn-dark-border btn-ant-ficha"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
-                        <a :href="`ficha_vue.html?id=${prevId}`"class="btn btn-next btn-light">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
+                        <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+                        <a :href="`ficha_vue.html?id=${nextId}`"class="btn btn-next btn-light">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
                         
                     </div>
                 </div>
@@ -73,11 +73,11 @@
             <div class="lower-section-ficha">
                 <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha btn-desktop"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
                
-                <div class="lower-comentaris">
-                    <section class="otros-comentarios">
+                <div class="lower-comentaris" id="comentaris-apps">
+                    <section class="otros-comentarios" >
                         <h2 class="text-dark">Comentaris</h2>
                         <div  class="scroll-comments">
-                            <article class="comentari">
+                            <!--<article class="comentari">
                                 <h3 class="text-ultralight">Fàtima Vidal</h3>
                                 <p class="text-ultralight">Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
                             </article>
@@ -92,25 +92,21 @@
                             <article class="comentari">
                                 <h3>Sita Clua Leal</h3>
                                 <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
-                            </article>
-                            <article class="comentari">
-                                <h3>Ricard Caparròs Navarro</h3>
-                                <p>M'ha encantat conèixer la història de la Dona Marinera i la seva importància en la cultura local.</p>
-                            </article>
-                            <article class="comentari">
-                                <h3>Manuel García López</h3>
-                                <p>El monument és preciós i el missatge que transmet és molt poderós. Recomano visitar-lo!</p>
+                            </article>-->
+                            <article class="comentari" v-for="c in comments" :key="c.id">
+                                <h3>{{c.nom}}</h3>
+                                <p>{{c.text}}</p>
                             </article>
                         </div>
                     </section>
                     <section class="formulari-comentari">
                         <h2 class="text-dark">Deixa el teu comentari...</h2>
-                        <form action="#" method="post" class="form-comentari">
+                        <form action="javascript:void(0)" method="post" class="form-comentari">
                             <label for="nom" class="titols-form text-dark">Nom:</label>
-                            <input type="text" id="nom" name="nom"  placeholder="El teu nom">
+                            <input v-model="nouNom" type="text" id="nom" name="nom"  placeholder="El teu nom">
 
                             <label for="comentari" class="titols-form text-dark">Comentari:</label>
-                            <textarea id="comentari" name="comentari" rows="4"  placeholder="Què t'ha semblat el lloc?"></textarea>
+                            <textarea  v-model="nouText" id="comentari" name="comentari" rows="4"  placeholder="Què t'ha semblat el lloc?"></textarea>
 
                             <button type="submit" class="btn btn-primary btn-dark btn-enviar">Enviar</button>
                             <p id="feedbackform"></p>
@@ -123,15 +119,14 @@
                             <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
                         </div>
                     </section>
-                 </div>
+                </div>
             </div>
-
-
       </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script src="./js/app.js"></script>
-    <!--<script src="js/prova_script.js"></script> -->
+    <script src="js/app.js"></script>
+    <script src="js/comments.js"></script>
+    <script src="js/script.js"></script>
 
   </body>
 </html>

@@ -1,58 +1,3 @@
-/*
-const app = Vue.createApp({
-  data() {
-    return {
-      llocs_interes: null, //JSON Cargado
-      card: null //Ficha seleccionada
-    }
-  },
-  async mounted() {
-    try {
-      // Carga el JSON
-      const response = await fetch('js/llocs_interes.json')
-      if (!response.ok) throw new Error('No s’ha pogut carregar el JSON')
-      this.llocs_interes = await response.json()
-
-      // Mira el id de la url
-      const params = new URLSearchParams(window.location.search)
-      const id = parseInt(params.get('id'))
-
-      // Busca la info que corresponde segun el id
-      if (!isNaN(id)) {
-        this.card = this.llocs_interes.locations.find(c => c.id === id) || null
-      }
-
-      // espera a que el DOM esté cargado
-      this.$nextTick(() => {
-        this.syncHeroHeight()
-      })
-
-      // Vuelve a cargar si se redimensiona la página
-      window.addEventListener('resize', this.syncHeroHeight) //Mira el tamaño de una sección para sincronizar el tamaño de la imagen de fondo
-    } catch (err) {
-      console.error('Error carregant el JSON:', err)
-    }
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.syncHeroHeight)
-  },
-  methods: {
-    syncHeroHeight() {
-      const hero = document.querySelector('.hero-bg')
-      const section = document.querySelector('.upper-section-ficha')
-      if (hero && section) {
-        hero.style.height = section.offsetHeight + 'px'
-      }
-    }
-  },
-  updated() {
-    this.$nextTick(() => this.syncHeroHeight())
-  }
-})
-
-app.mount('#app')
-*/
-
 const app = Vue.createApp({
   data() {
     return {
@@ -67,7 +12,7 @@ const app = Vue.createApp({
       this.llocs_interes = await response.json()
 
         if(this.llocs_interes) {
-            this.totalCards = this.llocs_interes.locations.length
+          this.totalCards = this.llocs_interes.locations.length
         }
 
       const params = new URLSearchParams(window.location.search)
@@ -76,17 +21,28 @@ const app = Vue.createApp({
         this.card = this.llocs_interes.locations.find(c => c.id === id) || null
       }
 
-      // Esperem que Vue hagi renderitzat
+      // Esperamos que Vue haya renderizado
 
-      this.$nextTick(() => {
-        this.initGlobalScript() // inicialitza el teu JS global aquí
-      })
 
       window.addEventListener('resize', this.syncHeroHeight)
+    
+
+      await this.$nextTick();
+
+     window.initGeneralScripts = this.initGlobalScript.bind(this)
+
+      setTimeout(() => {
+        if (window.initGeneralScripts) {
+          window.initGeneralScripts();
+          console.log("Executant initGeneralScripts després del render complet");
+        }
+      }, 50);
+      document.dispatchEvent(new Event("vue-ready"));
     } catch (err) {
       console.error('Error carregant el JSON:', err)
     }
-    document.dispatchEvent(new Event("vue-ready"));
+    
+
   },
   methods: {
     syncHeroHeight() {
@@ -96,8 +52,8 @@ const app = Vue.createApp({
     },
 
     initGlobalScript() {
-      // =======================
-      // MENU IDIOMA
+      // Codigo repetido del script.js para que funcione
+      //MENU IDIOMA
       const idiomaBtn = document.getElementById("idioma-btn")
       const menuIdioma = document.getElementById("menu-idioma")
       if (idiomaBtn && menuIdioma) {
@@ -123,8 +79,46 @@ const app = Vue.createApp({
         })
       }
 
-      // =======================
-      // ICONA FLETXA ANTERIOR
+      //MENU NAVEGACIÓN
+      const navBtn = document.getElementById("nav-btn");
+      const menuNav = document.getElementById("menu-navegacion");
+      const navBtnBg = document.getElementById("nav-btn");
+      function checkScreenSize() {
+        if (window.innerWidth >= 770) {
+          menuNav.removeAttribute("hidden");
+          navBtn.setAttribute("aria-expanded", "true");
+        } else {
+          menuNav.setAttribute("hidden", "");
+          navBtn.setAttribute("aria-expanded", "false");
+        }
+      }
+      navBtn.addEventListener("click", function (event) {
+        if (window.innerWidth < 770) {
+          event.preventDefault(); 
+          const isHidden = menuNav.hasAttribute("hidden");
+          if (isHidden) { 
+            menuNav.removeAttribute("hidden");
+            navBtn.setAttribute("aria-expanded", "true");
+            navBtn.classList.add("desplegado");
+          } else {
+            menuNav.setAttribute("hidden", "");
+            navBtn.setAttribute("aria-expanded", "false");
+            navBtn.classList.remove("desplegado");
+          }
+        }
+      });
+      document.addEventListener("click", function (event) {
+        if (window.innerWidth < 770) {
+          if (!event.target.closest(".menu-nav-desplegable") && !event.target.closest("#nav-btn")) {
+            menuNav.setAttribute("hidden", "");
+            navBtn.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+      checkScreenSize();
+      window.addEventListener("resize", checkScreenSize);
+
+      // ICONO FLECHA ANTERIOR
       const imgElement = document.getElementById("btnAntChange")
       const imgDark = "css/icons/btn/fletxa-ant-dark.png"
       const imgLight = "css/icons/btn/fletxa-ant-light.png"
@@ -137,21 +131,19 @@ const app = Vue.createApp({
 
         const mediaQuery = window.matchMedia("(max-width: 769px)")
         mediaQuery.addEventListener("change", updateButtonIcon)
-
-        // posar inicialment la imatge correcta
         updateButtonIcon(mediaQuery)
       }
-    }
+    },
   },
     computed: {
         prevId() {
             if (!this.card || !this.totalCards) return null;
-            // Si estem a la primera, torna a l'última
+            // va a la ficha anterior, si estamos a la primera ficha, vuelve a la última
             return this.card.id === 1 ? this.totalCards : this.card.id - 1;
         },
         nextId() {
             if (!this.card || !this.totalCards) return null;
-            // Si estem a l'última, torna a la primera
+            //va a la ficha siguiente, si estamos en la última va a la primera
             return this.card.id === this.totalCards ? 1 : this.card.id + 1;
         }
     },

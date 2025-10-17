@@ -19,6 +19,9 @@ html, body {
   width: 100%;
   background-color: #dec7eb;
 }
+html #ficha-body, body #ficha-body {
+  background-color: #693c82;
+}
 
 * {
   box-sizing: border-box;
