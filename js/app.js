@@ -133,6 +133,39 @@ const app = Vue.createApp({
         mediaQuery.addEventListener("change", updateButtonIcon)
         updateButtonIcon(mediaQuery)
       }
+
+      //CHECK FORMULARIO ANTES DE ENVIAR
+      const feedbackformulari = document.getElementById('feedbackform');
+      document.querySelectorAll('.form-comentari').forEach(function(form){
+        form.addEventListener('submit', function(event){ 
+        event.preventDefault(); 
+        let valido=true;
+        const elements = form.querySelectorAll('input, textarea'); 
+        elements.forEach(function(el){ 
+          if(el.value.trim()===''){ 
+            valido = false;
+            el.style.border = '2px solid red' 
+          }
+          if (!el.dataset.listenerAdded) {
+            el.addEventListener('input', function(){
+              el.style.border = '';
+              feedbackformulari.innerText = ''; 
+            });
+          el.dataset.listenerAdded = true;
+          }
+        });
+        
+        if(valido){ 
+          console.log('si'); 
+          feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; 
+          } else { 
+          console.log('no');
+          feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
+        }
+      });
+  });
+
+
     },
   },
     computed: {

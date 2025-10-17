@@ -852,7 +852,7 @@ fetch('./js/llocs_interes.json') //buscar archivo json
 });
 
 //CHECK FORMULARIO ANTES DE ENVIAR
-/*const feedbackformulari = document.getElementById('feedbackform'); //selecciona el párrafo donde se mostrará el mensaje de feedback, se guarda feedbackformulari dentro de una variable constante 
+const feedbackformulari = document.getElementById('feedbackform'); //selecciona el párrafo donde se mostrará el mensaje de feedback, se guarda feedbackformulari dentro de una variable constante 
 
 document.querySelectorAll('.form-comentari').forEach(function(form){
     //llama a todos los elementos de clase form-comentari, en este caso, los formularios; forEach recorre todos los elementos que encuentre para aplicar la función
@@ -864,15 +864,18 @@ document.querySelectorAll('.form-comentari').forEach(function(form){
 
         elements.forEach(function(el){ //recorre todos los elementos para aplicar la funcion el, que se define en el bucle de abajo
 
-            if(el.value.trim()===''){ //si el es igual a vacío, valido pasa a ser falso
-                valido = false;
-                el.style.border = '2px solid red' //cambio de color del borde del elemento que no se ha rellenado a color rojo
-            }
+          if(el.value.trim()===''){ //si el es igual a vacío, valido pasa a ser falso
+              valido = false;
+              el.style.border = '2px solid red' //cambio de color del borde del elemento que no se ha rellenado a color rojo
+          }
 
-             el.addEventListener('input', function(){ //añadimir event listener para que cuando el usuario escriba en los campos se limpie el estilo aplicado con el error
+          if (!el.dataset.listenerAdded) {
+            el.addEventListener('input', function(){ //añadimir event listener para que cuando el usuario escriba en los campos se limpie el estilo aplicado con el error
                 el.style.border = '';
                 feedbackformulari.innerText = ''; //borrar el mensaje de feedback
             });
+            el.dataset.listenerAdded = true;
+          }
         });
         
         if(valido){ //si los campos estan rellenos, valido=true, manda mensaje de exito
@@ -883,7 +886,7 @@ document.querySelectorAll('.form-comentari').forEach(function(form){
              feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
         }
     });
-  });*/
+  });
 
   // CAMBIO IMAGEN FLECHA ANTERIOR MEDIAQUERIES
   //Codigo repetido en VUE, se podria eliminar de aqui si solo se usa página dinámica para las fichas

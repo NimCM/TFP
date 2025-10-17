@@ -73,11 +73,11 @@
             <div class="lower-section-ficha">
                 <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha btn-desktop"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
                
-                <div class="lower-comentaris" id="comentaris-apps">
+                <div class="lower-comentaris">    
                     <section class="otros-comentarios" >
                         <h2 class="text-dark">Comentaris</h2>
                         <div  class="scroll-comments">
-                            <!--<article class="comentari">
+                            <article class="comentari">
                                 <h3 class="text-ultralight">Fàtima Vidal</h3>
                                 <p class="text-ultralight">Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
                             </article>
@@ -92,21 +92,17 @@
                             <article class="comentari">
                                 <h3>Sita Clua Leal</h3>
                                 <p>Un lloc molt interessant per descobrir la història de les dones a Lloret!</p>
-                            </article>-->
-                            <article class="comentari" v-for="c in comments" :key="c.id">
-                                <h3>{{c.nom}}</h3>
-                                <p>{{c.text}}</p>
                             </article>
                         </div>
                     </section>
                     <section class="formulari-comentari">
                         <h2 class="text-dark">Deixa el teu comentari...</h2>
-                        <form action="javascript:void(0)" method="post" class="form-comentari">
+                        <form action="#"  method="post" class="form-comentari">
                             <label for="nom" class="titols-form text-dark">Nom:</label>
-                            <input v-model="nouNom" type="text" id="nom" name="nom"  placeholder="El teu nom">
+                            <input type="text" id="nom" name="nom"  placeholder="El teu nom">
 
                             <label for="comentari" class="titols-form text-dark">Comentari:</label>
-                            <textarea  v-model="nouText" id="comentari" name="comentari" rows="4"  placeholder="Què t'ha semblat el lloc?"></textarea>
+                            <textarea id="comentari" name="comentari" rows="4"  placeholder="Què t'ha semblat el lloc?"></textarea>
 
                             <button type="submit" class="btn btn-primary btn-dark btn-enviar">Enviar</button>
                             <p id="feedbackform"></p>
@@ -119,13 +115,12 @@
                             <img src="./files/img/mockup-mobil.png" class="mobile-mockup" alt="Imatge d'un mòbil amb la app oberta">
                         </div>
                     </section>
-                </div>
+                 </div>
             </div>
       </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/comments.js"></script>
     <script src="js/script.js"></script>
 
   </body>
