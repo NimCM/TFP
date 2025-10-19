@@ -4,6 +4,7 @@ const app = Vue.createApp({
       llocs_interes: null,
       card: null,
       totalCards: 13,
+      isMobile: window.innerWidth<=769,
     }
   },
   async mounted() {
@@ -25,7 +26,9 @@ const app = Vue.createApp({
 
 
       window.addEventListener('resize', this.syncHeroHeight)
-    
+
+      window.addEventListener('resize', this.updateIsMobile)
+      this.updateIsMobile()
 
       await this.$nextTick();
 
@@ -138,47 +141,53 @@ const app = Vue.createApp({
       const feedbackformulari = document.getElementById('feedbackform');
       document.querySelectorAll('.form-comentari').forEach(function(form){
         form.addEventListener('submit', function(event){ 
-        event.preventDefault(); 
-        let valido=true;
-        const elements = form.querySelectorAll('input, textarea'); 
-        elements.forEach(function(el){ 
-          if(el.value.trim()===''){ 
-            valido = false;
-            el.style.border = '2px solid red' 
-          }
-          if (!el.dataset.listenerAdded) {
-            el.addEventListener('input', function(){
-              el.style.border = '';
-              feedbackformulari.innerText = ''; 
-            });
-          el.dataset.listenerAdded = true;
+          event.preventDefault(); 
+          let valido=true;
+          const elements = form.querySelectorAll('input, textarea'); 
+          elements.forEach(function(el){ 
+            if(el.value.trim()===''){ 
+              valido = false;
+              el.style.border = '2px solid red' 
+            }
+            if (!el.dataset.listenerAdded) {
+              el.addEventListener('input', function(){
+                el.style.border = '';
+                feedbackformulari.innerText = ''; 
+              });
+            el.dataset.listenerAdded = true;
+            }
+          });
+          
+          if(valido){ 
+            console.log('si'); 
+            feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; 
+            } else { 
+            console.log('no');
+            feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
           }
         });
-        
-        if(valido){ 
-          console.log('si'); 
-          feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; 
-          } else { 
-          console.log('no');
-          feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
-        }
       });
-  });
-
-
     },
+      
+    updateIsMobile() {
+      this.isMobile = window.innerWidth <= 769
+    },
+
   },
     computed: {
-        prevId() {
-            if (!this.card || !this.totalCards) return null;
-            // va a la ficha anterior, si estamos a la primera ficha, vuelve a la última
-            return this.card.id === 1 ? this.totalCards : this.card.id - 1;
-        },
-        nextId() {
-            if (!this.card || !this.totalCards) return null;
-            //va a la ficha siguiente, si estamos en la última va a la primera
-            return this.card.id === this.totalCards ? 1 : this.card.id + 1;
-        }
+      prevId() {
+          if (!this.card || !this.totalCards) return null;
+          // va a la ficha anterior, si estamos a la primera ficha, vuelve a la última
+          return this.card.id === 1 ? this.totalCards : this.card.id - 1;
+      },
+      nextId() {
+          if (!this.card || !this.totalCards) return null;
+          //va a la ficha siguiente, si estamos en la última va a la primera
+          return this.card.id === this.totalCards ? 1 : this.card.id + 1;
+      },
+      backgroundImage() {
+      return this.isMobile ? this.card.imageMobile : this.card.image;
+      }
     },
   updated() {
     this.$nextTick(() => this.syncHeroHeight())

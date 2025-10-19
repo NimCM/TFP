@@ -5,6 +5,7 @@
         "name": "Museu del Mar",
         "woman": "Lliberada Parés",
         "image": "../files/img/museu_mar.webp",
+        "imageMobile":"../files/img/img_mobile/museu_map.png",
         "coordinates": {
             "lat": 41.699524,
             "lng": 2.850787
@@ -20,6 +21,7 @@
         "name": "Dona Marinera",
         "woman": "Sra Margarita Puig Esqueu",
         "image": "../files/img/dona_marinera_cut.jpg" ,
+        "imageMobile":"../files/img/img_mobile/dona_marinera.jpg",
         "coordinates": {
             "lat":41.695193363493644, 
             "lng":2.844887902220333
@@ -35,6 +37,7 @@
         "name": "Castell St Joan",
         "woman": "Sicardis de Montsoriu",
         "image": "/files/img/castell_joan.webp",
+        "imageMobile":"../files/img/img_mobile/castell_joan.png",
         "coordinates": {
             "lat":41.693890531324804,
             "lng":2.839347646389623
@@ -50,6 +53,7 @@
         "name": "Jardins de Sta Clotilde",
         "woman": "Clotilde de Rocamora",
         "image": "../files/img/santa_clotilde_tochange.jpeg",
+        "imageMobile":"../files/img/img_mobile/jardins-clotilde.jpeg",
         "coordinates": {
             "lat":41.693784129153016, 
             "lng":2.8248975845096025
@@ -65,6 +69,7 @@
         "name": "Escultures Sirenes",
         "woman": "Maria Llimona i Benet",
         "image": "../files/img/sirenes.jpg",
+        "imageMobile":"../files/img/img_mobile/sirenes.jpg",
         "coordinates": {
             "lat":41.691496, 
             "lng":2.825818
@@ -80,6 +85,7 @@
         "name": "Ermita Sta Cristina",
         "woman": "Santa Cristina",
         "image": "../files/img/sta_cristina.jpg",
+        "imageMobile":"../files/img/img_mobile/santa_cristina.jpg",
         "coordinates": {
             "lat":41.68782400415335,
             "lng":2.8162711972034855
@@ -95,6 +101,7 @@
         "name": "St Pere del Bosc",
         "woman": "Dolors Montserdà",
         "image":"../files/img/st_pere_bosc_tochange.jpg",
+        "imageMobile":"../files/img/img_mobile/st_pere.jpg",
         "coordinates": {
             "lat":41.71192359661002,
             "lng":2.7904884731616324
@@ -110,6 +117,7 @@
         "name": "Barri de la Càndida",
         "woman": "Càndida Masgrau i Campeny",
         "image": "../files/img/candida-masgrau.jpg",
+        "imageMobile":"../files/img/img_mobile/candida-masgrau.jpg",
         "coordinates": {
             "lat":41.705496,
             "lng":2.833148
@@ -125,6 +133,7 @@
         "name": "Ermita de les Alegries",
         "woman": "Senyora del Rossell",
         "image": "../files/img/ermita-alegries.jpg",
+        "imageMobile":"../files/img/img_mobile/ermita-alegries.jpg",
         "coordinates": {
             "lat":41.71768614341468,
             "lng":2.8294887141102607
@@ -140,6 +149,7 @@
         "name": "Escola Àngels Alemany i Boris",
         "woman": "Àngels Alemany i Boris",
         "image": "../files/img/escola-angels.jpg",
+        "imageMobile":"../files/img/img_mobile/angels_alemany.jpg",
         "coordinates": {
             "lat":41.70571581907457,
             "lng":2.8387768413824745
@@ -155,6 +165,7 @@
         "name": "Barri del Rieral",
         "woman": "Gertrudis Moret i Farigola",
         "image": "../files/img/getrudis-2.jpeg",
+        "imageMobile":"../files/img/img_mobile/gertrudis-moret.png",
         "coordinates": {
             "lat":41.70549881041903, 
             "lng":2.8378980955553175
@@ -170,6 +181,7 @@
         "name": "Biblioteca",
         "woman": "Antònia Pares i Macià",
         "image": "../files/img/biblio.jpg",
+        "imageMobile":"../files/img/img_mobile/biblio.jpg",
         "coordinates": {
             "lat":41.70137353704667,
             "lng":2.8450136015178247
@@ -185,6 +197,7 @@
         "name": "Carrer Venècia",
         "woman": "Rosita Mistos",
         "image": "../files/img/zona_venecia.jpg",
+        "imageMobile":"../files/img/img_mobile/zona_venecia_cut.jpg",
         "coordinates": {
             "lat":41.70073994037073,
             "lng":2.852665029935177

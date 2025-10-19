@@ -1383,6 +1383,12 @@ a.btn:hover, .btn:hover {
   }
 }
 @media (max-width: 769px) {
+  .hero-bg {
+    background-position: top left;
+    position: relative;
+    z-index: 0;
+    background-size: cover;
+  }
   #main-index {
     align-content: center;
   }
@@ -1410,7 +1416,7 @@ a.btn:hover, .btn:hover {
   }
   .bola .textos-ficha {
     max-width: 100%;
-    margin-left: 40px;
+    margin-left: 50px;
   }
   .bola .textos-ficha h1, .bola .textos-ficha h2 {
     max-width: 80%;
@@ -1497,6 +1503,12 @@ a.btn:hover, .btn:hover {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+  }
+}
+@media (min-width: 460px) and (max-width: 769px) {
+  .bola .textos-ficha {
+    max-width: 75%;
+    align-content: end;
   }
 }
 /* overlay de carga */
