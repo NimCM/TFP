@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lloret en femení</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="./css/logos/logo_icon.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
@@ -11,10 +12,14 @@
 
 
     <!--Link a los archivos CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
   </head>
   <body id="ficha-body">
+    <!-- Loader visible hasta que la página esté 100% cargada -->
+    <div id="site-loader" aria-hidden="false">
+        <div class="spinner" role="status" aria-label="Cargando"></div>
+    </div>
     <div id="app">
       <div v-if="card" :key="card.id">
         <div class="hero-bg"  :style="{ backgroundImage: `url(${card.image})` }">
@@ -66,16 +71,16 @@
                         <ul :data-id="card.id" class="text-ultralight lu-ficha"></ul>
                     </section>
             
-                    <a :href="`ficha_vue.html?id=${nextId}`" class="btn btn-next btn-light btn-next-ficha btn-desktop">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
+                    <a :href="`ficha_vue.html?id=${nextId}`" class="btn btn-next btn-light btn-next-ficha btn-desktop">Següent <img src="./css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
                     <div class="btns-movile">
-                        <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
-                        <a :href="`ficha_vue.html?id=${nextId}`"class="btn btn-next btn-light">Següent <img src="css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
+                        <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha"> <img id="btnAntChange" src="./css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+                        <a :href="`ficha_vue.html?id=${nextId}`"class="btn btn-next btn-light">Següent <img src="./css/icons/btn/fletxa-dark.png" class="btn-icon-next" alt="Enllaç per passar al següent lloc destacat amb una icona de una fletxa cap a la dreta"></a>
                         
                     </div>
                 </div>
             </div>
             <div class="lower-section-ficha">
-                <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha btn-desktop"> <img id="btnAntChange" src="css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
+                <a :href="`ficha_vue.html?id=${prevId}`" class="btn btn-ant btn-dark-border btn-ant-ficha btn-desktop"> <img id="btnAntChange" src="./css/icons/btn/fletxa-ant-dark.png" class="btn-icon-ant" alt="Enllaç per tornar a l'anterior lloc destacat amb una icona de una fletxa cap a l'esquerra"> Anterior </a>
                
                 <div class="lower-comentaris">    
                     <section class="otros-comentarios" >
@@ -124,8 +129,8 @@
       </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/script.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/script.js"></script>
 
   </body>
 </html>

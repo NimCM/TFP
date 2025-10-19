@@ -496,6 +496,7 @@ a.btn:hover, .btn:hover{
 
     header{
         gap:10px;
+        position: relative;
         #menu-navegacion [hidden]{
         display:none;
         }
@@ -555,6 +556,8 @@ a.btn:hover, .btn:hover{
             box-shadow: 2px 2px 4px rgba($middlePurple, 0.7);
         }
     }
+
+    
 }
 
 /* MAPA */
@@ -991,6 +994,18 @@ a.btn:hover, .btn:hover{
 
 }
 
+@media (max-width: 770px){
+    .header-mapa{
+        background-color: transparent;
+    }
+
+    .titol-mapa{
+        padding-top: 0;
+        margin-top: -60px;
+    }
+    
+}
+
 @media (max-width: 595px) { /* Ajustar filtros por debajo 595px */
     .llocs-filter{
         .filtre-grup{
@@ -1117,6 +1132,8 @@ a.btn:hover, .btn:hover{
             font-family: $tipoMini;
             font-size: 16px;
             color: $middlePurple;
+            max-width: 100px;
+            min-width: 60px;
         }
 
         .icona-ficha{
@@ -1320,7 +1337,12 @@ a.btn:hover, .btn:hover{
         }
 
         .textos-ficha{
-            max-width: 70%;
+            max-width: 100%;
+            margin-left: 40px;
+
+            h1, h2{
+                max-width: 80%;
+            }
         }
        
         .iconos-ficha{
@@ -1330,6 +1352,7 @@ a.btn:hover, .btn:hover{
         .btn-next-ficha{
             display: none;
         }
+
     }
 
 
@@ -1419,4 +1442,33 @@ a.btn:hover, .btn:hover{
         width:100%;
     }
 
+}
+
+/* overlay de carga */
+#site-loader{
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: $middlePurple;
+  z-index: 9999;
+  transition: opacity 300ms ease, visibility 300ms ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+#site-loader.loaded{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#site-loader .spinner{
+  width: 64px;
+  height: 64px;
+  border: 6px solid rgba(0,0,0,0.08);
+  border-top-color: $lightPurple; /* color del spinner */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; 
 }

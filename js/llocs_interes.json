@@ -84,7 +84,7 @@
             "lat":41.68782400415335,
             "lng":2.8162711972034855
         },
-        "tipus": ["natural","religios","exterior"],
+        "tipus": ["natural","religiós","exterior"],
         "temps":"35 mins",
         "price": "gratuit",
         "access": "no_accessible",
@@ -114,7 +114,7 @@
             "lat":41.705496,
             "lng":2.833148
         },
-        "tipus": ["urba","exterior"],
+        "tipus": ["urbà","exterior"],
         "temps":"35 mins",
         "price": "gratuit",
         "access": "accessible",
@@ -129,7 +129,7 @@
             "lat":41.71768614341468,
             "lng":2.8294887141102607
         },
-        "tipus": ["religios","exterior"],
+        "tipus": ["religiós","exterior"],
         "temps":"35 mins",
         "price": "gratuit",
         "access": "accessible",
@@ -144,7 +144,7 @@
             "lat":41.70571581907457,
             "lng":2.8387768413824745
         },
-        "tipus": ["urba", "exterior","edifici"],
+        "tipus": ["urbà", "exterior","edifici"],
         "temps":"25 mins",
         "price": "gratuit",
         "access": "accessible",
@@ -159,7 +159,7 @@
             "lat":41.70549881041903, 
             "lng":2.8378980955553175
         },
-        "tipus": ["urba","exterior"],
+        "tipus": ["urbà","exterior"],
         "temps":"2 mins",
         "price": "gratuit",
         "access": "accessible",
@@ -189,7 +189,7 @@
             "lat":41.70073994037073,
             "lng":2.852665029935177
         },
-        "tipus": ["urba","exterior"],
+        "tipus": ["urbà","exterior"],
         "temps":"0 mins",
         "price": "gratuit",
         "access": "accessible",
@@ -204,8 +204,8 @@
         { "value": "escultura", "label": "Escultura" },
         { "value": "ruines", "label": "Ruines històriques" },
         { "value": "natural", "label": "Espai natural" },
-        { "value": "religios", "label": "Espai religiós" },
-        { "value": "urba", "label": "Espai urba" },
+        { "value": "religiós", "label": "Espai religiós" },
+        { "value": "urbà", "label": "Espai urbà" },
         { "value": "edifici", "label": "Edificació" }
     ],
     "price": [

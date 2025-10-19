@@ -14,6 +14,11 @@
     box-shadow: 0 0 15px #693c82, 0 0 20px #693c82;
   }
 }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 html, body {
   display: block;
   width: 100%;
@@ -590,6 +595,7 @@ a.btn:hover, .btn:hover {
   }
   header {
     gap: 10px;
+    position: relative;
   }
   header #menu-navegacion [hidden] {
     display: none;
@@ -1080,6 +1086,15 @@ a.btn:hover, .btn:hover {
     transform: scale(0.95);
   }
 }
+@media (max-width: 770px) {
+  .header-mapa {
+    background-color: transparent;
+  }
+  .titol-mapa {
+    padding-top: 0;
+    margin-top: -60px;
+  }
+}
 @media (max-width: 595px) { /* Ajustar filtros por debajo 595px */
   .llocs-filter .filtre-grup {
     /* Mixin de flex donde puedes aplicar todos los valores de las variables seleccionades */
@@ -1206,6 +1221,8 @@ a.btn:hover, .btn:hover {
   font-family: "Cantarell", Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #693c82;
+  max-width: 100px;
+  min-width: 60px;
 }
 .bola .iconos-ficha .icona-ficha {
   height: clamp(40px, 3vw, 44px);
@@ -1392,7 +1409,11 @@ a.btn:hover, .btn:hover {
     margin-right: 40%;
   }
   .bola .textos-ficha {
-    max-width: 70%;
+    max-width: 100%;
+    margin-left: 40px;
+  }
+  .bola .textos-ficha h1, .bola .textos-ficha h2 {
+    max-width: 80%;
   }
   .bola .iconos-ficha {
     margin-right: 0;
@@ -1477,4 +1498,32 @@ a.btn:hover, .btn:hover {
     justify-content: space-between;
     width: 100%;
   }
+}
+/* overlay de carga */
+#site-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #693c82;
+  z-index: 9999;
+  transition: opacity 300ms ease, visibility 300ms ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+#site-loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#site-loader .spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid rgba(0, 0, 0, 0.08);
+  border-top-color: #dec7eb; /* color del spinner */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }/*# sourceMappingURL=style.css.map */

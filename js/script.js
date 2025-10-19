@@ -855,64 +855,74 @@ fetch('./js/llocs_interes.json') //buscar archivo json
 const feedbackformulari = document.getElementById('feedbackform'); //selecciona el párrafo donde se mostrará el mensaje de feedback, se guarda feedbackformulari dentro de una variable constante 
 
 document.querySelectorAll('.form-comentari').forEach(function(form){
-    //llama a todos los elementos de clase form-comentari, en este caso, los formularios; forEach recorre todos los elementos que encuentre para aplicar la función
-    form.addEventListener('submit', function(event){ //addEventListener se fija en el elemento submit para llevar a cabo la función evento
-        event.preventDefault(); //evitar el envio de manera directa
-        
-        let valido=true; // se asume que los campos son validos
-        const elements = form.querySelectorAll('input, textarea'); //se crea una constante elements con los elementos que se van a comprobar
+  //llama a todos los elementos de clase form-comentari, en este caso, los formularios; forEach recorre todos los elementos que encuentre para aplicar la función
+  form.addEventListener('submit', function(event){ //addEventListener se fija en el elemento submit para llevar a cabo la función evento
+      event.preventDefault(); //evitar el envio de manera directa
+      
+      let valido=true; // se asume que los campos son validos
+      const elements = form.querySelectorAll('input, textarea'); //se crea una constante elements con los elementos que se van a comprobar
 
-        elements.forEach(function(el){ //recorre todos los elementos para aplicar la funcion el, que se define en el bucle de abajo
+      elements.forEach(function(el){ //recorre todos los elementos para aplicar la funcion el, que se define en el bucle de abajo
 
-          if(el.value.trim()===''){ //si el es igual a vacío, valido pasa a ser falso
-              valido = false;
-              el.style.border = '2px solid red' //cambio de color del borde del elemento que no se ha rellenado a color rojo
-          }
-
-          if (!el.dataset.listenerAdded) {
-            el.addEventListener('input', function(){ //añadimir event listener para que cuando el usuario escriba en los campos se limpie el estilo aplicado con el error
-                el.style.border = '';
-                feedbackformulari.innerText = ''; //borrar el mensaje de feedback
-            });
-            el.dataset.listenerAdded = true;
-          }
-        });
-        
-        if(valido){ //si los campos estan rellenos, valido=true, manda mensaje de exito
-            console.log('si'); //para comprobar que funciona en consola
-            feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; //cambio del texto dentro del párrafo <p> con el id feedbackform
-        } else { //si uno de los campos esta vacio manda mensaje de error
-             console.log('no'); //para comprobar que funciona en consola
-             feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
+        if(el.value.trim()===''){ //si el es igual a vacío, valido pasa a ser falso
+            valido = false;
+            el.style.border = '2px solid red' //cambio de color del borde del elemento que no se ha rellenado a color rojo
         }
-    });
-  });
 
-  // CAMBIO IMAGEN FLECHA ANTERIOR MEDIAQUERIES
-  //Codigo repetido en VUE, se podria eliminar de aqui si solo se usa página dinámica para las fichas
-
-  const imgDark = "css/icons/btn/fletxa-ant-dark.png";
-  const imgLight = "css/icons/btn/fletxa-ant-light.png";
-
-  const imgElement = document.getElementById("btnAntChange");
-
-  if(imgElement){
-
-    // Función que actualiza la imagen segun media queries
-    function updateButtonIcon(e) {
-      const isMatch = e ? e.matches : window.matchMedia("(max-width: 769px)").matches;
-      if (isMatch) {
-        imgElement.src = imgLight; // si el media queries se cumple se pone la imagen Light
-      } else {
-        imgElement.src = imgDark; // si no, la versión dark
+        if (!el.dataset.listenerAdded) {
+          el.addEventListener('input', function(){ //añadimir event listener para que cuando el usuario escriba en los campos se limpie el estilo aplicado con el error
+              el.style.border = '';
+              feedbackformulari.innerText = ''; //borrar el mensaje de feedback
+          });
+          el.dataset.listenerAdded = true;
+        }
+      });
+      
+      if(valido){ //si los campos estan rellenos, valido=true, manda mensaje de exito
+          console.log('si'); //para comprobar que funciona en consola
+          feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; //cambio del texto dentro del párrafo <p> con el id feedbackform
+      } else { //si uno de los campos esta vacio manda mensaje de error
+            console.log('no'); //para comprobar que funciona en consola
+            feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
       }
+  });
+});
+
+// CAMBIO IMAGEN FLECHA ANTERIOR MEDIAQUERIES
+//Codigo repetido en VUE, se podria eliminar de aqui si solo se usa página dinámica para las fichas
+
+const imgDark = "css/icons/btn/fletxa-ant-dark.png";
+const imgLight = "css/icons/btn/fletxa-ant-light.png";
+
+const imgElement = document.getElementById("btnAntChange");
+
+if(imgElement){
+
+  // Función que actualiza la imagen segun media queries
+  function updateButtonIcon(e) {
+    const isMatch = e ? e.matches : window.matchMedia("(max-width: 769px)").matches;
+    if (isMatch) {
+      imgElement.src = imgLight; // si el media queries se cumple se pone la imagen Light
+    } else {
+      imgElement.src = imgDark; // si no, la versión dark
     }
-
-    // Definición del breakpoint
-    const mediaQuery = window.matchMedia("(max-width: 769px)");
-
-    mediaQuery.addEventListener("change", updateButtonIcon);
   }
 
+  // Definición del breakpoint
+  const mediaQuery = window.matchMedia("(max-width: 769px)");
 
+  mediaQuery.addEventListener("change", updateButtonIcon);
+}
+
+// Oculta el loader cuando la página esté completamente cargada
+window.addEventListener('load', function () {
+  const loader = document.getElementById('site-loader');
+  if (!loader) return;
+
+  // iniciar la transición de ocultado
+  loader.classList.add('loaded');
+
+  // eliminar del DOM una vez termine la transición para no interferir
+loader.addEventListener('transitionend', () => loader.remove(), { once: true })
+}); 
 

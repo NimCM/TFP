@@ -14,6 +14,11 @@
     box-shadow: 0 0 15px #693c82, 0 0 20px #693c82;
   }
 }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 html, body {
   display: block;
   width: 100%;

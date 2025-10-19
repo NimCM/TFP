@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mapa-Lloret en femení</title>
+    <title>Mapa-Lloret en femení</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="./css/logos/logo_icon.png"/>
     <!--Link a las tipografías de google, los dos primeros links son la optimización de la connexión, los dos últimos los links. ala tipografia-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
     <!--Link a los archivos CSS-->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <header class="header-mapa">
@@ -309,7 +310,7 @@
                 <section class="llocs-filter">
                     <div id="contenidor-filtres"></div> <!--Filtro desplegable tipo de sitio, hecho en JS-->
                     <div class="filtre-grup"> <!--Checkbox accesibilidad-->
-                        <label>Accessibilitat:</label>
+                        <!--<label>Accessibilitat:</label>-->
                         <div class="checkbox-grup">
                             <label>
                                 <input type="checkbox" class="filtre-access" value="accessible">
@@ -318,7 +319,7 @@
                         </div>
                     </div>
                     <div class="filtre-grup">
-                        <label>Preu:</label>
+                        <!--<label>Preu:</label>-->
                         <div class="checkbox-grup">
                             <label>
                                 <input type="checkbox" class="filtre-preu" value="gratuit">
@@ -353,7 +354,7 @@
       <!-- Vue 3 y Vue Router 4 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
-    <script src="js/script.js"></script>
-    <script src="js/app.js"></script> <!--Script de la app de vue-->
+    <script src="./js/script.js"></script>
+    <script src="./js/app.js"></script> <!--Script de la app de vue-->
 </body>
 </html>
