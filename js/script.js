@@ -154,6 +154,10 @@ function initSWIPER(){
   });
 }
 
+window.addEventListener('load', () => {
+  initSWIPER();
+});
+
 // MAPA con LEAFLET (con filtros y depslegable, AI:  https://claude.ai/share/35d57a74-0b43-457e-8c57-a7fdcd718f39)
 
 let map;
@@ -926,3 +930,9 @@ window.addEventListener('load', function () {
 loader.addEventListener('transitionend', () => loader.remove(), { once: true })
 }); 
 
+// Register service worker
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch(err => console.error("SW registration failed", err));
+  }
