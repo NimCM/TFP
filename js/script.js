@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  if(document.getElementById('swiper')){
+  if (typeof Swiper !== 'undefined' && document.getElementById('swiper')) {
     initSWIPER();
   }
 
@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //SWIPER PARA CARROUSSEL
 function initSWIPER(){
+  if (typeof Swiper === 'undefined') return;
   const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
@@ -488,19 +489,40 @@ function generarMapaIRuta(iconMarker) {
 
 
 // Función para obtener el tiempo caminando con la API de OSRM
+
+let lastOSRMCall = 0;               // Tiempo de la última petición
+const MIN_DELAY = 1000;             // Tiempo mínimo entre peticiones
+
 async function obtenirTempsOSRM(userLat, userLng, destLat, destLng) {
+  const now = Date.now();
+  if (now - lastOSRMCall < MIN_DELAY) {
+    console.warn("⏳ Evitant massa peticions a OSRM, espera una mica...");
+    return null; 
+  }
+  lastOSRMCall = now;
+
   try {
     const url = `https://router.project-osrm.org/route/v1/foot/${userLng},${userLat};${destLng},${destLat}?overview=false`;
     //El tiempo no es muy preciso pero se mantiene el sistema de la Api como muestra
     const response = await fetch(url);
     if (!response.ok) throw new Error('Error OSRM: ' + response.status);
 
-    const data = await response.json();
+    const text = await response.text();
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseError) {
+      console.error("⚠️ La resposta no és JSON (possiblement HTML d’error OSRM):", text.slice(0, 100));
+      return null;
+    }
+
     if (data.routes && data.routes.length > 0) {
       const tempsSegons = data.routes[0].duration;
       const tempsMin = Math.round(tempsSegons / 60); // convertir a minutos
       return tempsMin;
     } else {
+      console.warn("⚠️ No s'ha trobat cap ruta a la resposta OSRM");
       return null;
     }
   } catch (err) {

@@ -55,10 +55,22 @@ self.addEventListener("fetch", (event) => {
       // Si no está, pedir a la red
       return fetch(event.request).then(networkResponse => {
         // Si es una imagen, guardar automáticamente
+        if ( !networkResponse || networkResponse.status !== 200) {
+            return networkResponse;
+          }
+          let responseToCache;
+          try {
+            if (networkResponse.type !== "opaque") {
+              responseToCache = networkResponse.clone();
+            }
+          } catch (err) {
+            console.warn("No s'ha pogut clonar la resposta:", err);
+            return networkResponse;
+          }
         if (event.request.url.includes("/img/")) {
           caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-          });
+            cache.put(event.request,responseToCache);
+            });
         }
         return networkResponse;
       }).catch(() => {
