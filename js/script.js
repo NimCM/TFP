@@ -906,7 +906,7 @@ document.querySelectorAll('.form-comentari').forEach(function(form){
       
       if(valido){ //si los campos estan rellenos, valido=true, manda mensaje de exito
           console.log('si'); //para comprobar que funciona en consola
-          feedbackformulari.innerText="✅ Comentari enviat correctament, en breus serà publicat!"; //cambio del texto dentro del párrafo <p> con el id feedbackform
+          feedbackformulari.innerText="✅ Comentari enviat correctament"; //cambio del texto dentro del párrafo <p> con el id feedbackform
       } else { //si uno de los campos esta vacio manda mensaje de error
             console.log('no'); //para comprobar que funciona en consola
             feedbackformulari.innerText="❌ Siusplau, emplena tots els camps";
